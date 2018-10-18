@@ -8,8 +8,8 @@ class Person {
 	}
 
 	public Person() {
-		this.name = "Brad";
-		this.age = 37;
+		name = "Brad";
+		age = 37;
 	}
 
 	public boolean olderThan(int otherAge) {
