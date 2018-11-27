@@ -1,6 +1,6 @@
 
 class Main {
-	// I'll be using this main method for testing
+	// I'll be using this main method for testing!!!
 	public static void main(String[] args) {
 
 		Society peopleTown = new Society(10000);
