@@ -1,5 +1,5 @@
 
-
+//the whole society
 public class Society {
 
 	public static void main(String[] args) {
