@@ -1,5 +1,5 @@
 class Person {
-	private int age;
+	public int age;
 	private String name;
 
 	public Person(int age, String name) {
@@ -8,8 +8,8 @@ class Person {
 	}
 
 	public Person() {
-		name = "Brad";
-		age = 37;
+		this.name = "Brad";
+		this.age = 37;
 	}
 
 	public boolean olderThan(int otherAge) {
