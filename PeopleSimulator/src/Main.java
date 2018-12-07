@@ -5,9 +5,10 @@ class Main {
 
 		Society peopleTown = new Society(10000);
 		for(int i = 0; i < peopleTown.population; i++){
-			//the ArrayList method .get(i) is how to get the element at i
+			//made a change
 			System.out.println(i + " " + peopleTown.people.get(i).getName() + " age = "+ peopleTown.people.get(i).getAge());
-		}
+		}//change
 
 	}
+	
 }
