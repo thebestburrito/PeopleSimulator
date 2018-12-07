@@ -7,7 +7,7 @@ class Main {
 		for(int i = 0; i < peopleTown.population; i++){
 			//made a change
 			System.out.println(i + " " + peopleTown.people.get(i).getName() + " age = "+ peopleTown.people.get(i).getAge());
-		}
+		}//change
 
 	}
 	
