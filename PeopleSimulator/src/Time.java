@@ -1,6 +1,6 @@
 
 
-class Date {
+class Time {
 
 
  private int month;
@@ -15,28 +15,50 @@ class Date {
    this.dayCount = dayCount;
  }
 
- public void newDate () {
-    day++;
-    dayCount++;
+ public void incrementTime () {
+    incrementDay();
     if(month == 2 && day == 29) {
-      month++;
-      day = 1;
+      incrementMonth();
     } else if ((month == 1 || month == 3 || month == 5 || month == 7 || month ==  8 || month == 10 || month == 12) && day == 32) {
-      month++;
-      day = 1;
+      incrementMonth();
     } else if ((month != 1 || month != 3 || month != 5 || month != 7 || month != 8 || month != 10 || month != 12) && day == 31) {
-      month++;
-      day = 1;
+      incrementMonth();
     }
     if(month == 13){
-      year++;
-      month = 1;
-      day = 1;
+      incrementYear();
     }
   }
-
- public String getDate () {
-   return this.month + "/" + this.day + "/" + this.year + "; The amount of days that have elapsed are: " +dayCount;
+ private void incrementDay()
+ {
+     day++;
+     dayCount++;
+ }
+ private void incrementMonth()
+ {
+     month++;
+     day = 1;
+ }
+ private void incrementYear()
+ {
+     year++;
+     month = 1;
+     day = 1;
+ }
+ public int getDay()
+ {
+     return day;
+ }
+ public int getMonth()
+ {
+     return month;
+ }
+ public int getyear()
+ {
+     return year;
+ }
+ public int getDayCount()
+ {
+     return dayCount;
  }
 }
 
