@@ -8,7 +8,7 @@ class Time {
  private int year;
  private int dayCount;
 
- public Date (int month, int day, int year, int dayCount) {
+ public Time (int month, int day, int year, int dayCount) {
    this.month = month;
    this.day = day;
    this.year = year;
