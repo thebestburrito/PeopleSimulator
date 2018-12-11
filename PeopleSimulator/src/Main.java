@@ -8,6 +8,6 @@ class Main {
 			//the ArrayList method .get(i) is how to get the element at i
 			System.out.println(i + " " + peopleTown.people.get(i).getName() + " age = "+ peopleTown.people.get(i).getAge());
 		}
-
+        //THIS IS A COMMMENT AND A TEST
 	}
 }
