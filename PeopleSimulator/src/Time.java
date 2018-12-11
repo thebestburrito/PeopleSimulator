@@ -1,15 +1,15 @@
-import java.util.Random;
+
 
 class Date {
 
- 
+
  private int month;
  private int day;
  private int year;
  private int dayCount;
 
  public Date (int month, int day, int year, int dayCount) {
-   this.month = month; 
+   this.month = month;
    this.day = day;
    this.year = year;
    this.dayCount = dayCount;
@@ -34,7 +34,7 @@ class Date {
       day = 1;
     }
   }
-  
+
  public String getDate () {
    return this.month + "/" + this.day + "/" + this.year + "; The amount of days that have elapsed are: " +dayCount;
  }

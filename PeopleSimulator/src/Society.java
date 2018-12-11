@@ -13,18 +13,17 @@ class Society{
 	Society(int numPeople){
 		population = numPeople;
 		String fullName;
-    String birthday;
-		for(int i = 0; i < numPeople; i++){
-			fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastNames[(int)(Math.random()*lastNames.length)]; 
+    for(int i = 0; i < numPeople; i++){
+			fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastNames[(int)(Math.random()*lastNames.length)];
 			//.add() is how you add a new element to an ArrayList
 			people.add(new Person((int)(Math.random()*100),fullName));
-		}	
+		}
 	}
 
     public Person getOldestPerson () {
       int loc = 0; //location used in return statement
-      int age = 0; 
-       for(int i = 0; i < this.population; i++){ //for each position in the people array, compares age to the age variable then records the position of the highest. 
+      int age = 0;
+       for(int i = 0; i < this.population; i++){ //for each position in the people array, compares age to the age variable then records the position of the highest.
           if(this.people.get(i).olderThan(age)){
             age = this.people.get(i).getAge();
             loc = i;
@@ -33,7 +32,7 @@ class Society{
     return this.people.get(loc); //returns the location of the person
   }
 
-  
+
 
 
 }
