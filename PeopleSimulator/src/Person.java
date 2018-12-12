@@ -1,15 +1,20 @@
-class Person {
-	public int age;
-	private String name;
+import java.util.ArrayList;
 
-	public Person(int age, String name) {
+
+class Person {
+	private int age;
+	private String name;
+  private String sex;
+  private int likeability;
+
+
+  ArrayList<Integer> haves = new ArrayList<Integer>();
+  ArrayList<Integer> wants = new ArrayList<Integer>();
+	public Person(int age, String name, String sex, int likeability) {
 		this.name = name;
 		this.age = age;
-	}
-
-	public Person() {
-		this.name = "Brad";
-		this.age = 37;
+    this.sex = sex;
+    this.likeability = likeability;
 	}
 
 	public boolean olderThan(int otherAge) {
@@ -28,6 +33,19 @@ class Person {
 	public int getAge() {
 		return age;
 	}
+
+  public String getSex(){
+    return sex;
+  }
+
+  public int getLikeability(){
+    return likeability;
+  }
+
+  public void addLike(){
+    likeability++;
+  }
+
 	public void hadBirthday() {
 		age++;
 	}

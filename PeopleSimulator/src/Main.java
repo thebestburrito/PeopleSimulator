@@ -1,13 +1,12 @@
 
 class Main {
-	// I'll be using this main method for testing
 	public static void main(String[] args) {
-
-		Society peopleTown = new Society(10000);
+    System.out.print("hey");
+		Society peopleTown = new Society(2);
 		for(int i = 0; i < peopleTown.population; i++){
-			//the ArrayList method .get(i) is how to get the element at i
-			System.out.println(i + " " + peopleTown.people.get(i).getName() + " age = "+ peopleTown.people.get(i).getAge());
+
+      System.out.println(peopleTown.people.get(i).getName() + " " + peopleTown.people.get(i).getAge() + " " + peopleTown.people.get(i).getSex());
 		}
-        //THIS IS A COMMMENT AND A TEST
+    System.out.println(peopleTown.findOldestPerson());
 	}
 }
