@@ -15,9 +15,19 @@ class Society{
 		for(int i = 0; i < numPeople; i++){
 			fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastNames[(int)(Math.random()*lastNames.length)];
 			people.add(new Person((int)(Math.random()*100),fullName));
-		}	
+		}
 	}
-
+    public void banishPhoenixJones(){
+        int count = 0;
+        for(int i = 0; i < people.size(); i++){
+            if(people.get(i).getName().equals("Phoenix Jones")){
+                people.remove(i);
+                i--;
+                count++;
+            }
+        }
+        System.out.println("Phoenix Jones removed: " + count);
+    }
 
 }
 
