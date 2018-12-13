@@ -60,5 +60,9 @@ class Time {
  {
      return dayCount;
  }
+ public String dateToString()
+ {
+     return (month+"/"+day+"/"+year);
+ }
 }
 

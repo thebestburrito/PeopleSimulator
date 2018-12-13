@@ -17,6 +17,7 @@ class Main {
 
       for(int i = 0; i < 10000; i++) {
         startDate.incrementTime();
+        System.out.println(startDate.dateToString());
       }
 	}
   public static void pause (int msPause) { // pause method
