@@ -52,7 +52,7 @@ class Time {
  {
      return month;
  }
- public int getyear()
+ public int getYear()
  {
      return year;
  }

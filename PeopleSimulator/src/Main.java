@@ -3,9 +3,9 @@ class Main {
 	// I'll be using this main method for testing!!!
     //code gang
 	public static void main(String[] args) {
-
+        Time startDate = new Time(1, 1, 0, 0);
 		Society peopleTown = new Society(10000);
-    Time startDate = new Time(1, 1, 0, 0);
+
 		/*for(int i = 0; i < peopleTown.population; i++){
 			//the ArrayList method .get(i) is how to get the element at i
 			System.out.println(i + " " + peopleTown.people.get(i).getName() + " age = "+ peopleTown.people.get(i).getAge());
