@@ -15,9 +15,18 @@ class Society{
 		for(int i = 0; i < numPeople; i++){
 			fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastNames[(int)(Math.random()*lastNames.length)];
 			people.add(new Person((int)(Math.random()*100),fullName));
-		}	
+		}
 	}
-
+ public void oldestPerson(){
+        Person oldest = new Person(0," ");
+        for(int i = 0; i < population; i++){
+            if(oldest.olderThan(people.get(i).getAge())){
+             oldest = oldest;
+            } else
+                 oldest = people.get(i);
+    }
+         System.out.println("the oldest person is " + oldest.getName());
+}
 
 }
 
