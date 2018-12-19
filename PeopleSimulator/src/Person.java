@@ -5,14 +5,26 @@ class Person {
     private int age;
     private String name;
     private String sex;
-    private int likeability;
-    ArrayList < Integer > haves = new ArrayList < Integer > ();
-    ArrayList < Integer > wants = new ArrayList < Integer > ();
-    public Person(int age, String name, String sex, int likeability) {
+    private int love;
+    private ArrayList <Integer> haves = new ArrayList < Integer > ();
+    private ArrayList <Integer> wants = new ArrayList < Integer > ();
+    public Person(int age, String name, String sex, int love) {
         this.name = name;
         this.age = age;
         this.sex = sex;
-        this.likeability = likeability;
+        this.love = love;
+        for(int i = 0; i < 3; i++){
+            int num1 = ((int)(Math.random()*10));
+            int num2 = ((int)(Math.random()*10));
+            if(num1 > 5){
+                num1 = num1 - 5;
+            }
+            if(num2 > 5){
+                num2 = num2 -5;
+            }
+            haves.add(num1);
+            wants.add(num2);
+        }
     }
 
     public boolean olderThan(int otherAge) {
@@ -24,6 +36,14 @@ class Person {
 
     }
 
+    public ArrayList <Integer> getHaves(){
+        return haves;
+    }
+
+    public ArrayList <Integer> getWants(){
+        return wants;
+    }
+
     public String getName() {
         return name;
     }
@@ -32,19 +52,16 @@ class Person {
         return age;
     }
 
-    public String getSex() {
+    public String getSex(){
         return sex;
     }
-    public void marry() {
 
+    public int getLove() {
+        return love;
     }
 
-    public int getLikeability() {
-        return likeability;
-    }
-
-    public void addLike() {
-        likeability++;
+    public void addLove() {
+        love++;
     }
 
     public void hadBirthday() {

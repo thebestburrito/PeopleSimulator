@@ -112,4 +112,12 @@ class Society {
 
         return (oldestPerson);
     }
+    public void checkLove(Person a, Person b){
+        for(int i = 0; i < a.getHaves().size(); i++){
+            if(a.getHaves().get(i) == b.getWants().get(i) || a.getWants().get(i) == b.getHaves().get(i)){
+                a.addLove();
+                b.addLove();
+            }
+        }
+    }
 }
