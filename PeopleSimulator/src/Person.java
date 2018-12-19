@@ -2,16 +2,17 @@ class Person {
 	private int age;
 	private String name;
 
-	public Person(int age, String name) {
+	public Person(int age, String name, Time global) {
 		this.name = name;
 		this.age = age;
+        Time Birthday = new Time(global.getMonth(),global.getDay(),global.getYear(),0);
 	}
 
 	public Person() {
 		name = "Brad";
 		age = 37;
 	} //hewwo
-	
+
 
 	public boolean olderThan(int otherAge) {
 		if (age > otherAge) {
