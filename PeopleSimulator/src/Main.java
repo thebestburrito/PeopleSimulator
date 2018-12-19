@@ -3,7 +3,7 @@ class Main {
 	// I'll be using this main method for testing!!!
     //code gang
 	public static void main(String[] args) {
-        Time startDate = new Time(1, 1, 0, 0);
+
 		Society peopleTown = new Society(10000);
 
 		/*for(int i = 0; i < peopleTown.population; i++){
@@ -16,8 +16,7 @@ class Main {
 
 
       for(int i = 0; i < 10000; i++) {
-        startDate.incrementTime();
-        System.out.println(startDate.dateToString());
+        peopleTown.cycleDay();
       }
 	}
   public static void pause (int msPause) { // pause method
