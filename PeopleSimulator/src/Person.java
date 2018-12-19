@@ -1,18 +1,15 @@
 class Person {
-	private int age;
+	public int age;
 	private String name;
     private int birthday;
-	public Person(int age, String name,int birthdate) {
+    private String gender;
+
+	public Person(int age, String name,String gender,int birthdate) {
 		this.name = name;
 		this.age = age;
         this.birthday = birthdate;
+        this.gender = gender;
 	}
-
-	public Person() {
-		name = "Brad";
-		age = 37;
-	} //hewwo
-
 
 	public boolean olderThan(int otherAge) {
 		if (age > otherAge) {
@@ -35,4 +32,11 @@ class Person {
 		age++;
 	}
 
+    public String getGender(){
+    return gender;
+    }
+
+    public void setGender(String gender){
+        this.gender = gender;
+    }
 }
