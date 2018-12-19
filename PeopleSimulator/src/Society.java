@@ -25,18 +25,6 @@ class Society{
             people.add(new Person((int)(Math.random()*100),fullName, gender));
 		}
 	}
-    public void banishPhoenixJones(){
-        int count = 0;
-        for(int i = 0; i < people.size(); i++){
-            if(people.get(i).getName().equals("Phoenix Jones")){
-                people.remove(i);
-                i--;
-                count++;
-            }
-        }
-        System.out.println("Phoenix Jones removed: " + count);
-    }
-
     public void addPerson(Person p1, Person p2){
     String lastName;
     String gender;
