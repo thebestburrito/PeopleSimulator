@@ -3,8 +3,8 @@ import java.util.*;
 class Society{
 	//this declares a new instance variable... an ArrayList for people
 	List<Person> people = new ArrayList<Person>();
-  List<Person> mostCommonAge = new ArrayList<Person>();
-
+    List<Person> mostCommonAge = new ArrayList<Person>();
+    public Time time = new Time(1, 1, 0, 0);
 	public int population;
 	//these names came from https://nameberry.com/unisex-names
 	private String[] firstNames = {"Avery","Riley","Jordan","Angel","Parker","Sawyer","Peyton","Quinn","Blake","Hayden","Taylor","Dakota","Reese","Zion","Remmington","Amari","Phoenix","Kendall","Harley","Rylan","Marley","Dallas"};
@@ -17,9 +17,19 @@ class Society{
     for(int i = 0; i < numPeople; i++){
 			fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastNames[(int)(Math.random()*lastNames.length)];
 			//.add() is how you add a new element to an ArrayList
-			people.add(new Person((int)(Math.random()*100),fullName,));
+			people.add(new Person((int)(Math.random()*100),fullName,time.getDayCount()));
 		}
 	}
+
+     public void cycleDay()
+    {
+        time.incrementTime();
+        //hey folks put your daily methods in here
+
+
+
+
+    }
 
     public Person getOldestPerson () {
       int loc = 0; //location used in return statement

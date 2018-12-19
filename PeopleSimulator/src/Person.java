@@ -1,11 +1,11 @@
 class Person {
 	private int age;
 	private String name;
-
-	public Person(int age, String name, Time global) {
+    private int birthday;
+	public Person(int age, String name,int birthdate) {
 		this.name = name;
 		this.age = age;
-        Time Birthday = new Time(global.getMonth(),global.getDay(),global.getYear(),0);
+        this.birthday = birthdate;
 	}
 
 	public Person() {
