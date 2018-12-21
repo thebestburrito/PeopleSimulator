@@ -3,14 +3,14 @@ class Person {
 	private String name;
     private boolean depressed;
     private int happiness;
-    public int income;
+    public int income; //comment this out at the end
 
 	public Person(int age, String name) {
 		this.name = name;
 		this.age = age;
         this.depressed = Math.random() < 0.15;
         this.happiness = 50;
-        this.income = (int) Math.floor(Math.random() * 1000000);
+        this.income = 10000; //comment this out at the end
 	}
 
 	public Person() {
