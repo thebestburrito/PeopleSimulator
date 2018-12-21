@@ -93,7 +93,15 @@ class Society{
     return this.people.get(loc); //returns the location of the person
   }
 
-
-
+    public String makeWeather(Time date, String weather){
+        String weatherType[] = {"clear", "cloudy", "windy", "mist", "drizzle", "rain", "thunder", "fog", "sleat", "snow", "hail"};
+        String disasterType[] = {"tornado", "hurricane", "lightning", "blizzard"};
+        if(weather.equals("cloudy")){
+            return weatherType[5];
+        }
+        else{
+            return weatherType[0];
+        }
+    }
 
 }
