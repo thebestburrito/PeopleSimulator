@@ -31,7 +31,7 @@ class Society {
         time.incrementTime();
         //hey folks put your daily methods in here
         addPerson(people.get((int)(Math.random()*population)), people.get((int)(Math.random()*population)));
-
+        findTheLove(people.get((int)(Math.random()*population)),people.get((int)(Math.random()*population)));
 
 
     }
@@ -92,7 +92,28 @@ class Society {
     return this.people.get(loc); //returns the location of the person
   }
 
-
-
-
+//takes parameters of two people, compares their haves and wants, and if at least both people have one match for each other, they have found love!
+public void findTheLove(Person a, Person b){
+    double loveA = 0;
+    double loveB = 0;
+    double compatibility = 0;
+	for(int i = 0; i < a.getHaves().size(); i++){
+        if(a.getWants().get(i) == b.getHaves().get(i)){
+            loveA++;
+        }
+        if(b.getWants().get(i) == a.getHaves().get(i)){
+            loveB++;
+        }
+    }
+    if(loveB == 0 || loveA == 0){
+        compatibility = 0;
+    }else{
+        compatibility = (loveA+loveB)/2;
+    }
+    if(compatibility > .9){
+        System.out.println(a.getName()+ a.getHaves() + a.getWants() + " and " + b.getName() + b.getHaves()+ b.getWants() + " love eachother!");
+    }else{
+        System.out.println(a.getName()+ a.getHaves() + a.getWants() + " and " + b.getName() + b.getHaves()+ b.getWants() + " have no love :(");
+    }
+}
 }

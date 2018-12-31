@@ -6,12 +6,17 @@ class Person {
 	private String name;
     private int birthday;
     private String gender;
-
+    private ArrayList <Integer> haves = new ArrayList <Integer>();
+    private ArrayList <Integer> wants = new ArrayList <Integer>();
 	public Person(int age, String name,String gender,int birthdate) {
 		this.name = name;
 		this.age = age;
         this.birthday = birthdate;
         this.gender = gender;
+        for(int i = 0; i < 3; i++){
+            haves.add((int)(Math.random()*10));
+            wants.add((int)(Math.random()*10));
+        }
 	}
 
 	public boolean olderThan(int otherAge) {
@@ -41,5 +46,12 @@ class Person {
 
     public void setGender(String gender){
         this.gender = gender;
+    }
+
+    public ArrayList <Integer> getHaves(){
+        return haves;
+    }
+    public ArrayList <Integer> getWants(){
+        return wants;
     }
 }
