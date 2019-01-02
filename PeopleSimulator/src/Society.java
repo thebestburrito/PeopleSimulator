@@ -13,13 +13,12 @@ class Society {
   Society(int numPeople) {
     population = numPeople;
     String fullName;
-    int pN = Person.generatePersonalityNumber();
+    int pN = Personality.generatePersonalityNumber();
 
     for (int i = 0; i < numPeople; i++) {
       fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastNames[(int)(Math.random()*lastNames.length)];
-      people.add(new Person((int)(Math.random()*100), fullName, "male", pN));
+      people.add(new Person((int)(Math.random()*100), fullName, gender, pN));
     }
-  }
 
   String gender;
   for (int i = 0; i < numPeople; i++) {
@@ -30,7 +29,7 @@ class Society {
     } else {
       gender = "male";
     }
-    people.add(new Person((int)(Math.random()*100), fullName, gender, time.getDayCount()));
+    people.add(new Person((int)(Math.random()*100), fullName, gender, pN));
   }
 
   public void cycleDay() {
