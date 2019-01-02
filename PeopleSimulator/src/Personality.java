@@ -91,7 +91,8 @@ class Personality {
         boolean isLawful;
         boolean isSocial;
         boolean is1Neutral;
-        boolean isRebeboolean isChaotic;
+        boolean isRebel;
+        boolean isChaotic;
 
         if (Personality.getPeronalityNumber(Society.getPerson(i)) == 0 || Person.getPersonalityNumber == 5 || Person.getPersonalityNumber == 10 || Person.getPeronalityNumber == 15 || Person.getPeronalityNumber == 20) {
             isLawful = true;
