@@ -93,6 +93,13 @@ class Society{
     return this.people.get(loc); //returns the location of the person
   }
 
+    //Removes people
+    public void removePeople(int amount){
+        for(int i = 0; i < amount; i++){
+            int index = (int)(Math.random()*population);
+            people.remove(index);
+        }
+    }
     //Creates and changes weather
     public void makeDisaster(){
         String disasters[] = {"tornado", "hurricane", "flood", "earthquake", "tsunami", "wildfires"};
@@ -108,12 +115,15 @@ class Society{
         if(torIndex >= 399){
             int level = (int)(Math.random()*3);
             if(level == 0){
+                removePeople(5);
                 System.out.println("A weak tornado has hit!");
             }
             else if(level == 1){
+                removePeople(15);
                 System.out.println("A significant tornado has hit!");
             }
             else{
+                removePeople(25);
                 System.out.println("A violent tornado has hit!");
             }
         }
