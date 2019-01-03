@@ -98,6 +98,7 @@ class Society{
         for(int i = 0; i < amount; i++){
             int index = (int)(Math.random()*population);
             people.remove(index);
+            population--;
         }
     }
     //Creates and changes weather
