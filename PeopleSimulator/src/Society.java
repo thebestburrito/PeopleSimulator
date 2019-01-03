@@ -93,14 +93,29 @@ class Society{
     return this.people.get(loc); //returns the location of the person
   }
 
-    public String makeWeather(Time date, String weather){
-        String weatherType[] = {"clear", "cloudy", "windy", "mist", "drizzle", "rain", "thunder", "fog", "sleat", "snow", "hail"};
-        String disasterType[] = {"tornado", "hurricane", "lightning", "blizzard"};
-        if(weather.equals("cloudy")){
-            return weatherType[5];
+    //Creates and changes weather
+    public void makeDisaster(){
+        String disasters[] = {"tornado", "hurricane", "flood", "earthquake", "tsunami", "wildfires"};
+
+        //Tornado Chance Maker
+        int torIndex = (int)(Math.random()*400);
+        if(time.getSeason().equals("spring")){
+            torIndex += 10;
         }
-        else{
-            return weatherType[0];
+        else if(time.getSeason().equals("summer")){
+            torIndex += 5;
+        }
+        if(torIndex >= 399){
+            int level = (int)(Math.random()*3);
+            if(level == 0){
+                System.out.println("A weak tornado has hit!");
+            }
+            else if(level == 1){
+                System.out.println("A significant tornado has hit!");
+            }
+            else{
+                System.out.println("A violent tornado has hit!");
+            }
         }
     }
 
