@@ -4,6 +4,8 @@ class Person {
     private boolean depressed;
     private int happiness;
     public int income; //comment this out at the end
+    public boolean married;
+    public boolean divorced;
 
 	public Person(int age, String name) {
 		this.name = name;
@@ -11,6 +13,8 @@ class Person {
         this.depressed = Math.random() < 0.15;
         this.happiness = 50;
         this.income = 10000; //comment this out at the end
+        this.married = true;
+        this.divorced = true;
 	}
 
 	public Person() {
@@ -45,12 +49,24 @@ class Person {
         return depressed;
     }
     public int getHappiness(){
+        //change these to while loops later when we merge if you can
         if(depressed == true && age > 11){
-            happiness = (int) Math.floor(Math.random() * 36);
-            if(income < 11000){
-                happiness -= (int) Math.floor(Math.random() * 6);
-            }
+            happiness -= (int) Math.floor(Math.random() * 36);
         }
+        if(income < 11000){
+            happiness -= (int) Math.floor(Math.random() * 15);
+        }
+        if(married == true){
+            happiness += (int) Math.floor(Math.random() * 30);
+        }
+        if(divorced == true){
+            happiness -= (int) Math.floor(Math.random() * 15);
+        }
+        if(income > 2400000){
+            happiness += (int) Math.floor(Math.random() * 20);
+        }
+
+
         return happiness;
     }
 }
