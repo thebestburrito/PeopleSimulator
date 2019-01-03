@@ -8,6 +8,8 @@ class Person {
     private String gender;
     private ArrayList <Integer> haves = new ArrayList <Integer>();
     private ArrayList <Integer> wants = new ArrayList <Integer>();
+    private boolean married = false;
+    private boolean divorced = false;
 	public Person(int age, String name,String gender,int birthdate) {
 		this.name = name;
 		this.age = age;
@@ -53,5 +55,13 @@ class Person {
     }
     public ArrayList <Integer> getWants(){
         return wants;
+    }
+
+    public boolean getMarried(){
+        return married;
+    }
+
+    public boolean getDivorced(){
+        return divorced;
     }
 }

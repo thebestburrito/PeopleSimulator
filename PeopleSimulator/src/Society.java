@@ -97,23 +97,35 @@ public void findTheLove(Person a, Person b){
     double loveA = 0;
     double loveB = 0;
     double compatibility = 0;
-	for(int i = 0; i < a.getHaves().size(); i++){
-        if(a.getWants().get(i) == b.getHaves().get(i)){
-            loveA++;
-        }
-        if(b.getWants().get(i) == a.getHaves().get(i)){
-            loveB++;
-        }
-    }
-    if(loveB == 0 || loveA == 0){
-        compatibility = 0;
-    }else{
-        compatibility = (loveA+loveB)/2;
-    }
-    if(compatibility > .9){
-        System.out.println(a.getName()+ a.getHaves() + a.getWants() + " and " + b.getName() + b.getHaves()+ b.getWants() + " love eachother!");
-    }else{
-        System.out.println(a.getName()+ a.getHaves() + a.getWants() + " and " + b.getName() + b.getHaves()+ b.getWants() + " have no love :(");
-    }
+    ArrayList<Integer> currentHavesA = new ArrayList<Integer>();
+ if(a.getAge() > 18 && b.getAge() > 18){
+     for(int i = 0; i < a.getHaves().size(); i++){
+         if(a.getWants().indexOf(b.getHaves().get(i)) > 0){
+             System.out.println("contains" + a.getWants() + b.getHaves());
+         }
+     }
+
+	// for(int i = 0; i < a.getHaves().size(); i++){
+    //     if(a.getWants().get(i) == b.getHaves().get(i)){
+    //         loveA++;
+    //     }
+    //     if(b.getWants().get(i) == a.getHaves().get(i)){
+    //         loveB++;
+    //     }
+    // }
+    // if(loveB == 0 || loveA == 0){
+    //     compatibility = 0;
+    // }else{
+    //     compatibility = (loveA+loveB)/2;
+    // }
+    // if(compatibility > .9){
+    //     System.out.println(a.getName()+ a.getHaves() + a.getWants() + a.getAge()+" and " + b.getName() + b.getHaves()+ b.getWants() + b.getAge() + " love eachother! with " + compatibility + "%");
+    // }else{
+    //     System.out.println(a.getName()+ a.getHaves() + a.getWants() + a.getAge() +  " and " + b.getName() + b.getHaves()+ b.getWants()+ b.getAge() + " have no love :( with " + compatibility+ "%");
+    // }
+ }
+else{
+    System.out.println(a.getName() + " " + a.getAge() + " and " + b.getName() + " " +b.getAge() + " had a conflict of ages");
+}
 }
 }
