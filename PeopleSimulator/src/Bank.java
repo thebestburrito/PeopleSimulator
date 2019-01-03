@@ -4,11 +4,20 @@ class Bank {
     public int savings;
     public int debt;
     public int accountNumber;
+    public int deposit;
 
     public Bank(int accountNumber,int checkings, int savings){
         this.accountNumber = accountNumber;
         this.checkings = checkings;
         this.savings = savings;
+    }
+
+    public void updateCheckings(){
+    //takes other 80 (?) percent of deposits
+    }
+
+    public void updateSavings(){
+    //take 20 (?) percent of deposits
     }
 
     public int getAccountNumber(){
