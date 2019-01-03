@@ -14,8 +14,8 @@ class Society{
 		String fullName;
 		for(int i = 0; i < numPeople; i++){
 			fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastNames[(int)(Math.random()*lastNames.length)];
-			people.add(new Person((int)(Math.random()*100),fullName));
-		}	
+			people.add(new Person());
+		}
 	}
 
 
