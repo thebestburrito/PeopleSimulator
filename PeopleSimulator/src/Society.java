@@ -13,7 +13,7 @@ class Society {
   Society(int numPeople) {
     population = numPeople;
     String fullName;
-    int pN = Personality.generatePersonalityNumber();
+    int pN = Person.generatePersonalityNumber();
 
     for (int i = 0; i < numPeople; i++) {
       fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastNames[(int)(Math.random()*lastNames.length)];
@@ -22,7 +22,7 @@ class Society {
 
   String gender;
   for (int i = 0; i < numPeople; i++) {
-    String fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastNames[(int)(Math.random()*lastNames.length)];
+    fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastNames[(int)(Math.random()*lastNames.length)];
     int randomIndex = (int)(Math.random()*2);
     if (randomIndex >= 1) {
       gender = "female";
@@ -39,8 +39,8 @@ class Society {
   }
 
   public void addPerson(Person p1, Person p2) {
-    String lastName;
-    String gender;
+    String lastName = "";
+    String gender = "";
     if ((p1.getGender() == "female" && p2.getGender() == "male")||(p1.getGender() == "male" && p2.getGender() == "female")) {
       if (p1.getGender().equals("male")) {
         String name = p1.getName();
