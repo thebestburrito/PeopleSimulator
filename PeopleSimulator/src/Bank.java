@@ -5,6 +5,7 @@ class Bank {
     public int debt;
     public int accountNumber;
     public int deposit;
+    public double tax;
 
     public Bank(int accountNumber,int checkings, int savings){
         this.accountNumber = accountNumber;
@@ -29,5 +30,8 @@ class Bank {
     }
     public int getSavings(){
         return savings;
+    }
+    public double tax(){
+        return tax;
     }
 }
