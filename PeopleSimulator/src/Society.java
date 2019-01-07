@@ -15,7 +15,7 @@ class Society{
 		population = numPeople;
 		String fullName;
         //this randomly generates only 10 towns to start with.
-        for(int i = 0; i <= 10; i++){
+        for(int i = 0; i <= 5; i++){
             places.add(new Place(lastNames[(int)(Math.random()*lastNames.length)]+placeNames[(int)(Math.random()*placeNames.length)]));
         }
 		for(int i = 0; i < numPeople; i++){
