@@ -10,7 +10,9 @@ class Main {
         for(int i = 0; i < peopleTown.population; i++){
 			//the ArrayList method .get(i) is how to get the element at i
 			System.out.println(i + " " + peopleTown.people.get(i).getName() + " age = "+ peopleTown.people.get(i).getAge() + " Depressed = " + peopleTown.people.get(i).getDepressed() + " Happiness = " + peopleTown.people.get(i).getHappiness() + "%");
+
 	}
+    peopleTown.societalHappiness();
 
 }
 }

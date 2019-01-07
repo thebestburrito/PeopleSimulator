@@ -65,7 +65,7 @@ class Person {
         if(income > 2400000){
             happiness += (int) Math.floor(Math.random() * 20);
         }
-
+        
 
         return happiness;
     }
