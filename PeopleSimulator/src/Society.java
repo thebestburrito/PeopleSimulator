@@ -103,7 +103,7 @@ class Society{
     }
     //Creates and changes weather
     public void makeDisaster(){
-        String disasters[] = {"tornado", "hurricane", "flood", "earthquake", "tsunami", "wildfires"};
+       // Disasters {"tornado", "hurricane", "flood", "earthquake", "tsunami", "wildfires"};
 
         //Tornado Chance Maker
         int torIndex = (int)(Math.random()*400);
@@ -117,16 +117,83 @@ class Society{
             int level = (int)(Math.random()*3);
             if(level == 0){
                 removePeople(5);
-                System.out.println("A weak tornado has hit!");
+                System.out.println("A weak tornado has hit, killing 5 people!");
             }
             else if(level == 1){
                 removePeople(15);
-                System.out.println("A significant tornado has hit!");
+                System.out.println("A significant tornado has hit, killing 15 people!");
             }
             else{
                 removePeople(25);
-                System.out.println("A violent tornado has hit!");
+                System.out.println("A violent tornado has hit, killing 25 people!");
             }
+        }
+
+        //Hurricane Chance Maker
+        int hurIndex = (int)(Math.random()*400);
+        if(time.getSeason().equals("fall")){
+            hurIndex += 10;
+        }
+        else if(time.getSeason().equals("summer")){
+            hurIndex += 5;
+        }
+        if(hurIndex >= 400){
+            int level = (int)((Math.random()*5) + 1);
+            int amount = 5 * level;
+            removePeople(amount);
+            System.out.println("A catagory " + level + " hurricane has hit, killing" + amount + " people!");
+        }
+
+        //Flood Chance Maker
+        int floIndex = (int)(Math.random()*400);
+        if(time.getSeason().equals("spring")){
+            floIndex += 10;
+        }
+        else if(time.getSeason().equals("summer")){
+            floIndex += 5;
+        }
+        else if(time.getSeason().equals("fall")){
+            floIndex += 5;
+        }
+        if(floIndex >= 399){
+            int amount = (int)(Math.random()*6);
+            removePeople(amount);
+            System.out.println("A flood has happened, killing " + amount + " people!");
+        }
+
+        //Earthquake Chance Maker
+        int earIndex = (int)(Math.random()*2000);
+        double level = (Math.random()*6) + 2.5;
+        int killLevel = 0;
+        if(level >= 8){
+            earIndex += 0;
+            killLevel = 100;
+        }
+        else if(level >= 7 && level < 8){
+            earIndex += 1500;
+            killLevel = 10;
+        }
+        else if(level >= 6 && level < 7){
+            earIndex += 1600;
+            killLevel = 2;
+        }
+        else if(level >= 5 && level < 6){
+            earIndex += 1700;
+            killLevel = 1;
+        }
+        else if(level >= 4 && level < 5){
+            earIndex += 2000;
+            killLevel = 0;
+        }
+        else if(level < 4){
+            earIndex -= 2000;
+            killLevel = 0;
+        }
+        if(earIndex >= 1999){
+            int levelAmount = (int)(Math.random()*6);
+            int amount = levelAmount * killLevel;
+            removePeople(amount);
+            System.out.println("A " + earIndex + "earthquake has hit, killing " + amount + " people!");
         }
     }
 
