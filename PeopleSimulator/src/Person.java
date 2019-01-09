@@ -15,24 +15,21 @@ class Person {
     private String mother;
     private String father;
     private String children;
-	public Person(int age, String name,String gender,int birthdate, String id) {
     public int IQ = bellCurve(100,15);
     public int income = bellCurve(53719,30000);
     public int points = 0;
     public int mill = bellCurve(50,25);
-
 	public Person(int age, String name,String gender,int birthdate) {
-		this.name = name;
-		this.age = age;
-        this.birthday = birthdate;
-        this.gender = gender;
-        this.id = id;
+	this.name = name;
+	this.age = age;
+    this.birthday = birthdate;
+    this.gender = gender;
+    for(int i = 0; i < 10; i++){
+        haves.add((int)(Math.random()*10));
+        wants.add((int)(Math.random()*10));
+    }
+    }
 
-        for(int i = 0; i < 10; i++){
-            haves.add((int)(Math.random()*10));
-            wants.add((int)(Math.random()*10));
-        }
-	}
 
 	public boolean olderThan(int otherAge) {
 		if (age > otherAge) {
