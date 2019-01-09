@@ -56,7 +56,7 @@ class Person {
         this.gender = gender;
     }
 
-         public static int bellCurve(int mean, int sd) {
+    public static int bellCurve(int mean, int sd) {
 		// make nombors gud
 	    int i = mean - (3*sd);
 	    int j = mean + (3*sd);
@@ -89,6 +89,7 @@ class Person {
         }
         return IQ;
     }
+
     public int calcIncome(){
         if(IQ > 100 && IQ < 115){
             points = IQ - 100; /* Points above average for average people */
@@ -125,7 +126,8 @@ class Person {
     }
 
     public void setBalance(int balance){
-        this.balance = ((int)Math.random()*10000);
+        this.balance = balance;
+        balance = ((int)Math.random()*10000);
     }
 
     public int getBalance(){
