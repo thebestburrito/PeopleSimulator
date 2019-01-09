@@ -1,40 +1,29 @@
 import java.util.*;
 class Main {
-	// I'll be using this main method for testing
-
+    public static int totalPopulation = 10000;
 	public static void main(String[] args) {
-    ArrayList<String> placedata = new ArrayList<String>();
-		Society peopleTown = new Society(200);
+	    Society peopleTown = new Society(totalPopulation);
+        //gets the name and place of each person
+        for(int o = 0; o < totalPopulation; o++){
+            System.out.println(peopleTown.people.get(o).getName() +" "+ peopleTown.people.get(o).getPlace());
+        }
 
-
-
-    peopleTown.people.get(1).changePlaceTo("brandontown");
-    System.out.println(peopleTown.people.get(1).getPlace());
-        //gets the name of the person in the people arrayList at position 8000
-    for(int o = 0; o < 10; o++){
-        System.out.println(peopleTown.people.get(o).getName() +" "+ peopleTown.people.get(o).getPlace());
-        System.out.println(peopleTown.people.get(o).getPopulationOf("brandontown"));
-    }
-    //testing that the change location feature works
-
-
-    //this is part of the places counter (Do not touch)
-    for(int count = 0;count < 200;count++){
-        placedata.add(peopleTown.people.get(count).getPlace());
-        System.out.println(placedata.get(count));
+        peopleTown.people.get(1).changePlaceTo("brandontown");
+        System.out.println(peopleTown.people.get(1).getPlace());
+                populationOf(totalPopulation,peopleTown,"brandontown");
     }
 
-    PopulationOf(placedata, "brandontown");
-    }
-
-    //this took way to F***ing to long. I legit want to die.
     // This is the Places Code- Need help? Ask Brandon, or Ian.
-    public static int PopulationOf(ArrayList<String> A, String PlaceName){
-        //this Method allows for a loction to be counted for population totals.
-        //How it works: Do not mess with the array list part. Only add the place name (second parameter)
-        // Example:  System.out.println(PopulationOf(placedata, "brandontown"));
-        int occurances = Collections.frequency(A, PlaceName);
+    public static int populationOf(int totalPopulation,Society society,String PlaceName){
+
+        ArrayList<String> placedata = new ArrayList<String>();
+        for(int count = 0;count < 10000;count++){
+            placedata.add(society.people.get(count).getPlace());
+        }
+        int occurances = Collections.frequency(placedata, PlaceName);
         System.out.println("Population for "+PlaceName+":"+occurances);
+        //empty the placedata array every time.
+        placedata.clear();
         return occurances;
     }
 }

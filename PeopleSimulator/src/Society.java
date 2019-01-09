@@ -24,10 +24,9 @@ class Society{
             fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastNames[(int)(Math.random()*lastNames.length)];
             people.add(new Person((int)(Math.random()*100),fullName, places.get((int) (Math.random()*places.size())).getPlace()));
 
-		}
+        }
          //System.out.println(places.get(0).getPlace());
 	}
-
 
 }
 

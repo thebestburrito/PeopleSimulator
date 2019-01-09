@@ -35,24 +35,23 @@ class Person {
 	}
     //-----------------------------------------------------------------
     //Places
+    
     public String getPlace(){
          return this.place;
-     }
-     public int getPopulationOf(String findPlaceName){
-
-        if(this.place.equals(findPlaceName)){
-            //now we want to count every occurance of this specific place
-            thisPopulation++;
-        }
-        return thisPopulation;
      }
      public String changePlaceTo(String newPlace){
          this.place = newPlace;
          return ("Person " + this.name + "moved to " + newPlace);
      }
 
+    //  public int getPopulationOf(String findPlaceName){
+    //     if(this.place.equals(findPlaceName)){
+    //         //now we want to count every occurance of this specific place
+    //         thisPopulation++;
+    //     }
+    //     return thisPopulation;
+    //  }
     //  public int getPopulationOf(int indexOfPlacesArray){
-
     //     // for(int b = 0; b < totalcurrentpop; b++ ){
     //         if(this.place.equals(places.getNumber(indexOfPlacesArray))){
     //             //now we want to count every occurance of this specific place
