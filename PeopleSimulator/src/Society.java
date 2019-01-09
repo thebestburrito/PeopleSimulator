@@ -34,6 +34,7 @@ class Society{
         //hey folks put your daily methods in here
         addPerson(people.get((int)(Math.random()*population)), people.get((int)(Math.random()*population)));
         makeDisaster();
+        System.out.println("Population: " + population);
     }
 
     //Makes new person
