@@ -27,7 +27,7 @@ class Society{
             }
             people.add(new Person((int)(Math.random()*100),fullName, gender, pN));
 		}
-        System.out.println(people.get(i) + " " + people.get(i).getName() + " " + people.get(i).getPersonalityNumber());
+        System.out.println(people.get(8000) + " " + people.get(8000).getName() + " " + people.get(8000).getPersonalityNumber() + " " + "hey");
 	}
 
     public void cycleDay() {
