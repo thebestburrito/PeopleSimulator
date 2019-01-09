@@ -3,7 +3,7 @@ class Main {
     public static int totalPopulation = 10000;
 	public static void main(String[] args) {
 	    Society peopleTown = new Society(totalPopulation);
-        
+
         //gets the name and place of each person
         for(int o = 0; o < totalPopulation; o++){
             System.out.println(peopleTown.people.get(o).getName() +" "+ peopleTown.people.get(o).getPlace());
@@ -13,7 +13,7 @@ class Main {
         //places Demo code PLEASE REMOVE!!
         peopleTown.people.get(1).changePlaceTo("brandontown");
         System.out.println(peopleTown.people.get(1).getPlace());
-        populationOf(totalPopulation,peopleTown,"brandontown");
+        populationOf(totalPopulation,peopleTown,peopleTown.places.get(0).getPlace());
     }
 
     // This is the Places Code- Need help? Ask Brandon, Ian, or read the documentation provided.
