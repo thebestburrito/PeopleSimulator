@@ -82,9 +82,8 @@ class Society {
  public void cycleDay() {
   time.incrementTime();
   //hey folks put your daily methods in here
-  addPerson(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * population)));
   findTheLove(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * population)));
-
+    //addPerson(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * population)));
 
  }
 
@@ -112,10 +111,24 @@ class Society {
    String fullName = firstNames[(int)(Math.random() * firstNames.length)] + " " + lastName;
    population++;
    id = Integer.toString(population);
-   people.add(new Person(0, fullName, gender, time.getDayCount(), id));
-//***********************************************************************************************************************ADDDDD
+   people.add(new Person(0, fullName, gender, time.getDayCount(), id));  //This adds a baby with a new id :)
+   for(int i = 0; i < population; i++){
+       if(people.get(i).getId().equals(id)){
+           if(p1.getGender().equals("male") && p2.getGender().equals("female")){          //This section just sets the property of father or mother depending on who was male or female
+               people.get(i).setFather(p1.getId());
+               p1.setChildren(id);
+               people.get(i).setMother(p2.getId());
+               p2.setChildren(id);
+           }else if(p2.getGender().equals("male") && p1.getGender().equals("female"))
+                people.get(i).setFather(p2.getId());
+                p2.setChildren(id);
+               people.get(i).setMother(p1.getId());
+               p1.setChildren(id);
+       }
+   }
    System.out.println(p1.getName() + " and " + p2.getName() + " had...");
    System.out.println(fullName + " born on " + time.dateToString());
+  // System.out.println("Parent 1 id :" + p1.getId() + "\n Parent 2 id: " + p2.getId() + "\n baby id: " + id + "\n parent 1 child id: " + p1.getChildren());
   }
  }
 
@@ -145,34 +158,34 @@ class Society {
   return this.people.get(loc); //returns the location of the person
  }
 
- //takes parameters of two people, compares their haves and wants, and if at least both people have one match for each other, they have found love!
+ //takes parameters of two people
  public void findTheLove(Person a, Person b) {
   double loveA = 0;
   double loveB = 0;
   double compatibility = 0;
-  ArrayList < Integer > currentHavesA = new ArrayList < Integer > ();
-   if (a.getAge() > 18 && b.getAge() > 18) {
+   if (a.getAge() > 18 && b.getAge() > 18) {               //makes sure they're at least 18 ;)
     for (int i = 0; i < a.getHaves().size(); i++) {
-     if (a.getWants().get(i) == b.getHaves().get(i)) {
+     if (a.getWants().get(i) == b.getHaves().get(i)) {      //compares their haves and wants they were born with to find love
       loveA++;
      }
      if (b.getWants().get(i) == a.getHaves().get(i)) {
       loveB++;
      }
     }
-    if (loveB == 0 || loveA == 0) {
+    if (loveB == 0 || loveA == 0) {                   //can't divide by 0!
      compatibility = 0;
-    } else if (loveA == 0 || loveB == 0) {
+    } else if (loveA == 0 || loveB == 0) {            //averages their connections to come up with a random percent which I called compatibility
      compatibility = 0;
     } else {
      compatibility = (loveA + loveB) / 2;
     }
     if (compatibility >= 2) {
-     a.makeMarry();
+     a.makeMarry();                          //marries them and sets their partners (married depends on if compatibility is above 20 percent)
      b.makeMarry();
+     a.setPartner(b.getId());
+     b.setPartner(a.getId());
      System.out.println(a.getName() + " and " + b.getName() + " are newly wed with " + compatibility * 10 + " compatibility!");
-     System.out.println(a.getPartner()+ " " + b.getId()+ " " + b.getPartner() + " " + a.getId());
-     //System.out.println(a.getName()+ a.getHaves() + a.getWants() + a.getAge()+" and " + b.getName() + b.getHaves()+ b.getWants() + b.getAge() + " love eachother! with " + compatibility*10 + "%");
+     System.out.println(a.getPartner()+ " " + b.getId()+ " " + b.getPartner() + " " + a.getId());                                    //test to see if ID works
     } else {
      System.out.println(a.getName() + " and " + b.getName() + " have no love :( with " + compatibility * 10 + " compatibility");
     }
