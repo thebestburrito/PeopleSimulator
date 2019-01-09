@@ -89,7 +89,6 @@ class Society {
  public void addPerson(Person p1, Person p2) {
   String lastName;
   String gender;
-
   if ((p1.getGender() == "female" && p2.getGender() == "male") || (p1.getGender() == "male" && p2.getGender() == "female")) {
    if (p1.getGender().equals("male")) {
     String name = p1.getName();
@@ -108,9 +107,11 @@ class Society {
    }
    String fullName = firstNames[(int)(Math.random() * firstNames.length)] + " " + lastName;
    population++;
+   id = Integer.toString(population);
    people.add(new Person(0, fullName, gender, time.getDayCount()));
    System.out.println(p1.getName() + " and " + p2.getName() + " had...");
    System.out.println(fullName + " born on " + time.dateToString());
+
   }
  }
 
