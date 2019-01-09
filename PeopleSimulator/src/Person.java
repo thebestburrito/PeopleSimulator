@@ -10,17 +10,11 @@ class Person {
     private ArrayList <Integer> wants = new ArrayList <Integer>();
     private boolean married = false;
     private boolean divorced = false;
-    private String id;
-    private String partner;
-    private String mother;
-    private String father;
-    private String children;
-	public Person(int age, String name,String gender,int birthdate, String id) {
+	public Person(int age, String name,String gender,int birthdate) {
 		this.name = name;
 		this.age = age;
         this.birthday = birthdate;
         this.gender = gender;
-        this.id = id;
         for(int i = 0; i < 10; i++){
             haves.add((int)(Math.random()*10));
             wants.add((int)(Math.random()*10));
@@ -85,46 +79,5 @@ class Person {
 
     public void unDivorce(){
         divorced = false;
-    }
-    public String getPartner(){
-        return partner;
-    }
- public void setPartner(String newPartner){
-        partner = newPartner;
-    }
-    public String getId(){
-        return id;
-    }
-    public String getMother(){
-        return mother;
-    }
-
-
-    public void setMother(String newMother){
-        mother = newMother;
-    }
-    public String getFather(){
-        return father;
-    }
-
-    public void setFather(String newFather){
-        father = newFather;
-    }
-    public String getChildren(){
-        String child = "";
-        String allChildren = "";
-        for(int i = 0; i < children.length(); i++){
-            if(!children.substring(i,i+1).equals(" ") || i == children.length()){
-                child = child + children.charAt(i);
-            }else{
-                allChildren += allChildren + " " + child;
-                child = "";
-            }
-        }
-        return allChildren;
-    }
-
-    public void setChildren(String newChild){
-        children += newChild + " ";
     }
 }

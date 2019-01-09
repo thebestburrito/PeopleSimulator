@@ -65,25 +65,23 @@ class Society {
   population = numPeople;
   String fullName;
   String gender;
-  String id;
   for (int i = 0; i < numPeople; i++) {
    fullName = firstNames[(int)(Math.random() * firstNames.length)] + " " + lastNames[(int)(Math.random() * lastNames.length)];
    int randomIndex = (int)(Math.random() * 2);
-   id = Integer.toString(i);
    if (randomIndex >= 1) {
     gender = "female";
    } else {
     gender = "male";
    }
-   people.add(new Person((int)(Math.random() * 100), fullName, gender, time.getDayCount(), id));
+   people.add(new Person((int)(Math.random() * 100), fullName, gender, time.getDayCount()));
   }
  }
 
  public void cycleDay() {
   time.incrementTime();
-  //hey folks put your daily methods in here
+
   findTheLove(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * population)));
-    //addPerson(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * population)));
+
 
  }
 
@@ -91,7 +89,7 @@ class Society {
  public void addPerson(Person p1, Person p2) {
   String lastName;
   String gender;
-  String id;
+
   if ((p1.getGender() == "female" && p2.getGender() == "male") || (p1.getGender() == "male" && p2.getGender() == "female")) {
    if (p1.getGender().equals("male")) {
     String name = p1.getName();
@@ -110,25 +108,9 @@ class Society {
    }
    String fullName = firstNames[(int)(Math.random() * firstNames.length)] + " " + lastName;
    population++;
-   id = Integer.toString(population);
-   people.add(new Person(0, fullName, gender, time.getDayCount(), id));  //This adds a baby with a new id :)
-   for(int i = 0; i < population; i++){
-       if(people.get(i).getId().equals(id)){
-           if(p1.getGender().equals("male") && p2.getGender().equals("female")){          //This section just sets the property of father or mother depending on who was male or female
-               people.get(i).setFather(p1.getId());
-               p1.setChildren(id);
-               people.get(i).setMother(p2.getId());
-               p2.setChildren(id);
-           }else if(p2.getGender().equals("male") && p1.getGender().equals("female"))
-                people.get(i).setFather(p2.getId());
-                p2.setChildren(id);
-               people.get(i).setMother(p1.getId());
-               p1.setChildren(id);
-       }
-   }
+   people.add(new Person(0, fullName, gender, time.getDayCount()));
    System.out.println(p1.getName() + " and " + p2.getName() + " had...");
    System.out.println(fullName + " born on " + time.dateToString());
-  // System.out.println("Parent 1 id :" + p1.getId() + "\n Parent 2 id: " + p2.getId() + "\n baby id: " + id + "\n parent 1 child id: " + p1.getChildren());
   }
  }
 
@@ -182,10 +164,7 @@ class Society {
     if (compatibility >= 2) {
      a.makeMarry();                          //marries them and sets their partners (married depends on if compatibility is above 20 percent)
      b.makeMarry();
-     a.setPartner(b.getId());
-     b.setPartner(a.getId());
      System.out.println(a.getName() + " and " + b.getName() + " are newly wed with " + compatibility * 10 + " compatibility!");
-     System.out.println(a.getPartner()+ " " + b.getId()+ " " + b.getPartner() + " " + a.getId());                                    //test to see if ID works
     } else {
      System.out.println(a.getName() + " and " + b.getName() + " have no love :( with " + compatibility * 10 + " compatibility");
     }
