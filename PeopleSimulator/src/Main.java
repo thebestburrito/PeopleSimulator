@@ -7,8 +7,8 @@ class Main {
       for(int i = 0; i < 10; i++) {
         peopleTown.cycleDay();
         /* System.out.println(peopleTown.people.get(i).getName()); */
-        System.out.println("IQ :" +peopleTown.people.get(i).calcIQ());
-        System.out.println("Icome :" +peopleTown.people.get(i).calcIncome());
+        //System.out.println("IQ :" +peopleTown.people.get(i).calcIQ());
+        //System.out.println("Icome :" +peopleTown.people.get(i).calcIncome());
       }
 	}
 
