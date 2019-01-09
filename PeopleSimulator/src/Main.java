@@ -1,19 +1,23 @@
 import java.util.*;
 class Main {
-    public static int totalPopulation = 10000;
+    public static int totalPopulation = 100000;
 	public static void main(String[] args) {
 	    Society peopleTown = new Society(totalPopulation);
 
         //gets the name and place of each person
-        for(int o = 0; o < totalPopulation; o++){
-            System.out.println(peopleTown.people.get(o).getName() +" "+ peopleTown.people.get(o).getPlace());
+        for(int o = 0; o < 100; o++){
+            System.out.println(peopleTown.places.get(o).getPlace());
         }
 
 
         //places Demo code PLEASE REMOVE!!
         peopleTown.people.get(1).changePlaceTo("brandontown");
         System.out.println(peopleTown.people.get(1).getPlace());
+
         populationOf(totalPopulation,peopleTown,peopleTown.places.get(0).getPlace());
+        populationOf(totalPopulation,peopleTown,"brandontown");
+        populationOf(totalPopulation,peopleTown,peopleTown.places.get(98).getPlace());
+
     }
 
     // This is the Places Code- Need help? Ask Brandon, Ian, or read the documentation provided.
@@ -24,6 +28,7 @@ class Main {
         }
         int occurances = Collections.frequency(placedata, PlaceName);
         System.out.println("Population for "+PlaceName+":"+occurances);
+
         //empty the placedata array every time.
         placedata.clear();
         return occurances;
