@@ -7,7 +7,6 @@ class Person {
 	public Person(int age, String name,String place) {
         this.name = name;
 		this.age = age;
-       // String place
         this.place = place;
 	}
 	public Person() {
@@ -33,9 +32,10 @@ class Person {
 	public void hadBirthday() {
 		age++;
 	}
+    
     //-----------------------------------------------------------------
     //Places
-    
+
     public String getPlace(){
          return this.place;
      }
@@ -43,22 +43,5 @@ class Person {
          this.place = newPlace;
          return ("Person " + this.name + "moved to " + newPlace);
      }
-
-    //  public int getPopulationOf(String findPlaceName){
-    //     if(this.place.equals(findPlaceName)){
-    //         //now we want to count every occurance of this specific place
-    //         thisPopulation++;
-    //     }
-    //     return thisPopulation;
-    //  }
-    //  public int getPopulationOf(int indexOfPlacesArray){
-    //     // for(int b = 0; b < totalcurrentpop; b++ ){
-    //         if(this.place.equals(places.getNumber(indexOfPlacesArray))){
-    //             //now we want to count every occurance of this specific place
-    //             thisPopulation++;
-    //         }
-    //    // }
-    //      return thisPopulation;
-    //  }
 
 }
