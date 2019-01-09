@@ -1,16 +1,20 @@
 class Person {
 	public int age;
 	private String name;
-    private int birthday;
+    private int birthdate;
     private String gender;
-    public int accountNumber;
+    public int idNumber;
 
-	public Person(int age, String name,String gender,int birthday, int accountNumber) {
-		this.name = name;
+    static int idCounter = 0;
+
+
+	public Person(int age, String name,String gender,int birthdate) {
+		idCounter++;
+        this.name = name;
 		this.age = age;
-        this.birthday = birthday;
+        this.birthdate = birthdate;
         this.gender = gender;
-        this.accountNumber = accountNumber;
+        this.idNumber = idCounter;
 	}
 
 	public boolean olderThan(int otherAge) {
@@ -33,6 +37,10 @@ class Person {
 	public void hadBirthday() {
 		age++;
 	}
+
+    public int getBirthday() {
+        return birthdate;
+    }
 
     public String getGender(){
     return gender;

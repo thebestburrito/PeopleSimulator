@@ -23,7 +23,7 @@ class Society{
             else{
                 gender = "male";
             }
-            people.add(new Person((int)(Math.random()*100), fullName, gender, time.getDayCount()));
+            people.add(new Person((int)(Math.random()*100),fullName, gender,time.getDayCount()));
 		}
 	}
 
@@ -61,7 +61,7 @@ class Society{
             }
         String fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastName;
         population++;
-        people.add(new Person(0, fullName, gender,time.getDayCount()));
+        people.add(new Person(0, fullName, gender, time.getDayCount()));
         System.out.println(p1.getName() + " and "+ p2.getName()+ " had...");
         System.out.println(fullName + " born on "+ time.dateToString());
         }
@@ -97,4 +97,3 @@ class Society{
 
 
 }
-

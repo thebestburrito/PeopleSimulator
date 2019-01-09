@@ -1,37 +1,25 @@
 
 class Bank {
-    public int checkings;
-    public int savings;
+    public double balance;
     public int debt;
     public int accountNumber;
     public int deposit;
-    public double tax;
 
-    public Bank(int accountNumber,int checkings, int savings){
-        this.accountNumber = accountNumber;
-        this.checkings = checkings;
-        this.savings = savings;
+public Bank(int accountNumber, double balance){
+    this.accountNumber = accountNumber;
+    this.balance = balance;
+}
+
+    public void updateBalance(){
+
     }
-
-    public void updateCheckings(){
-    //takes other 80 (?) percent of deposits
-    }
-
-    public void updateSavings(){
-    //take 20 (?) percent of deposits
-    }
-
+    //Will updatethe balance of the account
     public int getAccountNumber(){
         return accountNumber;
     }
-    //Account number for each person 16 or older as names can be the same
-    public int getCheckings(){
-        return checkings;
-    }
-    public int getSavings(){
-        return savings;
-    }
-    public double tax(){
-        return tax;
+    //Returns the account number for a person
+
+    public double getBalance(){
+        return balance;
     }
 }
