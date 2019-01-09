@@ -65,15 +65,17 @@ class Society {
   population = numPeople;
   String fullName;
   String gender;
+  String id;
   for (int i = 0; i < numPeople; i++) {
    fullName = firstNames[(int)(Math.random() * firstNames.length)] + " " + lastNames[(int)(Math.random() * lastNames.length)];
    int randomIndex = (int)(Math.random() * 2);
+   id = Integer.toString(i);
    if (randomIndex >= 1) {
     gender = "female";
    } else {
     gender = "male";
    }
-   people.add(new Person((int)(Math.random() * 100), fullName, gender, time.getDayCount()));
+   people.add(new Person((int)(Math.random() * 100), fullName, gender, time.getDayCount(), id));
   }
  }
 
@@ -90,6 +92,7 @@ class Society {
  public void addPerson(Person p1, Person p2) {
   String lastName;
   String gender;
+  String id;
   if ((p1.getGender() == "female" && p2.getGender() == "male") || (p1.getGender() == "male" && p2.getGender() == "female")) {
    if (p1.getGender().equals("male")) {
     String name = p1.getName();
@@ -108,7 +111,9 @@ class Society {
    }
    String fullName = firstNames[(int)(Math.random() * firstNames.length)] + " " + lastName;
    population++;
-   people.add(new Person(0, fullName, gender, time.getDayCount()));
+   id = Integer.toString(population);
+   people.add(new Person(0, fullName, gender, time.getDayCount(), id));
+//***********************************************************************************************************************ADDDDD
    System.out.println(p1.getName() + " and " + p2.getName() + " had...");
    System.out.println(fullName + " born on " + time.dateToString());
   }
@@ -146,7 +151,6 @@ class Society {
   double loveB = 0;
   double compatibility = 0;
   ArrayList < Integer > currentHavesA = new ArrayList < Integer > ();
-  if (!a.getMarried() && !b.getMarried()) {
    if (a.getAge() > 18 && b.getAge() > 18) {
     for (int i = 0; i < a.getHaves().size(); i++) {
      if (a.getWants().get(i) == b.getHaves().get(i)) {
@@ -166,10 +170,8 @@ class Society {
     if (compatibility >= 2) {
      a.makeMarry();
      b.makeMarry();
-     a.setPartner(b);
-     b.setPartner(a);
      System.out.println(a.getName() + " and " + b.getName() + " are newly wed with " + compatibility * 10 + " compatibility!");
-     System.out.println(a.getPartner()+ " " + b.getIdentifier()+ " " + b.getPartner() + " " + a.getIdentifier());
+     System.out.println(a.getPartner()+ " " + b.getId()+ " " + b.getPartner() + " " + a.getId());
      //System.out.println(a.getName()+ a.getHaves() + a.getWants() + a.getAge()+" and " + b.getName() + b.getHaves()+ b.getWants() + b.getAge() + " love eachother! with " + compatibility*10 + "%");
     } else {
      System.out.println(a.getName() + " and " + b.getName() + " have no love :( with " + compatibility * 10 + " compatibility");
@@ -177,8 +179,5 @@ class Society {
    } else {
     System.out.println(a.getName() + " " + a.getAge() + " and " + b.getName() + " " + b.getAge() + " had a conflict of ages");
    }
-  } else {
-      System.out.println("Uh oh! Either " + a.getName() + " or " + b.getName() + " were already married :O");
   }
- }
 }

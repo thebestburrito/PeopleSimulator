@@ -10,14 +10,17 @@ class Person {
     private ArrayList <Integer> wants = new ArrayList <Integer>();
     private boolean married = false;
     private boolean divorced = false;
-    private long identifier = 0;
-    private long partner;
-	public Person(int age, String name,String gender,int birthdate) {
+    private String id;
+    private String partner;
+    private String mother;
+    private String father;
+    private String children;
+	public Person(int age, String name,String gender,int birthdate, String id) {
 		this.name = name;
 		this.age = age;
         this.birthday = birthdate;
         this.gender = gender;
-        this.identifier += 1;
+        this.id = id;
         for(int i = 0; i < 10; i++){
             haves.add((int)(Math.random()*10));
             wants.add((int)(Math.random()*10));
@@ -83,14 +86,29 @@ class Person {
     public void unDivorce(){
         divorced = false;
     }
-    public Long getPartner(){
+    public String getPartner(){
         return partner;
     }
 
-    public long getIdentifier(){
-        return identifier;
+    public String getId(){
+        return id;
     }
-    public void setPartner(Person a){
-        partner = a.getIdentifier();
+    public String getMother(){
+        return mother;
+    }
+    public String getFather(){
+        return father;
+    }
+    public String getChildren(){
+        String child = "";
+        String allChildren = "";
+        for(int i = 0; i < children.length(); i++){
+            if(!children.substring(i,i+1).equals(" ") || i == children.length()){
+                child = child + children.charAt(i);
+            }else{
+                allChildren = allChildren + child;
+            }
+        }
+        return allChildren;
     }
 }
