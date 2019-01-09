@@ -30,18 +30,19 @@ class Society{
     public void cycleDay()
     {
         time.incrementTime();
+        System.out.println(time.dateToString());
         //hey folks put your daily methods in here
         addPerson(people.get((int)(Math.random()*population)), people.get((int)(Math.random()*population)));
-
-
-
+        makeDisaster();
     }
 
-
+    //Makes new person
     public void addPerson(Person p1, Person p2){
         String lastName;
         String gender;
-        if((p1.getGender() == "female" && p2.getGender() == "male")||(p1.getGender() == "male" && p2.getGender() == "female")){
+        //Make sure hetro and not dead
+        if(((p1.getGender() == "female" && p2.getGender() == "male")||(p1.getGender() == "male" && p2.getGender() == "female"))&&(p1.isDead() == false)&&(p2.isDead() == false)){
+        //Gets last name
         if(p1.getGender().equals("male")){
             String name = p1.getName();
             int space = name.indexOf(" ") + 1;
@@ -52,6 +53,7 @@ class Society{
             int space = name.indexOf(" ") + 1;
             lastName = name.substring(space, name.length());
         }
+        //Sets gender
         int randomIndex = (int)(Math.random()*2);
             if(randomIndex >= 1){
             gender = "female";
@@ -59,6 +61,7 @@ class Society{
             else{
             gender = "male";
             }
+        //Makes and adds the person to the array
         String fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastName;
         population++;
         people.add(new Person(0, fullName, gender,time.getDayCount()));
@@ -97,13 +100,13 @@ class Society{
     public void removePeople(int amount){
         for(int i = 0; i < amount; i++){
             int index = (int)(Math.random()*population);
-            people.remove(index);
+            people.get(index).markAsDeceased();
             population--;
         }
     }
     //Creates and changes weather
     public void makeDisaster(){
-       // Disasters {"tornado", "hurricane", "flood", "earthquake", "tsunami", "wildfires"};
+       //Disasters {"tornado", "hurricane", "flood", "earthquake", "tsunami", "wildfires"};
 
         //Tornado Chance Maker
         int torIndex = (int)(Math.random()*400);
@@ -141,7 +144,7 @@ class Society{
             int level = (int)((Math.random()*5) + 1);
             int amount = 5 * level;
             removePeople(amount);
-            System.out.println("A catagory " + level + " hurricane has hit, killing" + amount + " people!");
+            System.out.println("A catagory " + level + " hurricane has hit, killing " + amount + " people!");
         }
 
         //Flood Chance Maker
@@ -163,29 +166,25 @@ class Society{
 
         //Earthquake Chance Maker
         int earIndex = (int)(Math.random()*2000);
-        double level = (Math.random()*6) + 2.5;
+        double level = Math.round(((Math.random()*6) + 2.5) * 100D) / 100D;
         int killLevel = 0;
         if(level >= 8){
             earIndex += 0;
             killLevel = 100;
         }
         else if(level >= 7 && level < 8){
-            earIndex += 1500;
+            earIndex += 10;
             killLevel = 10;
         }
         else if(level >= 6 && level < 7){
-            earIndex += 1600;
+            earIndex += 50;
             killLevel = 2;
         }
         else if(level >= 5 && level < 6){
-            earIndex += 1700;
+            earIndex += 250;
             killLevel = 1;
         }
-        else if(level >= 4 && level < 5){
-            earIndex += 2000;
-            killLevel = 0;
-        }
-        else if(level < 4){
+        else if(level < 5){
             earIndex -= 2000;
             killLevel = 0;
         }
@@ -193,8 +192,37 @@ class Society{
             int levelAmount = (int)(Math.random()*6);
             int amount = levelAmount * killLevel;
             removePeople(amount);
-            System.out.println("A " + earIndex + "earthquake has hit, killing " + amount + " people!");
+            System.out.println("A " + level + " earthquake has hit, killing " + amount + " people!");
         }
+
+        //Tsunami Chance Maker
+        int tsuIndex = (int)(Math.random()*200);
+        if(tsuIndex >= 199){
+            int amount = (int)(Math.random()*11);
+            removePeople(amount);
+            System.out.println("A tsunami has occured, killing " + amount + " people!");
+        }
+        else if(tsuIndex == 0){
+            int amount = (int)(Math.random()*10)+ 1;
+            amount *= 40;
+            removePeople(amount);
+            System.out.println("A large tsunami has occured, killing " + amount + " people!");
+        }
+
+        //Wildfire Chanace Maker
+        int wilIndex = (int)(Math.random()*350);
+        if(time.getSeason().equals("spring")){
+            wilIndex += 10;
+        }
+        else if(time.getSeason().equals("fall")){
+            wilIndex += 5;
+        }
+        if(wilIndex >= 349){
+            int amount = (int)(Math.random()*13);
+            removePeople(amount);
+            System.out.println("A large wildfire has occured, killing " + amount + " people!");
+        }
+
     }
 
 }

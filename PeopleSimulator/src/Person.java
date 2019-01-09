@@ -3,12 +3,14 @@ class Person {
 	private String name;
     private int birthday;
     private String gender;
+    private boolean deceased;
 
 	public Person(int age, String name,String gender,int birthdate) {
 		this.name = name;
 		this.age = age;
         this.birthday = birthdate;
         this.gender = gender;
+        deceased = false;
 	}
 
 	public boolean olderThan(int otherAge) {
@@ -39,4 +41,12 @@ class Person {
     public void setGender(String gender){
         this.gender = gender;
     }
+
+    public boolean isDead(){
+		return deceased;
+	}
+
+     public void markAsDeceased(){
+    deceased = true;
+  }
 }
