@@ -1,12 +1,29 @@
-
+import java.util.*;
 class Main {
-	// I'll be using this main method for testing
+    public static int totalPopulation = 10000;
 	public static void main(String[] args) {
+	    Society peopleTown = new Society(totalPopulation);
+        //gets the name and place of each person
+        for(int o = 0; o < totalPopulation; o++){
+            System.out.println(peopleTown.people.get(o).getName() +", lives in "+ peopleTown.people.get(o).getPlace());
+        }
 
-		Society peopleTown = new Society(10000);
+        // peopleTown.people.get(1).changePlaceTo("brandontown");
+        // System.out.println(peopleTown.people.get(1).getPlace());
+        //         populationOf(totalPopulation,peopleTown,"brandontown");
+    }
 
-        //gets the name of the person in the people arrayList at position 8000
-        System.out.println(peopleTown.people.get(8000).getName());
-	}
+    // This is the Places Code- Need help? Ask Brandon, or Ian.
+    public static int populationOf(int totalPopulation,Society society,String PlaceName){
 
+        ArrayList<String> placedata = new ArrayList<String>();
+        for(int count = 0;count < totalPopulation;count++){
+            placedata.add(society.people.get(count).getPlace());
+        }
+        int occurances = Collections.frequency(placedata, PlaceName);
+        System.out.println("Population for "+PlaceName+":"+occurances);
+        //empty the placedata array every time.
+        placedata.clear();
+        return occurances;
+    }
 }
