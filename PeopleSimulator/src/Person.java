@@ -32,7 +32,7 @@ class Person {
 	public void hadBirthday() {
 		age++;
 	}
-    
+
     //-----------------------------------------------------------------
     //Places
 

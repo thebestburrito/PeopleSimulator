@@ -37,7 +37,7 @@ ______ _                        ______                                      _   
 _______________________________________________________________________________________________________
 
 Created by Brandon and Ian @ IBC
-Version 2.1.0
+Version 3.0.0
 
 # Added Society Methods =>
     # populationOf(totalPopulation, peopleTown, "(TownNameHere)"):
