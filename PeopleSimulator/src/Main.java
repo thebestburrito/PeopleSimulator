@@ -1,16 +1,26 @@
-
+import java.util.*;
 class Main {
-
 	public static void main(String[] args) {
+	    Society peopleTown = new Society(10000);
 
-		Society peopleTown = new Society(10000);
 
-      for(int i = 0; i < 10000; i++) {
-        peopleTown.cycleDay();
-        /* System.out.println(peopleTown.people.get(i).getName()); */
-        System.out.println("IQ :" +peopleTown.people.get(i).calcIQ());
-        System.out.println("Icome :" +peopleTown.people.get(i).calcIncome());
-      }
-	}
+        //places Demo code PLEASE REMOVE!!
+        //remember that there are only 5 towns to start with
+        //gets place of each person
+        for(int o = 0; o < peopleTown.places.size(); o++){
+            //this prints every place name
+            System.out.println(peopleTown.places.get(o).getPlace());
+        }
+        peopleTown.people.get(1).changePlaceTo("brandontown");
+        System.out.println(peopleTown.people.get(1).getPlace());
+        peopleTown.populationOf(peopleTown,"brandontown");
+        peopleTown.populationOf(peopleTown,peopleTown.places.get(0).getPlace());
+        peopleTown.populationOf(peopleTown,peopleTown.places.get(1).getPlace());
+        peopleTown.populationOf(peopleTown,peopleTown.places.get(2).getPlace());
+        peopleTown.populationOf(peopleTown,peopleTown.places.get(3).getPlace());
+        peopleTown.populationOf(peopleTown,peopleTown.places.get(4).getPlace());
 
+    }
+
+    // This is the Places Code- Need help? Ask Brandon, Ian, or read the documentation provided.
 }
