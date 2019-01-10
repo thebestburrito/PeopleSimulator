@@ -6,7 +6,7 @@ class Main {
 
         //places Demo code PLEASE REMOVE!!
         //remember that there are only 5 towns to start with
-                //gets the name and place of each person
+        //gets place of each person
         for(int o = 0; o < peopleTown.places.size(); o++){
             //this prints every place name
             System.out.println(peopleTown.places.get(o).getPlace());
