@@ -85,11 +85,8 @@ ArrayList<Place> places = new ArrayList<Place>();
  }
 
  public void cycleDay() {
-  time.incrementTime();
-
-  findTheLove(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * population)));
-
-
+    time.incrementTime();
+    findTheLove(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * population)));
  }
 
 
@@ -158,14 +155,9 @@ ArrayList<Place> places = new ArrayList<Place>();
      compatibility = (loveA + loveB) / 2;
     }
     if (compatibility >= 2) {
-     a.makeMarry();                          //marries them and sets their partners (married depends on if compatibility is above 20 percent)
-     b.makeMarry();
-     System.out.println(a.getName() + " and " + b.getName() + " are newly wed with " + compatibility * 10 + " compatibility!");
-    } else {
-     System.out.println(a.getName() + " and " + b.getName() + " have no love :( with " + compatibility * 10 + " compatibility");
+     a.gotMarriedTo(b);
+     b.gotMarriedTo(a);
     }
-   } else {
-    System.out.println(a.getName() + " " + a.getAge() + " and " + b.getName() + " " + b.getAge() + " had a conflict of ages");
    }
   }else{
       System.out.println("Could not love because " + a.getName() + " is in " + a.getPlace() + " and " + b.getName() + " is in " + b.getPlace() + " :(");
