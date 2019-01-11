@@ -140,7 +140,8 @@ ArrayList<Place> places = new ArrayList<Place>();
   double loveA = 0;
   double loveB = 0;
   double compatibility = 0;
-   if (a.getAge() > 18 && b.getAge() > 18) {               //makes sure they're at least 18 ;)
+  if(a.getPlace().equals(b.getPlace())){
+      if (a.getAge() > 18 && b.getAge() > 18) {               //makes sure they're at least 18 ;)
     for (int i = 0; i < a.getHaves().size(); i++) {
      if (a.getWants().get(i) == b.getHaves().get(i)) {      //compares their haves and wants they were born with to find love
       loveA++;
@@ -166,6 +167,10 @@ ArrayList<Place> places = new ArrayList<Place>();
    } else {
     System.out.println(a.getName() + " " + a.getAge() + " and " + b.getName() + " " + b.getAge() + " had a conflict of ages");
    }
+  }else{
+      System.out.println("Could not love because " + a.getName() + " is in " + a.getPlace() + " and " + b.getName() + " is in " + b.getPlace() + " :(");
+  }
+
   }
 
     public int populationOf(Society society,String PlaceName){
