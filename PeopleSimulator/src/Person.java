@@ -7,11 +7,11 @@ class Person {
     private int birthday;
     private String gender;
     public String place;
+    public Person spouse;
     public int thisPopulation;
     private ArrayList <Integer> haves = new ArrayList <Integer>();
     private ArrayList <Integer> wants = new ArrayList <Integer>();
     private boolean married = false;
-    private boolean divorced = false;
     public int IQ = bellCurve(100,15);
     public int income = bellCurve(53719,30000);
     public int points = 0;
@@ -23,6 +23,7 @@ class Person {
         this.birthday = birthdate;
         this.gender = gender;
         this.place = place;
+        this.spouse = null;
         for(int i = 0; i < 10; i++){
             haves.add((int)(Math.random()*10));
             wants.add((int)(Math.random()*10));
@@ -43,8 +44,13 @@ class Person {
     public void setGender(String gender){
         this.gender = gender;
     }
+
     public String getGender(){
         return gender;
+    }
+
+    public int getBirthday(){
+        return birthday;
     }
 
     public ArrayList <Integer> getHaves(){
@@ -54,29 +60,22 @@ class Person {
         return wants;
     }
 
-    public boolean getMarried(){
+    public boolean isMarried(){
         return married;
     }
 
-    public void makeMarry(){
-        married = true;
+    public void gotMarriedTo(Person spouse){
+        this.spouse = spouse;
     }
 
-    public boolean getDivorced(){
-        return divorced;
+    public Person getSpouse(){
+        if(spouse != null){
+            return spouse;
+        }else{
+            return null;
+        }
     }
 
-    public void makeDivorce(){
-        divorced = true;
-    }
-
-    public void unMarry(){
-        married = false;
-    }
-
-    public void unDivorce(){
-        divorced = false;
-    }
      public static int bellCurve(int mean, int sd) {
 		// make nombors gud
 	    int i = mean - (3*sd);

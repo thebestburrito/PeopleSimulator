@@ -4,15 +4,32 @@ class Main {
 
 
 
-		Society peopleTown = new Society(10);
+		Society peopleTown = new Society(1000);
 
-      for(int i = 0; i < 10; i++) {
+      for(int i = 0; i < 1000; i++) {
         peopleTown.cycleDay();
-        /* System.out.println(peopleTown.people.get(i).getName()); */
-        //System.out.println("IQ :" +peopleTown.people.get(i).calcIQ());
-        //System.out.println("Icome :" +peopleTown.people.get(i).calcIncome());
+        //Write your print/tests in here if your feature should happen on a dialy basis
+
+
+
       }
+
+      for(Person individual : peopleTown.people){
+          //This is a test of the people who got married
+          if(individual.getSpouse() != null){
+              System.out.println(individual.getName() + " married to " + individual.getSpouse().getName() );
+              System.out.println(individual.getSpouse().getName() + " is married to " + individual.getName());
+          }
+          //Write your print/tests below if they involve a property of the people in peopleTown
+          //use individual as it does in the example above
+
+
+
+      }
+
 	}
+
+
 
     // This is the Places Code- Need help? Ask Brandon, Ian, or read the documentation provided.
 }
