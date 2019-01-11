@@ -1,7 +1,6 @@
 
 class Main {
 	public static void main(String[] args) {
-	    Society peopleTown = new Society(10000);
 
 
 		Society peopleTown = new Society(10);
