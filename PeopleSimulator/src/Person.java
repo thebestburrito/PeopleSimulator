@@ -1,17 +1,17 @@
 class Person {
 	public int age;
 	private String name;
-    private int birthday;
     private String gender;
     //This references one of the 25 personality types on a 5x5 grid with Lawfulness on one side and
     //Morality along the other.
     private int personalityNumber;
     private String personalityString = "";
 
-	public Person(int age, String name, String gender, int personalityNumber) {
+	public Person(int age, String name, String gender) {
 		this.name = name;
 		this.age = age;
         this.gender = gender;
+        this.personalityNumber = generatePersonalityNumber();
 	}
 
     public Person() {
@@ -25,7 +25,6 @@ class Person {
 		} else {
 			return false;
 		}
-
 	}
 
 	public String getName() {
@@ -71,6 +70,7 @@ class Person {
 
     public static int generatePersonalityNumber() {
         double a = (Math.random() * 100);
+
         //Boolean set 1) Top row
         boolean isLawful;
         boolean isSocial;
@@ -437,4 +437,5 @@ class Person {
             return 24;
         }
     }
+
 }

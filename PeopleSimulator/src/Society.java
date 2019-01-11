@@ -14,10 +14,10 @@ class Society{
 		population = numPeople;
 		String fullName;
         String gender;
-        int pN = Person.generatePersonalityNumber();
+
 
 		for(int i = 0; i < numPeople; i++){
-			fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastNames[(int)(Math.random()*lastNames.length)];
+            fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastNames[(int)(Math.random()*lastNames.length)];
 			int randomIndex = (int)(Math.random()*2);
             if(randomIndex >= 1){
                 gender = "female";
@@ -25,9 +25,8 @@ class Society{
             else{
                 gender = "male";
             }
-            people.add(new Person((int)(Math.random()*100),fullName, gender, pN));
+            people.add(new Person((int)(Math.random()*100),fullName, gender));
 		}
-        System.out.println(people.get(8000) + " " + people.get(8000).getName() + " " + people.get(8000).getPersonalityNumber() + " " + "hey");
 	}
 
     public void cycleDay() {
@@ -57,7 +56,7 @@ class Society{
             }
         String fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastName;
         population++;
-        people.add(new Person(0, fullName, gender,time.getDayCount()));
+        people.add(new Person(0, fullName, gender));
         //System.out.println(p1.getName() + " and "+ p2.getName()+ " had...");
         //System.out.println(fullName + " born on "+ time.dateToString());
         }
