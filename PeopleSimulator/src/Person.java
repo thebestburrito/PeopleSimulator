@@ -12,11 +12,6 @@ class Person {
     private ArrayList <Integer> wants = new ArrayList <Integer>();
     private boolean married = false;
     private boolean divorced = false;
-    private String id;
-    private String partner;
-    private String mother;
-    private String father;
-    private String children;
     public int IQ = bellCurve(100,15);
     public int income = bellCurve(53719,30000);
     public int points = 0;
@@ -93,7 +88,7 @@ class Person {
     public void unDivorce(){
         divorced = false;
     }
-    
+
      public static int bellCurve(int mean, int sd) {
 		// make nombors gud
 	    int i = mean - (3*sd);
