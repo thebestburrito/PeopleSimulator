@@ -30,11 +30,9 @@ class Society{
     public void cycleDay()
     {
         time.incrementTime();
-        System.out.println(time.dateToString());
         //hey folks put your daily methods in here
         addPerson(people.get((int)(Math.random()*population)), people.get((int)(Math.random()*population)));
         makeDisaster();
-        System.out.println("Population: " + population);
     }
 
     //Makes new person
@@ -106,6 +104,7 @@ class Society{
         }
     }
     //Creates and changes weather
+    String disaster = "none";
     public void makeDisaster(){
        //Disasters {"tornado", "hurricane", "flood", "earthquake", "tsunami", "wildfires"};
 
@@ -119,17 +118,18 @@ class Society{
         }
         if(torIndex >= 399){
             int level = (int)(Math.random()*3);
+            int kill = (int)(Math.random()*6);
             if(level == 0){
-                removePeople(5);
-                System.out.println("A weak tornado has hit, killing 5 people!");
+                removePeople(kill);
+                disaster = "Tornado";
             }
             else if(level == 1){
-                removePeople(15);
-                System.out.println("A significant tornado has hit, killing 15 people!");
+                removePeople(kill * 2);
+                disaster = "Tornado";
             }
             else{
-                removePeople(25);
-                System.out.println("A violent tornado has hit, killing 25 people!");
+                removePeople(kill * 3);
+                disaster = "Tornado";
             }
         }
 
@@ -143,9 +143,9 @@ class Society{
         }
         if(hurIndex >= 400){
             int level = (int)((Math.random()*5) + 1);
-            int amount = 5 * level;
+            int amount = (int)(Math.random()*4) * level;
             removePeople(amount);
-            System.out.println("A catagory " + level + " hurricane has hit, killing " + amount + " people!");
+            disaster = "Hurricane";
         }
 
         //Flood Chance Maker
@@ -162,7 +162,7 @@ class Society{
         if(floIndex >= 399){
             int amount = (int)(Math.random()*6);
             removePeople(amount);
-            System.out.println("A flood has happened, killing " + amount + " people!");
+            disaster = "Flood";
         }
 
         //Earthquake Chance Maker
@@ -193,7 +193,7 @@ class Society{
             int levelAmount = (int)(Math.random()*6);
             int amount = levelAmount * killLevel;
             removePeople(amount);
-            System.out.println("A " + level + " earthquake has hit, killing " + amount + " people!");
+            disaster = "Earthquake, Level: " + level;
         }
 
         //Tsunami Chance Maker
@@ -201,13 +201,13 @@ class Society{
         if(tsuIndex >= 199){
             int amount = (int)(Math.random()*11);
             removePeople(amount);
-            System.out.println("A tsunami has occured, killing " + amount + " people!");
+            disaster = "Tsunami";
         }
         else if(tsuIndex == 0){
             int amount = (int)(Math.random()*10)+ 1;
             amount *= 40;
             removePeople(amount);
-            System.out.println("A large tsunami has occured, killing " + amount + " people!");
+            disaster = "Large Tsunami";
         }
 
         //Wildfire Chanace Maker
@@ -221,9 +221,12 @@ class Society{
         if(wilIndex >= 349){
             int amount = (int)(Math.random()*13);
             removePeople(amount);
-            System.out.println("A large wildfire has occured, killing " + amount + " people!");
+            disaster = "Wildfire";
         }
+    }
 
+    public String getDisaster(){
+        return disaster;
     }
 
 }
