@@ -2,9 +2,10 @@ import java.util.ArrayList;
 
 class Society {
  ArrayList < Person > people = new ArrayList < Person > ();
-
+List<Place> places = new ArrayList<Place>();
  public Time time = new Time(1, 1, 0, 0);
  public int population;
+ public int totalPopulation;
  //these names came from https://nameberry.com/unisex-names
  private String[] firstNames = {
   "Avery",
@@ -60,11 +61,15 @@ class Society {
   "Black",
   "White"
  };
+ private String[] placeNames = {"burg", "ton", "burgh", "town", " City", "ville", " Center"," Lake", "wood","ford","land","house","hill","bridge"," Creek", "boro"};
 
  Society(int numPeople) {
   population = numPeople;
   String fullName;
   String gender;
+  for(int i = 0; i < 5; i++){
+            places.add(new Place(lastNames[(int)(Math.random()*lastNames.length)]+placeNames[(int)(Math.random()*placeNames.length)]));
+        }
   for (int i = 0; i < numPeople; i++) {
    fullName = firstNames[(int)(Math.random() * firstNames.length)] + " " + lastNames[(int)(Math.random() * lastNames.length)];
    int randomIndex = (int)(Math.random() * 2);
@@ -74,6 +79,7 @@ class Society {
     gender = "male";
    }
    people.add(new Person((int)(Math.random() * 100), fullName, gender, time.getDayCount()));
+   people.add(new Person((int)(Math.random()*100),fullName,gender,time.getDayCount(), places.get((int) (Math.random()*places.size())).getPlace()));
   }
  }
 
@@ -172,4 +178,19 @@ class Society {
     System.out.println(a.getName() + " " + a.getAge() + " and " + b.getName() + " " + b.getAge() + " had a conflict of ages");
    }
   }
+
+    public int populationOf(Society society,String PlaceName){
+        ArrayList<String> placedata = new ArrayList<String>();
+        //finds the total population
+        totalPopulation = society.people.size();
+        for(int count = 0;count < totalPopulation;count++){
+            placedata.add(society.people.get(count).getPlace());
+        }
+        int occurances = Collections.frequency(placedata, PlaceName);
+        System.out.println("Population for "+PlaceName+":"+occurances);
+
+        //empty the placedata array every time.
+        placedata.clear();
+        return occurances;
+    }
 }

@@ -1,6 +1,8 @@
-class Main {
 
+class Main {
 	public static void main(String[] args) {
+	    Society peopleTown = new Society(10000);
+
 
 		Society peopleTown = new Society(10);
 
@@ -12,4 +14,5 @@ class Main {
       }
 	}
 
+    // This is the Places Code- Need help? Ask Brandon, Ian, or read the documentation provided.
 }
