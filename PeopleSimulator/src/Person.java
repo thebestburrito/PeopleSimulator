@@ -17,27 +17,16 @@ class Person {
     public int points = 0;
     public int mill = bellCurve(50,25);
 	public Person(int age, String name,String gender,int birthdate,String place) {
-	this.name = name;
-	this.age = age;
-    this.birthday = birthdate;
-    this.gender = gender;
-    this.place = place;
-    for(int i = 0; i < 10; i++){
-        haves.add((int)(Math.random()*10));
-        wants.add((int)(Math.random()*10));
+		this.name = name;
+		this.age = age;
+        this.birthday = birthdate;
+        this.gender = gender;
+        this.place = place;
+        for(int i = 0; i < 10; i++){
+            haves.add((int)(Math.random()*10));
+            wants.add((int)(Math.random()*10));
+        }
     }
-    }
-
-
-	public boolean olderThan(int otherAge) {
-		if (age > otherAge) {
-			return true;
-		} else {
-			return false;
-		}
-
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -53,7 +42,6 @@ class Person {
     public void setGender(String gender){
         this.gender = gender;
     }
-
     public String getGender(){
         return gender;
     }
@@ -110,5 +98,4 @@ class Person {
          this.place = newPlace;
          return ("Person " + this.name + "moved to " + newPlace);
      }
-
 }
