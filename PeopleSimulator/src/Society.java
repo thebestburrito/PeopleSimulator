@@ -23,7 +23,7 @@ class Society{
             else{
                 gender = "male";
             }
-            people.add(new Person((int)(Math.random()*100),fullName, gender,time.getDayCount(), 0));
+            people.add(new Person((int)(Math.random()*100),fullName, gender,time.getDayCount()));
 		}
 	}
 
@@ -32,6 +32,9 @@ class Society{
         time.incrementTime();
         //hey folks put your daily methods in here
         addPerson(people.get((int)(Math.random()*population)), people.get((int)(Math.random()*population)));
+    for(Person peep : people){
+        peep.acct.earnDailyIncome((int)Math.random()*100);
+    }
 
 
 
@@ -61,9 +64,7 @@ class Society{
             }
         String fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastName;
         population++;
-        people.add(new Person(0, fullName, gender, time.getDayCount(), 0));
-        System.out.println(p1.getName() + " and "+ p2.getName()+ " had...");
-        System.out.println(fullName + " born on "+ time.dateToString());
+        people.add(new Person(0, fullName, gender, time.getDayCount()));
         }
   }
 

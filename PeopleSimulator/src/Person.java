@@ -8,19 +8,18 @@ class Person {
     public int income = bellCurve(53719,30000);
     public int points = 0;
     public int mill = bellCurve(50,25);
-    public int balance;
+    public int idCounter = 0;
+    public BankAccount acct;
 
-    static int idCounter = 0;
 
-
-	public Person(int age, String name,String gender,int birthdate, int balance) {
+	public Person(int age, String name,String gender,int birthdate) {
 		idCounter++;
         this.name = name;
 		this.age = age;
         this.birthdate = birthdate;
         this.gender = gender;
         this.idNumber = idCounter;
-        this.balance = 0;
+        acct = new BankAccount();
 	}
 
 	public boolean olderThan(int otherAge) {
@@ -123,15 +122,6 @@ class Person {
             }
         }
         return income;
-    }
-
-    public void setBalance(int balance){
-        this.balance = balance;
-        balance = ((int)Math.random()*10000);
-    }
-
-    public int getBalance(){
-        return balance;
     }
 
 }
