@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 class Society {
  ArrayList < Person > people = new ArrayList < Person > ();
@@ -78,7 +78,7 @@ List<Place> places = new ArrayList<Place>();
    } else {
     gender = "male";
    }
-   people.add(new Person((int)(Math.random() * 100), fullName, gender, time.getDayCount()));
+
    people.add(new Person((int)(Math.random()*100),fullName,gender,time.getDayCount(), places.get((int) (Math.random()*places.size())).getPlace()));
   }
  }
@@ -113,7 +113,7 @@ List<Place> places = new ArrayList<Place>();
    }
    String fullName = firstNames[(int)(Math.random() * firstNames.length)] + " " + lastName;
    population++;
-   people.add(new Person(0, fullName, gender, time.getDayCount()));
+   people.add(new Person(0, fullName, gender, time.getDayCount(),p1.getPlace()));
    System.out.println(p1.getName() + " and " + p2.getName() + " had...");
    System.out.println(fullName + " born on " + time.dateToString());
 
@@ -132,18 +132,6 @@ List<Place> places = new ArrayList<Place>();
    }
   }
   return x;
- }
-
- public Person getOldestPerson() {
-  int loc = 0; //location used in return statement
-  int age = 0;
-  for (int i = 0; i < this.population; i++) { //for each position in the people array, compares age to the age variable then records the position of the highest.
-   if (this.people.get(i).olderThan(age)) {
-    age = this.people.get(i).getAge();
-    loc = i;
-   }
-  }
-  return this.people.get(loc); //returns the location of the person
  }
 
  //takes parameters of two people

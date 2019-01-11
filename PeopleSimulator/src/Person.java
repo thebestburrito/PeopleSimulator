@@ -27,7 +27,7 @@ class Person {
             haves.add((int)(Math.random()*10));
             wants.add((int)(Math.random()*10));
         }
-
+    }
 	public String getName() {
 		return name;
 	}
@@ -42,6 +42,9 @@ class Person {
 
     public void setGender(String gender){
         this.gender = gender;
+    }
+    public String getGender(){
+        return gender;
     }
 
     public ArrayList <Integer> getHaves(){
@@ -87,7 +90,7 @@ class Person {
 		}
 		return x;
      }
-     
+
     public String getPlace(){
          return this.place;
      }
@@ -95,5 +98,4 @@ class Person {
          this.place = newPlace;
          return ("Person " + this.name + "moved to " + newPlace);
      }
-
 }
