@@ -93,47 +93,7 @@ class Person {
     public void unDivorce(){
         divorced = false;
     }
-    public String getPartner(){
-        return partner;
-    }
- public void setPartner(String newPartner){
-        partner = newPartner;
-    }
-    public String getId(){
-        return id;
-    }
-    public String getMother(){
-        return mother;
-    }
-
-
-    public void setMother(String newMother){
-        mother = newMother;
-    }
-    public String getFather(){
-        return father;
-    }
-
-    public void setFather(String newFather){
-        father = newFather;
-    }
-    public String getChildren(){
-        String child = "";
-        String allChildren = "";
-        for(int i = 0; i < children.length(); i++){
-            if(!children.substring(i,i+1).equals(" ") || i == children.length()){
-                child = child + children.charAt(i);
-            }else{
-                allChildren += allChildren + " " + child;
-                child = "";
-            }
-        }
-        return allChildren;
-    }
-
-    public void setChildren(String newChild){
-        children += newChild + " ";
-    }
+    
      public static int bellCurve(int mean, int sd) {
 		// make nombors gud
 	    int i = mean - (3*sd);
