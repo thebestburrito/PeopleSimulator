@@ -28,16 +28,16 @@ class Society{
             people.add(new Person((int)(Math.random()*100),fullName, gender,time.getDayCount()));
 		}
 	}
-		
 
-public void societalHappiness(){
+
+public int societalHappiness(){
     int totalHappiness = 0;
     int averageHappiness = 0;
     for(int i = 0; i < population; i++){
         totalHappiness += people.get(i).getHappiness();
         averageHappiness = (int) Math.floor(totalHappiness / population);
     }
-    System.out.println("Societal Happiness = " + averageHappiness + "%");
+    return averageHappiness;
 }
 
     public void cycleDay()
@@ -75,8 +75,6 @@ public void societalHappiness(){
         String fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastName;
         population++;
         people.add(new Person(0, fullName, gender,time.getDayCount()));
-        System.out.println(p1.getName() + " and "+ p2.getName()+ " had...");
-        System.out.println(fullName + " born on "+ time.dateToString());
         }
   }
 
