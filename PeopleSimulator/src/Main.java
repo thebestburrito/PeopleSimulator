@@ -6,7 +6,7 @@ class Main {
             //Write your print/tests in here if your feature should happen on a dialy basis
         }
 
-        for(Person individual : peopleTown.people){
+        /* for(Person individual : peopleTown.people){
             //This is a test of the people who got married
             if(individual.getSpouse() != null){
                 System.out.println(individual.getName() + " married to " + individual.getSpouse().getName() );
@@ -14,7 +14,9 @@ class Main {
             }
             //Write your print/tests below if they involve a property of the people in peopleTown
             //use individual as it does in the example above
-        }
+        } */
+
+        System.out.println(peopleTown.people.get(800).getName() + " has Personality Number: " + peopleTown.people.get(800).getPersonalityNumber());
     }
     // This is the Places Code- Need help? Ask Brandon, Ian, or read the documentation provided.
 }

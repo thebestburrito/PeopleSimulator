@@ -128,8 +128,6 @@ public void addPerson(Person p1, Person p2) {
         String fullName = firstNames[(int)(Math.random() * firstNames.length)] + " " + lastName;
         population++;
         people.add(new Person(0, fullName, gender, time.getDayCount(),p1.getPlace()));
-        System.out.println(p1.getName() + " and " + p2.getName() + " had...");
-        System.out.println(fullName + " born on " + time.dateToString());
     }
 }
 
@@ -183,7 +181,7 @@ public int populationOf(Society society,String PlaceName){
         placedata.add(society.people.get(count).getPlace());
     }
     int occurances = Collections.frequency(placedata, PlaceName);
-    System.out.println("Population for "+PlaceName+":"+occurances);
+    //System.out.println("Population for "+PlaceName+":"+occurances);
 
     //empty the placedata array every time.
     placedata.clear();
