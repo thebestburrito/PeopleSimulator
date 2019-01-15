@@ -23,7 +23,7 @@ class Society{
             else{
                 gender = "male";
             }
-            people.add(new Person((int)(Math.random()*100),fullName, gender,time.getDayCount()));
+            people.add(new Person((int)(Math.random()*100),fullName, gender,time.getDayCount(), "none", "none"));
 		}
 	}
 
@@ -31,8 +31,10 @@ class Society{
     {
         time.incrementTime();
         //hey folks put your daily methods in here
+        System.out.println(population);
         addPerson(people.get((int)(Math.random()*population)), people.get((int)(Math.random()*population)));
         makeDisaster();
+        System.out.println(getDisaster());
     }
 
     //Makes new person
@@ -63,9 +65,7 @@ class Society{
         //Makes and adds the person to the array
         String fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastName;
         population++;
-        people.add(new Person(0, fullName, gender,time.getDayCount()));
-        System.out.println(p1.getName() + " and "+ p2.getName()+ " had...");
-        System.out.println(fullName + " born on "+ time.dateToString());
+        people.add(new Person(0, fullName, gender,time.getDayCount(), p1.getName(), p2.getName()));
         }
   }
 
@@ -121,15 +121,15 @@ class Society{
             int kill = (int)(Math.random()*6);
             if(level == 0){
                 removePeople(kill);
-                disaster = "Small Tornado";
+                disaster = "small tornado";
             }
             else if(level == 1){
                 removePeople(kill * 2);
-                disaster = "Medium Tornado";
+                disaster = "medium tornado";
             }
             else{
                 removePeople(kill * 3);
-                disaster = "Large Tornado";
+                disaster = "large tornado";
             }
         }
 
@@ -145,7 +145,7 @@ class Society{
             int level = (int)((Math.random()*5) + 1);
             int amount = (int)(Math.random()*4) * level;
             removePeople(amount);
-            disaster = "Hurricane, Level: " + level;
+            disaster = "hurricane, level: " + level;
         }
 
         //Flood Chance Maker
@@ -162,7 +162,7 @@ class Society{
         if(floIndex >= 399){
             int amount = (int)(Math.random()*6);
             removePeople(amount);
-            disaster = "Flood";
+            disaster = "flood";
         }
 
         //Earthquake Chance Maker
@@ -193,7 +193,7 @@ class Society{
             int levelAmount = (int)(Math.random()*6);
             int amount = levelAmount * killLevel;
             removePeople(amount);
-            disaster = "Earthquake, Level: " + level;
+            disaster = "earthquake, level: " + level;
         }
 
         //Tsunami Chance Maker
@@ -201,7 +201,7 @@ class Society{
         if(tsuIndex >= 199){
             int amount = (int)(Math.random()*40);
             removePeople(amount);
-            disaster = "Tsunami";
+            disaster = "tsunami";
         }
 
         //Wildfire Chanace Maker
@@ -215,7 +215,10 @@ class Society{
         if(wilIndex >= 349){
             int amount = (int)(Math.random()*13);
             removePeople(amount);
-            disaster = "Wildfire";
+            disaster = "wildfire";
+        }
+        else{
+            disaster = "none";
         }
     }
 
