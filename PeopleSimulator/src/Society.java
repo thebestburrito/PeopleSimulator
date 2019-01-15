@@ -23,7 +23,7 @@ class Society{
             else{
                 gender = "male";
             }
-            people.add(new Person((int)(Math.random()*100),fullName, gender,time.getDayCount(), "none", "none"));
+            people.add(new Person((int)(Math.random()*100),fullName, gender,time.getDayCount(), "unknown", "unknown"));
 		}
 	}
 
@@ -31,10 +31,8 @@ class Society{
     {
         time.incrementTime();
         //hey folks put your daily methods in here
-        System.out.println(population);
         addPerson(people.get((int)(Math.random()*population)), people.get((int)(Math.random()*population)));
         makeDisaster();
-        System.out.println(getDisaster());
     }
 
     //Makes new person
@@ -106,6 +104,7 @@ class Society{
     //Creates and changes weather
     String disaster = "none";
     public void makeDisaster(){
+        int change = 0;
        //Disasters {"tornado", "hurricane", "flood", "earthquake", "tsunami", "wildfires"};
 
         //Tornado Chance Maker
@@ -122,14 +121,17 @@ class Society{
             if(level == 0){
                 removePeople(kill);
                 disaster = "small tornado";
+                change = 1;
             }
             else if(level == 1){
                 removePeople(kill * 2);
                 disaster = "medium tornado";
+                change = 1;
             }
             else{
                 removePeople(kill * 3);
                 disaster = "large tornado";
+                change = 1;
             }
         }
 
@@ -146,6 +148,7 @@ class Society{
             int amount = (int)(Math.random()*4) * level;
             removePeople(amount);
             disaster = "hurricane, level: " + level;
+            change = 1;
         }
 
         //Flood Chance Maker
@@ -163,6 +166,7 @@ class Society{
             int amount = (int)(Math.random()*6);
             removePeople(amount);
             disaster = "flood";
+            change = 1;
         }
 
         //Earthquake Chance Maker
@@ -194,6 +198,7 @@ class Society{
             int amount = levelAmount * killLevel;
             removePeople(amount);
             disaster = "earthquake, level: " + level;
+            change = 1;
         }
 
         //Tsunami Chance Maker
@@ -202,6 +207,7 @@ class Society{
             int amount = (int)(Math.random()*40);
             removePeople(amount);
             disaster = "tsunami";
+            change = 1;
         }
 
         //Wildfire Chanace Maker
@@ -216,8 +222,11 @@ class Society{
             int amount = (int)(Math.random()*13);
             removePeople(amount);
             disaster = "wildfire";
+            change = 1;
         }
-        else{
+
+        //Makes it nothing if there is no disaster
+        if(change == 0){
             disaster = "none";
         }
     }

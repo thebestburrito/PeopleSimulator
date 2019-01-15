@@ -7,6 +7,8 @@ class Main {
 
       for(int i = 0; i < 10000; i++) {
         peopleTown.cycleDay();
+        System.out.println(peopleTown.getDisaster());
+        System.out.println(peopleTown.population);
       }
 	}
 

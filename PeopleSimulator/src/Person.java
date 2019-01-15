@@ -39,7 +39,7 @@ class Person {
 	}
 
     public String getGender(){
-    return gender;
+    return this.gender;
     }
 
     public void setGender(String gender){
@@ -55,10 +55,18 @@ class Person {
     }
 
     public String getParent1(){
-        return parent1;
+        return this.parent1;
     }
 
     public String getParent2(){
-        return parent2;
+        return this.parent2;
+    }
+
+    public void setParent1(String newP){
+        this.parent1 = newP;
+    }
+
+    public void setParent2(String newP){
+        this.parent2 = newP;
     }
 }
