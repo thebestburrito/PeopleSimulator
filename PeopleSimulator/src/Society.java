@@ -121,15 +121,15 @@ class Society{
             int kill = (int)(Math.random()*6);
             if(level == 0){
                 removePeople(kill);
-                disaster = "Tornado";
+                disaster = "Small Tornado";
             }
             else if(level == 1){
                 removePeople(kill * 2);
-                disaster = "Tornado";
+                disaster = "Medium Tornado";
             }
             else{
                 removePeople(kill * 3);
-                disaster = "Tornado";
+                disaster = "Large Tornado";
             }
         }
 
@@ -145,7 +145,7 @@ class Society{
             int level = (int)((Math.random()*5) + 1);
             int amount = (int)(Math.random()*4) * level;
             removePeople(amount);
-            disaster = "Hurricane";
+            disaster = "Hurricane, Level: " + level;
         }
 
         //Flood Chance Maker
@@ -199,15 +199,9 @@ class Society{
         //Tsunami Chance Maker
         int tsuIndex = (int)(Math.random()*200);
         if(tsuIndex >= 199){
-            int amount = (int)(Math.random()*11);
+            int amount = (int)(Math.random()*40);
             removePeople(amount);
             disaster = "Tsunami";
-        }
-        else if(tsuIndex == 0){
-            int amount = (int)(Math.random()*10)+ 1;
-            amount *= 40;
-            removePeople(amount);
-            disaster = "Large Tsunami";
         }
 
         //Wildfire Chanace Maker
