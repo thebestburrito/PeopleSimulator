@@ -1,24 +1,38 @@
 
 class Main {
-
 	public static void main(String[] args) {
 
-		Society peopleTown = new Society(100);
 
-        //gets the name of the person in the people arrayList at position 8000
-        for(int i = 0; i < peopleTown.population; i++){
-			//the ArrayList method .get(i) is how to get the element at i
-             System.out.println(peopleTown.people.get(i).getName() + " age = " + peopleTown.people.get(i).getAge() + " Depressed = " + peopleTown.people.get(i).getDepressed() + " Happiness = " + peopleTown.people.get(i).changeHappiness() + "%");
-             System.out.println(peopleTown.people.get(i).income);
-             peopleTown.cycleDay();
+
+		Society peopleTown = new Society(1000);
+
+      for(int i = 0; i < 1000; i++) {
+        peopleTown.cycleDay();
+        //Write your print/tests in here if your feature should happen on a dialy basis
+            System.out.println(peopleTown.people.get(i).getName() + " age = " + peopleTown.people.get(i).getAge() + " Depressed = " + peopleTown.people.get(i).getDepressed() + " Happiness = " + peopleTown.people.get(i).changeHappiness() + "%");
+
+
              System.out.println(" Societal Happiness = " + peopleTown.societalHappiness() +"% ");
-            //System.out.println(peopleTown.people.get(i).getHappiness());
 
-        /* System.out.println(peopleTown.people.get(i).getName()); */
+
       }
 
+      for(Person individual : peopleTown.people){
+          //This is a test of the people who got married
+          if(individual.getSpouse() != null){
+              System.out.println(individual.getName() + " married to " + individual.getSpouse().getName() );
+              System.out.println(individual.getSpouse().getName() + " is married to " + individual.getName());
+          }
+          //Write your print/tests below if they involve a property of the people in peopleTown
+          //use individual as it does in the example above
 
 
-    }
+
+      }
+
+	}
+
+
+
+    // This is the Places Code- Need help? Ask Brandon, Ian, or read the documentation provided.
 }
-
