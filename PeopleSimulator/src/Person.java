@@ -53,15 +53,17 @@ class Person {
     }
     public int getHappiness(){
         //change these to while loops later when we merge if you can
+        return happiness;
+    }
+    public int changeHappiness(){
         if(depressed == true && age > 11){
             happiness = (int) Math.floor(Math.random() * 36);
         }
         if(income < 53500 && age > 20){
             happiness -= (int) Math.floor(Math.random() * 10);
         }
-        return happiness;
+       return happiness;
     }
-
     public String getGender(){
     return gender;
     }
