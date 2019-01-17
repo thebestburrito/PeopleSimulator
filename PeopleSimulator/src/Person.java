@@ -12,6 +12,7 @@ class Person {
     public String place;
     public Person spouse;
     public int thisPopulation;
+    public int yearsMarried;
     private ArrayList <Integer> haves = new ArrayList <Integer>();
     private ArrayList <Integer> wants = new ArrayList <Integer>();
     private boolean married = false;
@@ -112,6 +113,14 @@ class Person {
 
     public int getBirthday(){
         return birthday;
+    }
+
+    public int getYearsMarried(){
+        return yearsMarried;
+    }
+
+    public void addYearMarried(){
+        yearsMarried ++;
     }
 
     public ArrayList <Integer> getHaves(){

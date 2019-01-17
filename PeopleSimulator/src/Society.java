@@ -149,7 +149,7 @@ public int societalHappiness(){
   double loveA = 0;
   double loveB = 0;
   double compatibility = 0;
-  if(a.getPlace().equals(b.getPlace()) && !a.isMarried() && !b.isMarried()){ //makes sure they are in the same place and not married already
+  if(a.getPlace().equals(b.getPlace()) && !a.isMarried() && !b.isMarried() && a.getHappiness() >  15 && b.getHappiness() > 15){ //makes sure they are in the same place and not married already
       if (a.getAge() > 18 && b.getAge() > 18) {               //makes sure they're at least 18 ;)
     for (int i = 0; i < a.getHaves().size(); i++) {
      if (a.getWants().get(i) == b.getHaves().get(i)) {      //compares their haves and wants they were born with to find love
@@ -173,6 +173,16 @@ public int societalHappiness(){
    }
   }
   }
+
+public void effectsOfMarriage(){
+    Person currentPerson;
+    for(int i = 0; i < this.population; i++){
+        currentPerson = this.people.get(i);
+        if(currentPerson.isMarried()){
+            currentPerson.addYearMarried();
+        }
+    }
+}
 
     public int populationOf(Society society,String PlaceName){
         ArrayList<String> placedata = new ArrayList<String>();
