@@ -1,5 +1,5 @@
 class BankAccount{
-    public int balance = 0;
+    public int balance = 10;
 
     public BankAccount(){
 

@@ -1,9 +1,18 @@
+import java.util.ArrayList;
+
+
 class Person {
 	public int age;
 	private String name;
     private int birthdate;
     private String gender;
     public int idNumber;
+    public String place;
+    public Person spouse;
+    public int thisPopulation;
+    private ArrayList <Integer> haves = new ArrayList <Integer>();
+    private ArrayList <Integer> wants = new ArrayList <Integer>();
+    private boolean married = false;
     public int IQ = bellCurve(100,15);
     public int income = bellCurve(53719,30000);
     public int points = 0;
@@ -12,7 +21,7 @@ class Person {
     public BankAccount acct;
 
 
-	public Person(int age, String name,String gender,int birthdate) {
+	public Person(int age, String name,String gender,int birthdate, String place) {
 		idCounter++;
         this.name = name;
 		this.age = age;
@@ -20,6 +29,12 @@ class Person {
         this.gender = gender;
         this.idNumber = idCounter;
         acct = new BankAccount();
+        this.place = place;
+        this.spouse = null;
+        for(int i = 0; i < 10; i++){
+            haves.add((int)(Math.random()*10));
+            wants.add((int)(Math.random()*10));
+        }
 	}
 
 	public boolean olderThan(int otherAge) {
@@ -43,16 +58,39 @@ class Person {
 		age++;
 	}
 
-    public int getBirthday() {
-        return birthdate;
+    public void setGender(String gender){
+        this.gender = gender;
     }
 
     public String getGender(){
-    return gender;
+        return gender;
     }
 
-    public void setGender(String gender){
-        this.gender = gender;
+    public int getBirthday(){
+        return birthdate;
+    }
+
+    public ArrayList <Integer> getHaves(){
+        return haves;
+    }
+    public ArrayList <Integer> getWants(){
+        return wants;
+    }
+
+    public boolean isMarried(){
+        return married;
+    }
+
+    public void gotMarriedTo(Person spouse){
+        this.spouse = spouse;
+    }
+
+    public Person getSpouse(){
+        if(spouse != null){
+            return spouse;
+        }else{
+            return null;
+        }
     }
 
     public static int bellCurve(int mean, int sd) {
@@ -124,4 +162,11 @@ class Person {
         return income;
     }
 
+    public String getPlace(){
+         return this.place;
+     }
+     public String changePlaceTo(String newPlace){
+         this.place = newPlace;
+         return ("Person " + this.name + "moved to " + newPlace);
+     }
 }
