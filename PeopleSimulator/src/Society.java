@@ -8,76 +8,13 @@ class Society {
     public int totalPopulation;
     //these names came from https://nameberry.com/unisex-names
     private String[] firstNames = {
-        "Avery",
-        "Riley",
-        "Jordan",
-        "Angel",
-        "Parker",
-        "Sawyer",
-        "Peyton",
-        "Quinn",
-        "Blake",
-        "Hayden",
-        "Taylor",
-        "Dakota",
-        "Reese",
-        "Zion",
-        "Remmington",
-        "Amari",
-        "Phoenix",
-        "Kendall",
-        "Harley",
-        "Rylan",
-        "Marley",
-        "Dallas"
+        "Avery", "Riley", "Jordan", "Angel", "Parker", "Sawyer", "Peyton", "Quinn", "Blake", "Hayden", "Taylor", "Dakota", "Reese", "Zion", "Remmington", "Amari", "Phoenix", "Kendall", "Harley", "Rylan", "Marley", "Dallas"
     };
     private String[] lastNames = {
-        "Hill",
-        "Carson",
-        "Ware",
-        "McMahon",
-        "Murray",
-        "Smith",
-        "Jones",
-        "Robinson",
-        "Morris",
-        "Brown",
-        "Meyers",
-        "Reed",
-        "Schmidt",
-        "Estrada",
-        "Huang",
-        "Patel",
-        "Gupta",
-        "Gomez",
-        "Ramirez",
-        "Thomas",
-        "Jordan",
-        "Samson",
-        "Samuels",
-        "Evans",
-        "Butts",
-        "Wright",
-        "Black",
-        "White"
+        "Hill", "Carson", "Ware", "McMahon", "Murray", "Smith", "Jones", "Robinson", "Morris", "Brown", "Meyers", "Reed", "Schmidt", "Estrada", "Huang", "Patel", "Gupta", "Gomez", "Ramirez", "Thomas", "Jordan", "Samson", "Samuels", "Evans", "Butts", "Wright", "Black", "White"
     };
     private String[] placeNames = {
-        "burg",
-        "ton",
-        "burgh",
-        "town",
-        " City",
-        "ville",
-        " Center",
-        " Lake",
-        "wood",
-        "ford",
-        "land",
-        "house",
-        "hill",
-        "bridge",
-        " Creek",
-        "boro"
+        "burg", "ton", "burgh", "town", " City", "ville", " Center", " Lake", "wood", "ford", "land", "house", "hill", "bridge", " Creek", "boro"
     };
 
     Society(int numPeople) {

@@ -40,11 +40,6 @@ class Person {
         }
 	}
 
-    public Person() {
-		this.name = "Brad";
-		this.age = 37;
-	}
-
 	public boolean olderThan(int otherAge) {
 		if (age > otherAge) {
 			return true;
@@ -169,133 +164,133 @@ class Person {
         }
     }
 
-    public static int generatePersonalityNumber() {
+    public int generatePersonalityNumber() {
         double a = (Math.random() * 100);
 
         if (a >= 0 && a <= 0.0625) {
-            Person.setPersonalityBoolean("isLawful", true);
-            Person.setPersonalityBoolean("isGood", true);
-            Person.setPersonalityString("Lawful Good");
+            setPersonalityBoolean("isLawful", true);
+            setPersonalityBoolean("isGood", true);
+            setPersonalityString("Lawful Good");
             return 0;
         } else if (a > 0.0625 && a <= 0.4000) {
-            Person.setPersonalityBoolean("isSocial", true);
-            Person.setPersonalityBoolean("isGood", true);
-            Person.setPersonalityString("Social Good");
+            setPersonalityBoolean("isSocial", true);
+            setPersonalityBoolean("isGood", true);
+            setPersonalityString("Social Good");
             return 1;
         } else if (a > 0.4000 && a <= 2.1000) {
-            Person.setPersonalityBoolean("is1Neutral", true);
-            Person.setPersonalityBoolean("isGood", true);
-            Person.setPersonalityString("Neutral Good");
+            setPersonalityBoolean("is1Neutral", true);
+            setPersonalityBoolean("isGood", true);
+            setPersonalityString("Neutral Good");
             return 2;
         } else if (a > 2.1000 && a <= 2.4375) {
-            Person.setPersonalityBoolean("isRebel", true);
-            Person.setPersonalityBoolean("isGood", true);
-            Person.setPersonalityString("Rebel Good");
+            setPersonalityBoolean("isRebel", true);
+            setPersonalityBoolean("isGood", true);
+            setPersonalityString("Rebel Good");
             return 3;
         } else if (a > 2.4375 && a <= 2.5000) {
-            Person.setPersonalityBoolean("isChaotic", true);
-            Person.setPersonalityBoolean("isGood", true);
-            Person.setPersonalityString("Chaotic Good");
+            setPersonalityBoolean("isChaotic", true);
+            setPersonalityBoolean("isGood", true);
+            setPersonalityString("Chaotic Good");
             return 4;
         } else if (a > 2.5000 && a <= 2.8375) {
-            Person.setPersonalityBoolean("isLawful", true);
-            Person.setPersonalityBoolean("isMoral", true);
-            Person.setPersonalityString("Lawful Moral");
+            setPersonalityBoolean("isLawful", true);
+            setPersonalityBoolean("isMoral", true);
+            setPersonalityString("Lawful Moral");
             return 5;
         } else if (a > 2.8375 && a <= 4.6600) {
-            Person.setPersonalityBoolean("isSocial", true);
-            Person.setPersonalityBoolean("isMoral", true);
-            Person.setPersonalityString("Social Moral");
+            setPersonalityBoolean("isSocial", true);
+            setPersonalityBoolean("isMoral", true);
+            setPersonalityString("Social Moral");
             return 6;
         } else if (a > 4.6600 && a <= 13.8400) {
-            Person.setPersonalityBoolean("is1Neutral", true);
-            Person.setPersonalityBoolean("isMoral", true);
-            Person.setPersonalityString("Neutral Moral");
+            setPersonalityBoolean("is1Neutral", true);
+            setPersonalityBoolean("isMoral", true);
+            setPersonalityString("Neutral Moral");
             return 7;
         } else if (a > 13.8400 && a <= 15.6625) {
-            Person.setPersonalityBoolean("isRebel", true);
-            Person.setPersonalityBoolean("isMoral", true);
-            Person.setPersonalityString("Rebel Moral");
+            setPersonalityBoolean("isRebel", true);
+            setPersonalityBoolean("isMoral", true);
+            setPersonalityString("Rebel Moral");
             return 8;
         } else if (a > 15.6625 && a <= 16.0000) {
-            Person.setPersonalityBoolean("isChaotic", true);
-            Person.setPersonalityBoolean("isMoral", true);
-            Person.setPersonalityString("Chaotic Moral");
+            setPersonalityBoolean("isChaotic", true);
+            setPersonalityBoolean("isMoral", true);
+            setPersonalityString("Chaotic Moral");
             return 9;
         } else if (a > 16.0000 && a <= 17.7000) {
-            Person.setPersonalityBoolean("isLawful", true);
-            Person.setPersonalityBoolean("is2Neutral", true);
-            Person.setPersonalityString("Lawful Neutral");
+            setPersonalityBoolean("isLawful", true);
+            setPersonalityBoolean("is2Neutral", true);
+            setPersonalityString("Lawful Neutral");
             return 10;
         } else if (a > 17.7000 && a <= 26.8800) {
-            Person.setPersonalityBoolean("isSocial", true);
-            Person.setPersonalityBoolean("is2Neutral", true);
-            Person.setPersonalityString("Social Neutral");
+            setPersonalityBoolean("isSocial", true);
+            setPersonalityBoolean("is2Neutral", true);
+            setPersonalityString("Social Neutral");
             return 11;
         } else if (a > 26.8800 && a <= 73.1200) {
-            Person.setPersonalityBoolean("is1Neutral", true);
-            Person.setPersonalityBoolean("is2Neutral", true);
-            Person.setPersonalityString("True Neutral");
+            setPersonalityBoolean("is1Neutral", true);
+            setPersonalityBoolean("is2Neutral", true);
+            setPersonalityString("True Neutral");
             return 12;
         } else if (a > 73.1200 && a <= 82.3000) {
-            Person.setPersonalityBoolean("isRebel", true);
-            Person.setPersonalityBoolean("is2Neutral", true);
-            Person.setPersonalityString("Rebel Neutral");
+            setPersonalityBoolean("isRebel", true);
+            setPersonalityBoolean("is2Neutral", true);
+            setPersonalityString("Rebel Neutral");
             return 13;
         } else if (a > 82.3000 && a <= 84.0000) {
-            Person.setPersonalityBoolean("isChaotic", true);
-            Person.setPersonalityBoolean("is2Neutral", true);
-            Person.setPersonalityString("Chaotic Neutral");
+            setPersonalityBoolean("isChaotic", true);
+            setPersonalityBoolean("is2Neutral", true);
+            setPersonalityString("Chaotic Neutral");
             return 14;
         } else if (a > 84.0000 && a <= 84.3375) {
-            Person.setPersonalityBoolean("isLawful", true);
-            Person.setPersonalityBoolean("isImpure", true);
-            Person.setPersonalityString("Lawful Impure");
+            setPersonalityBoolean("isLawful", true);
+            setPersonalityBoolean("isImpure", true);
+            setPersonalityString("Lawful Impure");
             return 15;
         } else if (a > 84.3375 && a <= 86.1600) {
-            Person.setPersonalityBoolean("isSocial", true);
-            Person.setPersonalityBoolean("isImpure", true);
-            Person.setPersonalityString("Social Impure");
+            setPersonalityBoolean("isSocial", true);
+            setPersonalityBoolean("isImpure", true);
+            setPersonalityString("Social Impure");
             return 16;
         } else if (a > 86.1600 && a <= 95.3400) {
-            Person.setPersonalityBoolean("is1Neutral", true);
-            Person.setPersonalityBoolean("isImpure", true);
-            Person.setPersonalityString("Neutral Impure");
+            setPersonalityBoolean("is1Neutral", true);
+            setPersonalityBoolean("isImpure", true);
+            setPersonalityString("Neutral Impure");
             return 17;
         } else if (a > 95.3400 && a <= 97.1625) {
-            Person.setPersonalityBoolean("isRebel", true);
-            Person.setPersonalityBoolean("isImpure", true);
-            Person.setPersonalityString("Rebel Impure");
+            setPersonalityBoolean("isRebel", true);
+            setPersonalityBoolean("isImpure", true);
+            setPersonalityString("Rebel Impure");
             return 18;
         } else if (a > 97.1625 && a <= 97.5000) {
-            Person.setPersonalityBoolean("isChaotic", true);
-            Person.setPersonalityBoolean("isImpure", true);
-            Person.setPersonalityString("Chaotic Impure");
+            setPersonalityBoolean("isChaotic", true);
+            setPersonalityBoolean("isImpure", true);
+            setPersonalityString("Chaotic Impure");
             return 19;
         } else if (a > 97.5000 && a <= 97.5625) {
-            Person.setPersonalityBoolean("isLawful", true);
-            Person.setPersonalityBoolean("isEvil", true);
-            Person.setPersonalityString("Lawful Evil");
+            setPersonalityBoolean("isLawful", true);
+            setPersonalityBoolean("isEvil", true);
+            setPersonalityString("Lawful Evil");
             return 20;
         } else if (a > 97.5625 && a <= 97.9000) {
-            Person.setPersonalityBoolean("isSocial", true);
-            Person.setPersonalityBoolean("isEvil", true);
-            Person.setPersonalityString("Social Evil");
+            setPersonalityBoolean("isSocial", true);
+            setPersonalityBoolean("isEvil", true);
+            setPersonalityString("Social Evil");
             return 21;
         } else if (a > 97.9000 && a <= 99.6000) {
-            Person.setPersonalityBoolean("is1Neutral", true);
-            Person.setPersonalityBoolean("isEvil", true);
-            Person.setPersonalityString("Neutral Evil");
+            setPersonalityBoolean("is1Neutral", true);
+            setPersonalityBoolean("isEvil", true);
+            setPersonalityString("Neutral Evil");
             return 22;
         } else if (a > 99.6000 && a <= 99.9375) {
-            Person.setPersonalityBoolean("isRebel", true);
-            Person.setPersonalityBoolean("isEvil", true);
-            Person.setPersonalityString("Rebel Evil");
+            setPersonalityBoolean("isRebel", true);
+            setPersonalityBoolean("isEvil", true);
+            setPersonalityString("Rebel Evil");
             return 23;
         } else {
-            Person.setPersonalityBoolean("isChaotic", true);
-            Person.setPersonalityBoolean("isEvil", true);
-            Person.setPersonalityString("Chaotic Evil");
+            setPersonalityBoolean("isChaotic", true);
+            setPersonalityBoolean("isEvil", true);
+            setPersonalityString("Chaotic Evil");
             return 24;
         }
     }
