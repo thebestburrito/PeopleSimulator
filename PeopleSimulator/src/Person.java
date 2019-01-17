@@ -5,6 +5,7 @@ class Person {
 	public int age;
 	private String name;
     private boolean depressed;
+    private boolean optimistic;
     private int happiness;
     private int birthday;
     private String gender;
@@ -23,7 +24,8 @@ class Person {
 		this.name = name;
 		this.age = age;
         this.depressed = Math.random() < 0.15;
-        this.happiness = 50;
+        this.optimistic = Math.random() < 0.15;
+        this.happiness = 60;  //start at 60 bc 50 felt too sad for a normal person
         this.birthday = birthdate;
         this.gender = gender;
         this.place = place;
@@ -66,20 +68,41 @@ class Person {
             depressed = false;
         }
         return depressed;
-
+    }
+    public boolean getOptimistic(){
+        if(depressed == true){
+            optimistic = false;
+        }
+        return optimistic;
     }
     public int getHappiness(){
         //change these to while loops later when we merge if you can
         return happiness;
     }
-    public int changeHappiness(){
+    public int setHappiness(){
         if(depressed == true && age > 11){
-            happiness = (int) Math.floor(Math.random() * 36);
+            happiness = (int) Math.floor(Math.random() * 30) + 6;
+            if(happiness < 10){
+                happiness += (int) Math.floor(Math.random() * 8);
+            }
+        }
+        if(optimistic == true) {
+            happiness += (int) Math.floor(Math.random() * 10) + 5;
         }
         if(income < 53500 && age > 20){
             happiness -= (int) Math.floor(Math.random() * 10);
         }
+        if(income > 58000 && age > 20){
+            happiness += (int) Math.floor(Math.random() * 15);
+        }
+        if(married == true){
+            happiness += (int) Math.floor(Math.random() * 25) + 5;
+        }
+
        return happiness;
+    }
+    public void changeHappiness(int percentChange){
+        percentChange += happiness;
     }
     public String getGender(){
         return gender;
@@ -104,6 +127,7 @@ class Person {
     }
 
     public void gotMarriedTo(Person spouse){
+        married = true;
         this.spouse = spouse;
     }
 
