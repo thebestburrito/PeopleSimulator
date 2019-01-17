@@ -1,15 +1,69 @@
 import java.util.*;
 
-class Society{
-	//this declares a new instance variable... an ArrayList for people
-	List<Person> people = new ArrayList<Person>();
+class Society {
+ ArrayList < Person > people = new ArrayList < Person > ();
+List<Place> places = new ArrayList<Place>();
+ public Time time = new Time(1, 1, 0, 0);
+ public int population;
+ public int totalPopulation;
+ //these names came from https://nameberry.com/unisex-names
+ private String[] firstNames = {
+  "Avery",
+  "Riley",
+  "Jordan",
+  "Angel",
+  "Parker",
+  "Sawyer",
+  "Peyton",
+  "Quinn",
+  "Blake",
+  "Hayden",
+  "Taylor",
+  "Dakota",
+  "Reese",
+  "Zion",
+  "Remmington",
+  "Amari",
+  "Phoenix",
+  "Kendall",
+  "Harley",
+  "Rylan",
+  "Marley",
+  "Dallas"
+ };
+ private String[] lastNames = {
+  "Hill",
+  "Carson",
+  "Ware",
+  "McMahon",
+  "Murray",
+  "Smith",
+  "Jones",
+  "Robinson",
+  "Morris",
+  "Brown",
+  "Meyers",
+  "Reed",
+  "Schmidt",
+  "Estrada",
+  "Huang",
+  "Patel",
+  "Gupta",
+  "Gomez",
+  "Ramirez",
+  "Thomas",
+  "Jordan",
+  "Samson",
+  "Samuels",
+  "Evans",
+  "Butts",
+  "Wright",
+  "Black",
+  "White"
+ };
+ private String[] placeNames = {"burg", "ton", "burgh", "town", " City", "ville", " Center"," Lake", "wood","ford","land","house","hill","bridge"," Creek", "boro"};
 
-    public Time time = new Time(1, 1, 0, 0);
-	public int population;
 	//these names came from https://nameberry.com/unisex-names
-	private String[] firstNames = {"Avery","Riley","Jordan","Angel","Parker","Sawyer","Peyton","Quinn","Blake","Hayden","Taylor","Dakota","Reese","Zion","Remmington","Amari","Phoenix","Kendall","Harley","Rylan","Marley","Dallas"};
-	private String[] lastNames = {"Hill","Carson","Ware","McMahon","Murray","Smith","Jones","Robinson","Morris","Brown","Meyers","Reed","Schmidt","Estrada","Huang","Patel","Gupta","Gomez","Ramirez","Thomas","Jordan","Samson","Samuels","Evans","Butts","Wright","Black","White"};
-
 	Society(int numPeople){
 		population = numPeople;
 		String fullName;
@@ -23,13 +77,17 @@ class Society{
             else{
                 gender = "male";
             }
-            people.add(new Person((int)(Math.random()*100),fullName, gender,time.getDayCount(), "unknown", "unknown"));
+            for(int j = 0; j < 5; j++){
+            places.add(new Place(lastNames[(int)(Math.random()*lastNames.length)]+placeNames[(int)(Math.random()*placeNames.length)]));
+            }
+            people.add(new Person((int)(Math.random()*100),fullName, gender,time.getDayCount(), places.get((int)(Math.random()*places.size())).getPlace(), "unknown", "unknown"));
 		}
 	}
 
     public void cycleDay()
     {
         time.incrementTime();
+        findTheLove(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * population)));
         //hey folks put your daily methods in here
         addPerson(people.get((int)(Math.random()*population)), people.get((int)(Math.random()*population)));
         makeDisaster();
@@ -63,34 +121,53 @@ class Society{
         //Makes and adds the person to the array
         String fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastName;
         population++;
-        people.add(new Person(0, fullName, gender,time.getDayCount(), p1.getName(), p2.getName()));
+        people.add(new Person(0, fullName, gender,time.getDayCount(), places.get((int) (Math.random()*places.size())).getPlace(), p1.getName(), p2.getName()));
         }
+
+  //Start
+
   }
 
-    //for generating a bell curve for various aspects of the people in the society such as IQ
-    public static long bellCurve(int mean, int sd) {
-	    int i = mean - (3*sd);
-	    int j = mean + (3*sd);
-		int x = i;
-		for(int c = i; c < j; c++) {
-			double l = Math.random();
-			if(l >= 0.5) {
-				x++;
-			}
-		}
-		return x;
-	}
+ //for generating a bell curve for various aspects of the people in the society such as IQ
+ public static long bellCurve(int mean, int sd) {
+  int i = mean - (3 * sd);
+  int j = mean + (3 * sd);
+  int x = i;
+  for (int c = i; c < j; c++) {
+   double l = Math.random();
+   if (l >= 0.5) {
+    x++;
+   }
+  }
+  return x;
+ }
 
-    public Person getOldestPerson () {
-      int loc = 0; //location used in return statement
-      int age = 0;
-       for(int i = 0; i < this.population; i++){ //for each position in the people array, compares age to the age variable then records the position of the highest.
-          if(this.people.get(i).olderThan(age)){
-            age = this.people.get(i).getAge();
-            loc = i;
-      }
+ //takes parameters of two people
+ public void findTheLove(Person a, Person b) {
+  double loveA = 0;
+  double loveB = 0;
+  double compatibility = 0;
+   if (a.getAge() > 18 && b.getAge() > 18) {               //makes sure they're at least 18 ;)
+    for (int i = 0; i < a.getHaves().size(); i++) {
+     if (a.getWants().get(i) == b.getHaves().get(i)) {      //compares their haves and wants they were born with to find love
+      loveA++;
+     }
+     if (b.getWants().get(i) == a.getHaves().get(i)) {
+      loveB++;
+     }
     }
-    return this.people.get(loc); //returns the location of the person
+    if (loveB == 0 || loveA == 0) {                   //can't divide by 0!
+     compatibility = 0;
+    } else if (loveA == 0 || loveB == 0) {            //averages their connections to come up with a random percent which I called compatibility
+     compatibility = 0;
+    } else {
+     compatibility = (loveA + loveB) / 2;
+    }
+    if (compatibility >= 2) {
+     a.gotMarriedTo(b);
+     b.gotMarriedTo(a);
+    }
+   }
   }
 
     //Removes people
@@ -236,4 +313,18 @@ class Society{
         return disaster;
     }
 
+    public int populationOf(Society society,String PlaceName){
+        ArrayList<String> placedata = new ArrayList<String>();
+        //finds the total population
+        totalPopulation = society.people.size();
+        for(int count = 0;count < totalPopulation;count++){
+            placedata.add(society.people.get(count).getPlace());
+        }
+        int occurances = Collections.frequency(placedata, PlaceName);
+        System.out.println("Population for "+PlaceName+":"+occurances);
+
+        //empty the placedata array every time.
+        placedata.clear();
+        return occurances;
+    }
 }
