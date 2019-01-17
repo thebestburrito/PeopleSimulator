@@ -63,11 +63,12 @@ class Person {
         return married;
     }
 
-    public void gotMarriedTo(Person spouse){
+    public void gotMarriedTo(Person spouse){  //this is pretty cool, it sets a person as an attribute of spouse of a person
+        spouse.married = true;
         this.spouse = spouse;
     }
 
-    public Person getSpouse(){
+    public Person getSpouse(){    //gets spouse if there is spoud. if not, then they are lonely (null)
         if(spouse != null){
             return spouse;
         }else{
