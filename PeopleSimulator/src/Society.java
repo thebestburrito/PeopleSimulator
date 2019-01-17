@@ -63,6 +63,17 @@ ArrayList<Place> places = new ArrayList<Place>();
  };
  private String[] placeNames = {"burg", "ton", "burgh", "town", " City", "ville", " Center"," Lake", "wood","ford","land","house","hill","bridge"," Creek", "boro"};
 
+public int societalHappiness(){
+    int totalHappiness = 0;
+    int averageHappiness = 0;
+    for(int i = 0; i < population; i++){
+        totalHappiness += people.get(i).getHappiness();
+        averageHappiness = (int) Math.floor(totalHappiness / population);
+    }
+    return averageHappiness;
+}
+
+
  Society(int numPeople) {
   population = numPeople;
   String fullName;
@@ -114,6 +125,7 @@ ArrayList<Place> places = new ArrayList<Place>();
    people.add(new Person(0, fullName, gender, time.getDayCount(),p1.getPlace()));
    System.out.println(p1.getName() + " and " + p2.getName() + " had...");
    System.out.println(fullName + " born on " + time.dateToString());
+
 
   }
  }
