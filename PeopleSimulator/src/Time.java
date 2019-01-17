@@ -1,5 +1,3 @@
-
-
 class Time {
 
 
@@ -65,4 +63,3 @@ class Time {
      return (month+"/"+day+"/"+year);
  }
 }
-
