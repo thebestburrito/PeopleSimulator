@@ -19,6 +19,8 @@ class Person {
     public int income = bellCurve(53719,30000);
     public int points = 0;
     public int mill = bellCurve(50,25);
+    public Person friend;
+
 
 	public Person(int age, String name,String gender,int birthdate,String place) {
 		this.name = name;
@@ -30,6 +32,7 @@ class Person {
         this.gender = gender;
         this.place = place;
         this.spouse = null;
+        this.friend = null;
         for(int i = 0; i < 10; i++){
             haves.add((int)(Math.random()*10));
             wants.add((int)(Math.random()*10));
@@ -130,10 +133,20 @@ class Person {
         married = true;
         this.spouse = spouse;
     }
+    public void isFriendsWith(Person friend){
+        this.friend = friend;
+    }
 
     public Person getSpouse(){
         if(spouse != null){
             return spouse;
+        }else{
+            return null;
+        }
+    }
+    public Person getFriend(){
+        if(friend != null){
+            return friend;
         }else{
             return null;
         }

@@ -23,6 +23,10 @@ class Main {
               System.out.println(individual.getName() + " married to " + individual.getSpouse().getName() );
               System.out.println(individual.getSpouse().getName() + " is married to " + individual.getName());
           }
+          if(individual.getFriend() != null){
+              System.out.println(individual.getName() + " is friends with " + individual.getFriend().getName());
+              System.out.println(individual.getFriend().getName() + " friends with " + individual.getName());
+          }
           //Write your print/tests below if they involve a property of the people in peopleTown
           //use individual as it does in the example above
 
