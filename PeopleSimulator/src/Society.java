@@ -101,8 +101,9 @@ class Society{
             population--;
         }
     }
-    //Creates and changes weather
+    //Disaster Variable to Show Disaster
     String disaster = "none";
+    //Creates and changes weather
     public void makeDisaster(){
         int change = 0;
        //Disasters {"tornado", "hurricane", "flood", "earthquake", "tsunami", "wildfires"};

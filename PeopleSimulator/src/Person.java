@@ -4,6 +4,7 @@ class Person {
     private int birthday;
     private String gender;
     private boolean deceased;
+    //Shows a Persons Parents
     private String parent1;
     private String parent2;
 
