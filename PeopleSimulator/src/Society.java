@@ -159,6 +159,8 @@ List<Place> places = new ArrayList<Place>();
     }
    }
   }
+
+  
     public int populationOf(Society society,String PlaceName){
         ArrayList<String> placedata = new ArrayList<String>();
         //finds the total population

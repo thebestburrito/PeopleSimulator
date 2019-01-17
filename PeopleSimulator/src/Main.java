@@ -25,6 +25,8 @@ class Main {
 
 
       }
+
+      
         System.out.println(peopleTown.places.get(0).getClassification());
         System.out.println(peopleTown.getClassification(peopleTown.places.get(0).getPlace()));
         //places Demo code PLEASE REMOVE!!
