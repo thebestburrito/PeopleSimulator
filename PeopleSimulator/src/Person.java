@@ -10,16 +10,16 @@ class Person {
     private String gender;
     private int personalityNumber;
     private String personalityString = "";  // What the personality Number is called
-    public boolean isLawful;       //Boolean set 1) Top row
-    public boolean isSocial;       //       |
-    public boolean is1Neutral;     //       |
-    public boolean isRebel;        //       |
-    public boolean isChaotic;      //       V
-    public boolean isGood;         //Boolean set 2) Left side
-    public boolean isMoral;        //       |
-    public boolean is2Neutral;     //       |
-    public boolean isImpure;       //       |
-    public boolean isEvil;         //       V
+    private boolean isLawful;       //Boolean set 1) Top row
+    private boolean isSocial;       //       |
+    private boolean is1Neutral;     //       |
+    private boolean isRebel;        //       |
+    private boolean isChaotic;      //       V
+    private boolean isGood;         //Boolean set 2) Left side
+    private boolean isMoral;        //       |
+    private boolean is2Neutral;     //       |
+    private boolean isImpure;       //       |
+    private boolean isEvil;         //       V
     public String place;
     public Person spouse;
     public int thisPopulation;
@@ -67,22 +67,26 @@ class Person {
 	public void hadBirthday() {
 		age++;
 	}
+
     public boolean getDepressed(){
         if(age < 11){
             depressed = false;
         }
         return depressed;
     }
+
     public boolean getOptimistic(){
         if(depressed == true){
             optimistic = false;
         }
         return optimistic;
     }
+
     public int getHappiness(){
         //change these to while loops later when we merge if you can
         return happiness;
     }
+
     public int setHappiness(){
         if(depressed == true && age > 11){
             happiness = (int) Math.floor(Math.random() * 30) + 6;
@@ -102,39 +106,42 @@ class Person {
         if(married == true){
             happiness += (int) Math.floor(Math.random() * 25) + 5;
         }
-
-       return happiness;
+        return happiness;
     }
-    public void changeHappiness(int percentChange){
+
+    public void changeHappiness(int percentChange) {
         percentChange += happiness;
     }
-    public String getGender(){
+
+    public String getGender() {
         return gender;
     }
-    public void setGender(String gender){
+
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public ArrayList <Integer> getHaves(){
+    public ArrayList <Integer> getHaves() {
         return haves;
     }
-    public ArrayList <Integer> getWants(){
+
+    public ArrayList <Integer> getWants() {
         return wants;
     }
 
-    public boolean isMarried(){
+    public boolean isMarried() {
         return married;
     }
 
-    public void gotMarriedTo(Person spouse){
+    public void gotMarriedTo(Person spouse) {
         married = true;
         this.spouse = spouse;
     }
 
-    public Person getSpouse(){
+    public Person getSpouse() {
         if(spouse != null){
             return spouse;
-        }else{
+        } else {
             return null;
         }
     }
@@ -153,21 +160,51 @@ class Person {
 		return x;
     }
 
-    public String getPlace(){
+    public String getPlace() {
         return this.place;
     }
 
-    public String changePlaceTo(String newPlace){
+    public String changePlaceTo(String newPlace) {
         this.place = newPlace;
         return ("Person " + this.name + "moved to " + newPlace);
     }
 
-        public int getPersonalityNumber() {
+    public int getPersonalityNumber() {
         return personalityNumber;
     }
 
     public String getPersonalityString() {
         return personalityString;
+    }
+
+    /**
+      * @param booleanName the boolean you want to find out.
+      * @return whether or not the boolean is true or false.
+      */
+    public boolean getPersonalityBoolean(String booleanName) {
+        if (booleanName == "isLawful") {
+            return  isLawful;
+        } else if (booleanName == "isSocial") {
+            return isSocial;
+        } else if (booleanName == "is1Neutral") {
+            return is1Neutral;
+        } else if (booleanName == "isRebel") {
+            return isRebel;
+        } else if (booleanName == "isChaotic") {
+            return isChaotic;
+        } else if (booleanName == "isGood") {
+            return isGood;
+        } else if (booleanName == "isMoral") {
+            return isMoral;
+        } else if (booleanName == "is2Neutral") {
+            return is2Neutral;
+        } else if (booleanName == "isImpure") {
+            return isImpure;
+        } else if (booleanName == "isEvil") {
+            return isEvil;
+        } else {
+            return false;
+        }
     }
 
     /**

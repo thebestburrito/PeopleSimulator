@@ -16,8 +16,8 @@ class Main {
             //use individual as it does in the example above
         } */
 
-        System.out.println(peopleTown.people.get(800).getName() + " has Personality Number: " + peopleTown.people.get(800).getPersonalityNumber() + " With String: "+ peopleTown.people.get(800).getPersonalityString());
-        System.out.println(peopleTown.people.get(80).getName() + " has Personality Number: " + peopleTown.people.get(80).getPersonalityNumber() + " With String: "+ peopleTown.people.get(80).getPersonalityString());
+        System.out.println(peopleTown.people.get(800).getName() + " has personality number " + peopleTown.people.get(800).getPersonalityNumber() + ", called "+ peopleTown.people.get(800).getPersonalityString() + ". " + "isLawful = " + peopleTown.people.get(800).getPersonalityBoolean("isLawful"));
+        System.out.println(peopleTown.people.get(80).getName() + " has personality number " + peopleTown.people.get(80).getPersonalityNumber() + ", called "+ peopleTown.people.get(80).getPersonalityString() + ". " + "isLawful = " + peopleTown.people.get(80).getPersonalityBoolean("isLawful"));
     }
     // This is the Places Code- Need help? Ask Brandon, Ian, or read the documentation provided.
 }
