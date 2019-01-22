@@ -14,6 +14,7 @@ class Person {
     public int thisPopulation;
     public int daysMarried = 0;
     public double yearsMarried = 0;
+    public int numOfTimesDivorced = 0;
     private ArrayList <Integer> haves = new ArrayList <Integer>();
     private ArrayList <Integer> wants = new ArrayList <Integer>();
     private boolean married = false;
@@ -120,6 +121,13 @@ class Person {
         return Math.floor((this.getDaysMarried()) / 365);
     }
 
+    public int getNumOfTimesDivorced(){
+        return numOfTimesDivorced;
+    }
+
+    public void addTimeDivorced(){
+        numOfTimesDivorced++;
+    }
 
     public int getDaysMarried(){
         return daysMarried/2;       //returns days married (taking half of the number makes it way easier for me lol)
@@ -151,7 +159,10 @@ class Person {
 
     public void gotDivorcedFrom(Person spouse){  //this is pretty sad :(, it divorces people and sets their spouse to nothingness...
         this.spouse.married = false;
+        this.spouse.addTimeDivorced();
+        this.spouse.changeHappiness(20);
         this.spouse = null;
+
     }
 
     public Person getSpouse(){    //gets spouse if there is spoud. if not, then they are lonely (null)
