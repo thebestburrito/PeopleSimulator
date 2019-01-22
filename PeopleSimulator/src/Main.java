@@ -25,7 +25,7 @@ class Main {
           }
           if(individual.getFriend() != null){
               System.out.println(individual.getName() + " is friends with " + individual.getFriend().getName());
-              System.out.println(individual.getFriend().getName() + " friends with " + individual.getName());
+             
           }
 
 
