@@ -20,7 +20,8 @@ class Person {
     public int points = 0;
     public int mill = bellCurve(50,25);
     public Person friend;
-
+    private ArrayList <Integer> commonTraits = new ArrayList <Integer>();
+    private int friendCount;
 
 	public Person(int age, String name,String gender,int birthdate,String place) {
 		this.name = name;
@@ -33,9 +34,13 @@ class Person {
         this.place = place;
         this.spouse = null;
         this.friend = null;
+        this.friendCount = 0;
         for(int i = 0; i < 10; i++){
             haves.add((int)(Math.random()*10));
             wants.add((int)(Math.random()*10));
+        }
+        for(int i = 0; i < 10; i++){
+            commonTraits.add((int)(Math.random()*10));
         }
 	}
 
@@ -79,9 +84,16 @@ class Person {
         return optimistic;
     }
     public int getHappiness(){
-        //change these to while loops later when we merge if you can
+
         return happiness;
     }
+    public int getFriendCount(){
+        return friendCount;
+    }
+    public void updateFriendCount(){
+        friendCount++;
+    }
+
     public int setHappiness(){
         if(depressed == true && age > 11){
             happiness = (int) Math.floor(Math.random() * 30) + 6;
@@ -124,6 +136,10 @@ class Person {
     public ArrayList <Integer> getWants(){
         return wants;
     }
+    public ArrayList <Integer> getCommonTraits(){
+        return commonTraits;
+    }
+
 
     public boolean isMarried(){
         return married;

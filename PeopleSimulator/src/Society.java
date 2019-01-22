@@ -97,6 +97,7 @@ public int societalHappiness(){
  public void cycleDay() {
     time.incrementTime();
     findTheLove(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * population)));
+    giveFriends(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * population)));
  }
 
 
@@ -170,6 +171,39 @@ public int societalHappiness(){
     }
    }
   }
+  public void giveFriends(Person a, Person b){
+    double friendshipA = 0;
+    double friendshipB = 0;
+    double friendship = 0;
+    for(int j = 0; j < population; j++){
+        if(a.getAge()-b.getAge() < 10 || b.getAge()-a.getAge() < 10){
+            for(int i = 0; i < a.getCommonTraits().size(); i++){
+                if(a.getCommonTraits().get(i) == b.getCommonTraits().get(i)){
+                    friendshipA++;
+                }
+                if(b.getCommonTraits().get(i) == a.getCommonTraits().get(i)){
+                    friendshipB++;
+                }
+            }
+            if(friendshipB == 0 || friendshipA == 0){
+                friendship = 0;
+            } else if(friendshipA == 0 || friendshipB == 0){
+                friendship = 0;
+            } else {
+                friendship = (friendshipA + friendshipB) / 2;
+            }
+            if(friendship >= 2){
+                a.isFriendsWith(b);
+                b.isFriendsWith(a);
+            }
+
+        }
+
+    }
+
+
+  }
+
 
     public int populationOf(Society society,String PlaceName){
         ArrayList<String> placedata = new ArrayList<String>();
