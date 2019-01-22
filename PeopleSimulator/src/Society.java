@@ -2,12 +2,11 @@ import java.util.*;
 
 class Society {
     ArrayList < Person > people = new ArrayList < Person > ();
-    List<Place> places = new ArrayList<Place>();
+    List < Place > places = new ArrayList<Place>();
     public Time time = new Time(1, 1, 0, 0);
     public int population;
     public int totalPopulation;
-    //these names came from https://nameberry.com/unisex-names
-    private String[] firstNames = {
+    private String[] firstNames = {   //these names came from https://nameberry.com/unisex-names
         "Avery", "Riley", "Jordan", "Angel", "Parker", "Sawyer", "Peyton", "Quinn", "Blake", "Hayden", "Taylor", "Dakota", "Reese", "Zion", "Remmington", "Amari", "Phoenix", "Kendall", "Harley", "Rylan", "Marley", "Dallas"
     };
     private String[] lastNames = {
@@ -24,6 +23,7 @@ class Society {
         for(int i = 0; i < 5; i++){
             places.add(new Place(lastNames[(int)(Math.random()*lastNames.length)]+placeNames[(int)(Math.random()*placeNames.length)]));
         }
+
         for (int i = 0; i < numPeople; i++) {
             fullName = firstNames[(int)(Math.random() * firstNames.length)] + " " + lastNames[(int)(Math.random() * lastNames.length)];
             int randomIndex = (int)(Math.random() * 2);
@@ -118,7 +118,6 @@ class Society {
         }
         int occurances = Collections.frequency(placedata, PlaceName);
         //System.out.println("Population for "+PlaceName+":"+occurances);
-
         //empty the placedata array every time.
         placedata.clear();
         return occurances;
