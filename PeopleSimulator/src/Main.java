@@ -6,7 +6,7 @@ class Main {
 
 		Society peopleTown = new Society(1000);
 
-      for(int i = 0; i < 1000; i++) {
+      for(int i = 0; i < 365; i++) {
         peopleTown.cycleDay();
         //Shows Disater Variable
         System.out.println(peopleTown.getDisaster());
