@@ -160,6 +160,7 @@ class Person {
     public void gotDivorcedFrom(Person spouse){  //this is pretty sad :(, it divorces people and sets their spouse to nothingness...
         this.spouse.married = false;
         this.spouse.addTimeDivorced();
+        this.spouse.daysMarried = 0;
         this.spouse.changeHappiness(20);
         this.spouse = null;
 
