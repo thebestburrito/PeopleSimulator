@@ -86,10 +86,16 @@ List<Place> places = new ArrayList<Place>();
 
     public void cycleDay()
     {
+        int peopleLvl = population;
         time.incrementTime();
         findTheLove(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * population)));
         //hey folks put your daily methods in here
-        addPerson(people.get((int)(Math.random()*population)), people.get((int)(Math.random()*population)));
+        for(int i = 0; i < peopleLvl; i++){
+            int chance = (int)(Math.random()*peopleLvl);
+            if(chance < peopleLvl*.012){
+                addPerson(people.get((int)(Math.random()*peopleLvl)), people.get((int)(Math.random()*peopleLvl)));
+            }
+        }
         makeDisaster();
     }
 
@@ -174,15 +180,8 @@ List<Place> places = new ArrayList<Place>();
     public void removePeople(int amount, String place){
         for(int i = 0; i < amount; i++){
             int index = (int)(Math.random()*population);
-            for(int j = 0; j < places.size(); j++){
-                if(people.get(index).getPlace() == place){
-                    people.get(index).markAsDeceased();
-                    population--;
-                }
-                else{
-                    index = (int)(Math.random()*population);
-                }
-            }
+            people.get(index).markAsDeceased();
+            population--;
         }
     }
     //Disaster Variable to Show Disaster
