@@ -4,17 +4,18 @@ class Main {
 
 
 
-		Society peopleTown = new Society(50);
+		Society peopleTown = new Society(10);
 
-      for(int i = 0; i < 50; i++) {
+      for(int i = 0; i < 10; i++) {
 
         peopleTown.cycleDay();
         //Write your print/tests in here if your feature should happen on a dialy basis
-            System.out.println(peopleTown.people.get(i).getName() + " age = " + peopleTown.people.get(i).getAge() + " Depressed = " + peopleTown.people.get(i).getDepressed() + " Optimistic = " + peopleTown.people.get(i).getOptimistic() +" Happiness = " + peopleTown.people.get(i).setHappiness() + "%");
+
+            System.out.println(peopleTown.people.get(i).getName() + " age = " + peopleTown.people.get(i).getAge() + " Depressed = " + peopleTown.people.get(i).getDepressed() + " Optimistic = " + peopleTown.people.get(i).getOptimistic() +" Happiness = " + peopleTown.people.get(i).getHappiness() + "%");
 
 
              System.out.println(" Societal Happiness = " + peopleTown.societalHappiness() +"% ");
-             System.out.println(peopleTown.people.get(i).getFriendCount());
+
       }
 
       for(Person individual : peopleTown.people){

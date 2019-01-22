@@ -28,7 +28,7 @@ class Person {
 		this.age = age;
         this.depressed = Math.random() < 0.15;
         this.optimistic = Math.random() < 0.15;
-        this.happiness = 60;  //start at 60 bc 50 felt too sad for a normal person
+        this.happiness = (int) Math.floor(Math.random() * 10) + 57;  //start around 60 for variation's sake
         this.birthday = birthdate;
         this.gender = gender;
         this.place = place;
@@ -40,8 +40,10 @@ class Person {
             wants.add((int)(Math.random()*10));
         }
         for(int i = 0; i < 10; i++){
-            commonTraits.add((int)(Math.random()*10));
+            commonTraits.add((int)(Math.random()*4));
         }
+        setHappiness();
+
 	}
 
 	public Person() {
@@ -84,7 +86,6 @@ class Person {
         return optimistic;
     }
     public int getHappiness(){
-
         return happiness;
     }
     public int getFriendCount(){
@@ -93,8 +94,7 @@ class Person {
     public void updateFriendCount(){
         friendCount++;
     }
-
-    public int setHappiness(){
+    public void setHappiness(){
         if(depressed == true && age > 11){
             happiness = (int) Math.floor(Math.random() * 30) + 6;
             if(happiness < 10){
@@ -113,8 +113,9 @@ class Person {
         if(married == true){
             happiness += (int) Math.floor(Math.random() * 25) + 5;
         }
-
-       return happiness;
+        if(happiness > 100){
+            happiness = 100;
+        }
     }
     public void changeHappiness(int percentChange){
         percentChange += happiness;
@@ -152,9 +153,9 @@ class Person {
     public void becameFriendsWith(Person friend){
         this.friend = friend;
     }
-    public boolean isFriendsWith(Person friend){
-        if()
-    }
+    //public boolean isFriendsWith(Person friend){
+      //  if()
+   // }
 
     public Person getSpouse(){
         if(spouse != null){
