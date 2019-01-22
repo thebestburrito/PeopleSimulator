@@ -12,7 +12,8 @@ class Person {
     public String place;
     public Person spouse;
     public int thisPopulation;
-    public int yearsMarried;
+    public int daysMarried = 0;
+    public double yearsMarried = 0;
     private ArrayList <Integer> haves = new ArrayList <Integer>();
     private ArrayList <Integer> wants = new ArrayList <Integer>();
     private boolean married = false;
@@ -102,7 +103,7 @@ class Person {
        return happiness;
     }
     public void changeHappiness(int percentChange){
-        percentChange += happiness;
+        happiness += percentChange;
     }
     public String getGender(){
         return gender;
@@ -115,12 +116,17 @@ class Person {
         return birthday;
     }
 
-    public int getYearsMarried(){
-        return yearsMarried;
+    public double getYearsMarried(){
+        return Math.floor((this.getDaysMarried()) / 365);
     }
 
-    public void addYearMarried(){
-        yearsMarried ++;
+
+    public int getDaysMarried(){
+        return daysMarried/2;       //returns days married (taking half of the number makes it way easier for me lol)
+    }
+
+    public void addDayMarried(){    //adds 1 to days married
+       daysMarried ++;
     }
 
     public ArrayList <Integer> getHaves(){
@@ -131,12 +137,21 @@ class Person {
     }
 
     public boolean isMarried(){
-        return married;
+        if(this.spouse != null){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public void gotMarriedTo(Person spouse){  //this is pretty cool, it sets a person as an attribute of spouse of a person
-        spouse.married = true;
         this.spouse = spouse;
+        this.spouse.married = true;
+    }
+
+    public void gotDivorcedFrom(Person spouse){  //this is pretty sad :(, it divorces people and sets their spouse to nothingness...
+        this.spouse.married = false;
+        this.spouse = null;
     }
 
     public Person getSpouse(){    //gets spouse if there is spoud. if not, then they are lonely (null)

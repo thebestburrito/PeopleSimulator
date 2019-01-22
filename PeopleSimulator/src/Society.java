@@ -3,6 +3,7 @@ import java.util.*;
 class Society {
  ArrayList < Person > people = new ArrayList < Person > ();
 ArrayList<Place> places = new ArrayList<Place>();
+ArrayList<Person> couples = new ArrayList<Person>();
  public Time time = new Time(1, 1, 0, 0);
  public int population;
  public int totalPopulation;
@@ -79,6 +80,7 @@ public int societalHappiness(){
   String fullName;
   String gender;
   String id;
+
   for(int i = 0; i < 5; i++){
             places.add(new Place(lastNames[(int)(Math.random()*lastNames.length)]+placeNames[(int)(Math.random()*placeNames.length)]));
         }
@@ -98,6 +100,7 @@ public int societalHappiness(){
  public void cycleDay() {
     time.incrementTime();
     findTheLove(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * population)));
+    effectsOfMarriage();
  }
 
 
@@ -144,12 +147,12 @@ public int societalHappiness(){
   return x;
  }
 
- //takes parameters of two people
+ //takes parameters of two people   ----->  Every day, there is a 7 percent chance of someone finding a spouse ...
  public void findTheLove(Person a, Person b) {
   double loveA = 0;
   double loveB = 0;
   double compatibility = 0;
-  if(a.getPlace().equals(b.getPlace()) && !a.isMarried() && !b.isMarried() && a.getHappiness() >  15 && b.getHappiness() > 15){ //makes sure they are in the same place and not married already
+  if(a.getPlace().equals(b.getPlace()) && !a.isMarried() && !b.isMarried() && a.getHappiness() >  40 && b.getHappiness() > 40 && a != b){ //makes sure they are in the same place, not married already, have a high enough happiness, and are not the same person
       if (a.getAge() > 18 && b.getAge() > 18) {               //makes sure they're at least 18 ;)
     for (int i = 0; i < a.getHaves().size(); i++) {
      if (a.getWants().get(i) == b.getHaves().get(i)) {      //compares their haves and wants they were born with to find love
@@ -174,12 +177,27 @@ public int societalHappiness(){
   }
   }
 
-public void effectsOfMarriage(){
+public void effectsOfMarriage(){                      //uh oh :O
     Person currentPerson;
-    for(int i = 0; i < this.population; i++){
+    Person currentSpouse;
+    for(int i = 0; i < this.population; i++){               //runs through population
         currentPerson = this.people.get(i);
-        if(currentPerson.isMarried()){
-            currentPerson.addYearMarried();
+        currentSpouse = this.people.get(i).getSpouse();
+        if(currentPerson.isMarried() && !this.couples.contains(currentPerson) && !this.couples.contains(currentSpouse)){        //if they're married and not counted as a couple yet then count them as a couple and add a day to their marriage
+            this.couples.add(currentPerson);
+            this.couples.add(currentSpouse);
+            currentPerson.addDayMarried();
+            currentSpouse.addDayMarried();
+        }else if(currentPerson.isMarried() && this.couples.contains(currentPerson)){                    //if they are already a couple add another day
+            currentPerson.addDayMarried();
+            currentSpouse.addDayMarried();
+            if(currentPerson.getYearsMarried() > 0 && currentPerson.getDaysMarried() % 365 == 0){                    //if they made it a year, make them less happy
+                currentPerson.changeHappiness(-2);
+                if(currentPerson.getHappiness() < 20 || currentSpouse.getHappiness() < 20 && currentPerson.getYearsMarried() != 20){    // as years go by, happiness decreases... if it gets to be too low... well you get the point
+                    currentPerson.gotDivorcedFrom(currentSpouse);
+                    currentSpouse.gotDivorcedFrom(currentPerson);
+                }
+            }
         }
     }
 }
