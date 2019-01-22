@@ -88,7 +88,7 @@ List<Place> places = new ArrayList<Place>();
     {
         int peopleLvl = population;
         time.incrementTime();
-        findTheLove(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * population)));
+        findTheLove(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * peopleLvl)));
         //hey folks put your daily methods in here
         for(int i = 0; i < peopleLvl; i++){
             int chance = (int)(Math.random()*peopleLvl);

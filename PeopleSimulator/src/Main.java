@@ -13,6 +13,7 @@ class Main {
         //Shows Population
         System.out.println(peopleTown.population);
         //Write your print/tests in here if your feature should happen on a dialy basis
+        System.out.println("Day: " + i);
       }
 
     //   for(Person individual : peopleTown.people){
