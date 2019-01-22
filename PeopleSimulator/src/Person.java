@@ -149,8 +149,11 @@ class Person {
         married = true;
         this.spouse = spouse;
     }
-    public void isFriendsWith(Person friend){
+    public void becameFriendsWith(Person friend){
         this.friend = friend;
+    }
+    public boolean isFriendsWith(Person friend){
+        if()
     }
 
     public Person getSpouse(){

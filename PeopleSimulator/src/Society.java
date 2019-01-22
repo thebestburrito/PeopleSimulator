@@ -176,6 +176,7 @@ public int societalHappiness(){
     double friendshipB = 0;
     double friendship = 0;
     for(int j = 0; j < population; j++){
+        if(a != b && b != a){
         if(a.getAge()-b.getAge() < 10 || b.getAge()-a.getAge() < 10){
             for(int i = 0; i < a.getCommonTraits().size(); i++){
                 if(a.getCommonTraits().get(i) == b.getCommonTraits().get(i)){
@@ -193,16 +194,20 @@ public int societalHappiness(){
                 friendship = (friendshipA + friendshipB) / 2;
             }
             if(friendship >= 2){
-                a.isFriendsWith(b);
-                b.isFriendsWith(a);
-            }
+                a.becameFriendsWith(b);
+                b.becameFriendsWith(a);
 
+            }
         }
 
-    }
-
+            }
 
   }
+
+  }
+
+
+
 
 
     public int populationOf(Society society,String PlaceName){

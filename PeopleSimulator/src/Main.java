@@ -14,18 +14,18 @@ class Main {
 
 
              System.out.println(" Societal Happiness = " + peopleTown.societalHappiness() +"% ");
-
+             System.out.println(peopleTown.people.get(i).getFriendCount());
       }
 
       for(Person individual : peopleTown.people){
           //This is a test of the people who got married
-          if(individual.getSpouse() != null){
-              System.out.println(individual.getName() + " married to " + individual.getSpouse().getName() );
-              System.out.println(individual.getSpouse().getName() + " is married to " + individual.getName());
-          }
+        //   if(individual.getSpouse() != null){
+        //       System.out.println(individual.getName() + " married to " + individual.getSpouse().getName() );
+        //       System.out.println(individual.getSpouse().getName() + " is married to " + individual.getName());
+        //   }
           if(individual.getFriend() != null){
               System.out.println(individual.getName() + " is friends with " + individual.getFriend().getName());
-             
+
           }
 
 
