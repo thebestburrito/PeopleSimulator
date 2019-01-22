@@ -11,7 +11,18 @@ List<Place> places = new ArrayList<Place>();
     private String[] lastNames = {"Hill","Carson","Ware","McMahon","Murray","Smith","Jones","Robinson","Morris","Brown","Meyers","Reed","Schmidt","Estrada","Huang","Patel","Gupta","Gomez","Ramirez","Thomas","Jordan","Samson","Samuels","Evans","Butts","Wright","Black","White"};
     private String[] placeNames = {"burg", "ton", "burgh", "town", " City", "ville", " Center"," Lake", "wood","ford","land","house","hill","bridge"," Creek", "boro"};
 
-Society(int numPeople) {
+public int societalHappiness(){
+    int totalHappiness = 0;
+    int averageHappiness = 0;
+    for(int i = 0; i < population; i++){
+        totalHappiness += people.get(i).getHappiness();
+        averageHappiness = (int) Math.floor(totalHappiness / population);
+    }
+    return averageHappiness;
+}
+
+
+ Society(int numPeople) {
   population = numPeople;
   String fullName;
   String gender;
@@ -36,8 +47,8 @@ public void cycleDay()
         //hey folks put your daily methods in here
         addPerson(people.get((int)(Math.random()*population)), people.get((int)(Math.random()*population)));
         for(Person peep : people){
-            peep.acct.earnDailyIncome((int)(Math.random()*100));
-            //System.out.println(peep.getName());
+            peep.acct.earnDailyIncome(peep.calcIncome()); //gains a daily income from the calcIncome method per day
+
         }
         findTheLove(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * population)));
     }
@@ -66,7 +77,7 @@ public void cycleDay()
    population++;
    people.add(new Person(0, fullName, gender, time.getDayCount(),p1.getPlace()));
    //System.out.println(p1.getName() + " and " + p2.getName() + " had...");
-  // System.out.println(fullName + " born on " + time.dateToString());
+   //System.out.println(fullName + " born on " + time.dateToString());
     }
  }
 
@@ -120,7 +131,7 @@ public void cycleDay()
             placedata.add(society.people.get(count).getPlace());
         }
         int occurances = Collections.frequency(placedata, PlaceName);
-        System.out.println("Population for "+PlaceName+":"+occurances);
+       // System.out.println("Population for "+PlaceName+":"+occurances);
 
         //empty the placedata array every time.
         placedata.clear();
