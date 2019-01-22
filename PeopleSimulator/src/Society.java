@@ -91,9 +91,11 @@ List<Place> places = new ArrayList<Place>();
         findTheLove(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * population)));
         //hey folks put your daily methods in here
         for(int i = 0; i < peopleLvl; i++){
-            int chance = (int)(Math.random()*peopleLvl);
-            if(chance < peopleLvl*.012){
-                addPerson(people.get((int)(Math.random()*peopleLvl)), people.get((int)(Math.random()*peopleLvl)));
+            for(int j = 0; i < peopleLvl; j++){
+                int chance = (int)(Math.random()*peopleLvl);
+                if(chance < peopleLvl*.012){
+                    addPerson(people.get(i), people.get(j));
+                }
             }
         }
         makeDisaster();
