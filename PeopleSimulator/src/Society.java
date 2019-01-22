@@ -94,7 +94,7 @@ List<Place> places = new ArrayList<Place>();
             int chance = (int)(Math.random()*peopleLvl);
             int num1 = (int)(Math.random()*peopleLvl);
             int num2 = (int)(Math.random()*peopleLvl);
-            if((chance < peopleLvl*.012) && (num1 != num2)){
+            if((chance < peopleLvl*.005) && (num1 != num2)){
                 addPerson(people.get(num1), people.get(num2));
             }
         }
