@@ -171,17 +171,25 @@ List<Place> places = new ArrayList<Place>();
   }
 
     //Removes people
-    public void removePeople(int amount){
+    public void removePeople(int amount, String place){
         for(int i = 0; i < amount; i++){
             int index = (int)(Math.random()*population);
-            people.get(index).markAsDeceased();
-            population--;
+            for(int j = 0; j < places.size(); j++){
+                if(people.get(index).getPlace() == place){
+                    people.get(index).markAsDeceased();
+                    population--;
+                }
+                else{
+                    index = (int)(Math.random()*population);
+                }
+            }
         }
     }
     //Disaster Variable to Show Disaster
     String disaster = "none";
     //Creates and changes weather
     public void makeDisaster(){
+        String thePlace = (places.get((int)Math.random()* places.size()).getPlace());
         int change = 0;
        //Disasters {"tornado", "hurricane", "flood", "earthquake", "tsunami", "wildfires"};
 
@@ -197,17 +205,17 @@ List<Place> places = new ArrayList<Place>();
             int level = (int)(Math.random()*3);
             int kill = (int)(Math.random()*6);
             if(level == 0){
-                removePeople(kill);
+                removePeople(kill, thePlace);
                 disaster = "small tornado";
                 change = 1;
             }
             else if(level == 1){
-                removePeople(kill * 2);
+                removePeople(kill * 2, thePlace);
                 disaster = "medium tornado";
                 change = 1;
             }
             else{
-                removePeople(kill * 3);
+                removePeople(kill * 3, thePlace);
                 disaster = "large tornado";
                 change = 1;
             }
@@ -224,7 +232,7 @@ List<Place> places = new ArrayList<Place>();
         if(hurIndex >= 400){
             int level = (int)((Math.random()*5) + 1);
             int amount = (int)(Math.random()*4) * level;
-            removePeople(amount);
+            removePeople(amount, thePlace);
             disaster = "hurricane, level: " + level;
             change = 1;
         }
@@ -242,7 +250,7 @@ List<Place> places = new ArrayList<Place>();
         }
         if(floIndex >= 399){
             int amount = (int)(Math.random()*6);
-            removePeople(amount);
+            removePeople(amount, thePlace);
             disaster = "flood";
             change = 1;
         }
@@ -274,7 +282,7 @@ List<Place> places = new ArrayList<Place>();
         if(earIndex >= 1999){
             int levelAmount = (int)(Math.random()*6);
             int amount = levelAmount * killLevel;
-            removePeople(amount);
+            removePeople(amount, thePlace);
             disaster = "earthquake, level: " + level;
             change = 1;
         }
@@ -283,7 +291,7 @@ List<Place> places = new ArrayList<Place>();
         int tsuIndex = (int)(Math.random()*200);
         if(tsuIndex >= 199){
             int amount = (int)(Math.random()*40);
-            removePeople(amount);
+            removePeople(amount, thePlace);
             disaster = "tsunami";
             change = 1;
         }
@@ -298,7 +306,7 @@ List<Place> places = new ArrayList<Place>();
         }
         if(wilIndex >= 349){
             int amount = (int)(Math.random()*13);
-            removePeople(amount);
+            removePeople(amount, thePlace);
             disaster = "wildfire";
             change = 1;
         }
