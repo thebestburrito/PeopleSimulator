@@ -110,6 +110,7 @@ class Person {
         if(income > 58000 && age > 20){
             happiness += (int) Math.floor(Math.random() * 15);
         }
+        
         if(married == true){
             happiness += (int) Math.floor(Math.random() * 25) + 5;
         }
