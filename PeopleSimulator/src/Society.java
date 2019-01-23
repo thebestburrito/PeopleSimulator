@@ -92,6 +92,7 @@ class Society {
 
   }
 
+
     //for generating a bell curve for various aspects of the people in the society such as IQ
     public static long bellCurve(int mean, int sd) {
         int i = mean - (3 * sd);
@@ -277,6 +278,49 @@ class Society {
     public String getDisaster(){
         return disaster;
     }
+
+
+    public void giveFriends(Person a, Person b){
+        double friendshipA = 0;
+        double friendshipB = 0;
+        double friendship = 0;
+        for(int j = 0; j < population; j++){
+            if(a != b){
+            if(a.getAge()-b.getAge() < 10 || b.getAge()-a.getAge() < 10){
+                for(int i = 0; i < a.getCommonTraits().size(); i++){
+                    if(a.getCommonTraits().get(i) == b.getCommonTraits().get(i)){
+                        friendshipA++;
+                    }
+                    if(b.getCommonTraits().get(i) == a.getCommonTraits().get(i)){
+                        friendshipB++;
+                    }
+                }
+                if(friendshipB == 0 || friendshipA == 0){
+                    friendship = 0;
+                } else if(friendshipA == 0 || friendshipB == 0){
+                    friendship = 0;
+                } else {
+                    friendship = (friendshipA + friendshipB) / 2;
+                }
+                if(friendship >= 2){
+                    a.becameFriendsWith(b);
+                    b.becameFriendsWith(a);
+                }
+            }
+        }
+    }
+  }
+
+  public int societalHappiness(){
+    int totalHappiness = 0;
+    int averageHappiness = 0;
+    for(int i = 0; i < population; i++){
+        totalHappiness += people.get(i).getHappiness();
+        averageHappiness = (int) Math.floor(totalHappiness / population);
+    }
+    return averageHappiness;
+}
+
 
     public int populationOf(Society society,String PlaceName){
         ArrayList<String> placedata = new ArrayList<String>();
