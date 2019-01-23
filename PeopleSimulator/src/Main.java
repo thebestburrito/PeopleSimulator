@@ -10,7 +10,7 @@ class Main {
                 //Shows Disater news report
                 System.out.println(peopleTown.getDisaster() + " on " + peopleTown.time.dateToString());
             }
-            if(true){
+            if(false){
                 //Jared and Sophia's Societal Happiness
                 System.out.println(" Societal Happiness = " + peopleTown.societalHappiness() +"% on "+ peopleTown.time.dateToString());
             }
@@ -22,6 +22,9 @@ class Main {
             if(individual.getSpouse() != null){
                 System.out.println(individual.getName() + " married to " + individual.getSpouse().getName() );
                 System.out.println(individual.getSpouse().getName() + " is married to " + individual.getName());
+            }
+            if(individual.getSpouse() == null && individual.getAge() > 10){
+              System.out.println(individual.getName() + " got divorced " + individual.getNumOfTimesDivorced() + " time(s) because their happiness (or sometimes their spouse's) dropped to " + individual.getHappiness());
             }
 
             //Justin & Drew's income calculated on the bell curve... maybe too many poor people
