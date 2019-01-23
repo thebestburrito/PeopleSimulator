@@ -1,9 +1,16 @@
 class Main {
 	public static void main(String[] args) {
         Society peopleTown = new Society(1000);
-        for(int i = 0; i < 1000; i++) {
+         for(int i = 0; i < 1000; i++) {
             peopleTown.cycleDay();
             //Write your print/tests in here if your feature should happen on a dialy basis
+
+            if(!peopleTown.getDisaster().equals("none")){
+                int preDisasterPop = peopleTown.population;
+                //Shows Disater news report
+                System.out.println(peopleTown.getDisaster() + " on " + peopleTown.time.dateToString());
+            }
+
         }
 
         for(Person individual : peopleTown.people){
@@ -25,3 +32,5 @@ class Main {
     }
 
 }
+
+

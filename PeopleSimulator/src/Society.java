@@ -16,60 +16,81 @@ class Society {
         "burg", "ton", "burgh", "town", " City", "ville", " Center", " Lake", "wood", "ford", "land", "house", "hill", "bridge", " Creek", "boro"
     };
 
-    Society(int numPeople) {
-        population = numPeople;
-        String fullName;
+	//these names came from https://nameberry.com/unisex-names
+	Society(int numPeople){
+		population = numPeople;
+		String fullName;
         String gender;
-        for(int i = 0; i < 5; i++){
-            places.add(new Place(lastNames[(int)(Math.random()*lastNames.length)]+placeNames[(int)(Math.random()*placeNames.length)]));
-        }
-
-        for (int i = 0; i < numPeople; i++) {
-            fullName = firstNames[(int)(Math.random() * firstNames.length)] + " " + lastNames[(int)(Math.random() * lastNames.length)];
-            int randomIndex = (int)(Math.random() * 2);
-            if (randomIndex >= 1) {
+		for(int i = 0; i < numPeople; i++){
+			fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastNames[(int)(Math.random()*lastNames.length)];
+			int randomIndex = (int)(Math.random()*2);
+            if(randomIndex >= 1){
                 gender = "female";
-            } else {
+            }
+            else{
                 gender = "male";
             }
-            people.add(new Person((int)(Math.random()*100),fullName,gender,time.getDayCount(), places.get((int) (Math.random()*places.size())).getPlace()));
-        }
-    }
+            for(int j = 0; j < 5; j++){
+            places.add(new Place(lastNames[(int)(Math.random()*lastNames.length)]+placeNames[(int)(Math.random()*placeNames.length)]));
+            }
+            people.add(new Person((int)(Math.random()*100),fullName, gender,time.getDayCount(), places.get((int)(Math.random()*places.size())).getPlace(), "unknown", "unknown"));
+		}
+	}
 
-    public void cycleDay() {
+    public void cycleDay()
+    {
+        int peopleLvl = population;
         time.incrementTime();
-
-        //Logan's mating and wedlock method running every day
-        findTheLove(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * population)));
+        findTheLove(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * peopleLvl)));
+        //hey folks put your daily methods in here
+        for(int i = 0; i < peopleLvl; i++){
+            int chance = (int)(Math.random()*peopleLvl);
+            int num1 = (int)(Math.random()*peopleLvl);
+            int num2 = (int)(Math.random()*peopleLvl);
+            if(people.get(num1).getSpouse() == people.get(num2)){
+                chance-= peopleLvl*.05;
+            }
+            if((chance < peopleLvl*.005) && (num1 != num2)){
+                addPerson(people.get(num1), people.get(num2));
+            }
+        }
+        makeDisaster();
     }
 
-
-
-
-    public void addPerson(Person p1, Person p2) {
+    //Makes new person
+    public void addPerson(Person p1, Person p2){
         String lastName;
         String gender;
-        if ((p1.getGender() == "female" && p2.getGender() == "male") || (p1.getGender() == "male" && p2.getGender() == "female")) {
-            if (p1.getGender().equals("male")) {
-                String name = p1.getName();
-                int space = name.indexOf(" ") + 1;
-                lastName = name.substring(space, name.length());
-            } else {
-                String name = p2.getName();
-                int space = name.indexOf(" ") + 1;
-                lastName = name.substring(space, name.length());
-            }
-            int randomIndex = (int)(Math.random() * 2);
-            if (randomIndex >= 1) {
-                gender = "female";
-            } else {
-                gender = "male";
-            }
-            String fullName = firstNames[(int)(Math.random() * firstNames.length)] + " " + lastName;
-            population++;
-            people.add(new Person(0, fullName, gender, time.getDayCount(),p1.getPlace()));
+        //Make sure hetro and not dead
+        if(((p1.getGender() == "female" && p2.getGender() == "male")||(p1.getGender() == "male" && p2.getGender() == "female"))&&(p1.isDead() == false)&&(p2.isDead() == false)){
+        //Gets last name
+        if(p1.getGender().equals("male")){
+            String name = p1.getName();
+            int space = name.indexOf(" ") + 1;
+            lastName = name.substring(space, name.length());
         }
-    }
+        else{
+            String name = p2.getName();
+            int space = name.indexOf(" ") + 1;
+            lastName = name.substring(space, name.length());
+        }
+        //Sets gender
+        int randomIndex = (int)(Math.random()*2);
+            if(randomIndex >= 1){
+            gender = "female";
+            }
+            else{
+            gender = "male";
+            }
+        //Makes and adds the person to the array
+        String fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastName;
+        population++;
+        people.add(new Person(0, fullName, gender,time.getDayCount(), places.get((int) (Math.random()*places.size())).getPlace(), p1.getName(), p2.getName()));
+        }
+
+  //Start
+
+  }
 
     //for generating a bell curve for various aspects of the people in the society such as IQ
     public static long bellCurve(int mean, int sd) {
@@ -111,6 +132,150 @@ class Society {
                 b.gotMarriedTo(a);
             }
         }
+    }
+
+    //Removes people
+    public void removePeople(int amount, String place){
+        for(int i = 0; i < amount; i++){
+            int index = (int)(Math.random()*population);
+            people.get(index).markAsDeceased();
+            population--;
+        }
+    }
+    //Disaster Variable to Show Disaster
+    String disaster = "none";
+    //Creates and changes weather
+    public void makeDisaster(){
+        String thePlace = (places.get((int)(Math.random()* places.size())).getPlace());
+        int change = 0;
+       //Disasters {"tornado", "hurricane", "flood", "earthquake", "tsunami", "wildfires"};
+
+        //Tornado Chance Maker
+        int torIndex = (int)(Math.random()*400);
+        if(time.getSeason().equals("spring")){
+            torIndex += 10;
+        }
+        else if(time.getSeason().equals("summer")){
+            torIndex += 5;
+        }
+        if(torIndex >= 399){
+            int level = (int)(Math.random()*3);
+            int kill = (int)(Math.random()*6);
+            if(level == 0){
+                removePeople(kill, thePlace);
+                disaster = "small tornado, killed: " + kill + " in " + thePlace;
+                change = 1;
+            }
+            else if(level == 1){
+                removePeople(kill * 2, thePlace);
+                disaster = "medium tornado, killed: " + kill * 2 + " in " + thePlace;;
+                change = 1;
+            }
+            else{
+                removePeople(kill * 3, thePlace);
+                disaster = "large tornado, killed: " + kill * 3 + " in " + thePlace;;
+                change = 1;
+            }
+        }
+
+        //Hurricane Chance Maker
+        int hurIndex = (int)(Math.random()*400);
+        if(time.getSeason().equals("fall")){
+            hurIndex += 10;
+        }
+        else if(time.getSeason().equals("summer")){
+            hurIndex += 5;
+        }
+        if(hurIndex >= 400){
+            int level = (int)((Math.random()*5) + 1);
+            int amount = (int)(Math.random()*4) * level;
+            removePeople(amount, thePlace);
+            disaster = "hurricane, level: " + level + ", killed: " + amount  + " in " + thePlace;;
+            change = 1;
+        }
+
+        //Flood Chance Maker
+        int floIndex = (int)(Math.random()*400);
+        if(time.getSeason().equals("spring")){
+            floIndex += 10;
+        }
+        else if(time.getSeason().equals("summer")){
+            floIndex += 5;
+        }
+        else if(time.getSeason().equals("fall")){
+            floIndex += 5;
+        }
+        if(floIndex >= 399){
+            int amount = (int)(Math.random()*6);
+            removePeople(amount, thePlace);
+            disaster = "flood, killed: " + amount  + " in " + thePlace;;
+            change = 1;
+        }
+
+        //Earthquake Chance Maker
+        int earIndex = (int)(Math.random()*2000);
+        double level = Math.round(((Math.random()*6) + 2.5) * 100D) / 100D;
+        int killLevel = 0;
+        if(level >= 8){
+            earIndex += 0;
+            killLevel = 100;
+        }
+        else if(level >= 7 && level < 8){
+            earIndex += 10;
+            killLevel = 10;
+        }
+        else if(level >= 6 && level < 7){
+            earIndex += 50;
+            killLevel = 2;
+        }
+        else if(level >= 5 && level < 6){
+            earIndex += 250;
+            killLevel = 1;
+        }
+        else if(level < 5){
+            earIndex -= 2000;
+            killLevel = 0;
+        }
+        if(earIndex >= 1999){
+            int levelAmount = (int)(Math.random()*6);
+            int amount = levelAmount * killLevel;
+            removePeople(amount, thePlace);
+            disaster = "earthquake, level: " + level + ", killed: " + amount  + " in " + thePlace;;
+            change = 1;
+        }
+
+        //Tsunami Chance Maker
+        int tsuIndex = (int)(Math.random()*200);
+        if(tsuIndex >= 199){
+            int amount = (int)(Math.random()*40);
+            removePeople(amount, thePlace);
+            disaster = "tsunami, killed: " + amount  + " in " + thePlace;;
+            change = 1;
+        }
+
+        //Wildfire Chnace Maker
+        int wilIndex = (int)(Math.random()*350);
+        if(time.getSeason().equals("spring")){
+            wilIndex += 10;
+        }
+        else if(time.getSeason().equals("fall")){
+            wilIndex += 5;
+        }
+        if(wilIndex >= 349){
+            int amount = (int)(Math.random()*13);
+            removePeople(amount, thePlace);
+            disaster = "wildfire, killed: " + amount  + " in " + thePlace;;
+            change = 1;
+        }
+
+        //Makes it nothing if there is no disaster
+        if(change == 0){
+            disaster = "none";
+        }
+    }
+
+    public String getDisaster(){
+        return disaster;
     }
 
     public int populationOf(Society society,String PlaceName){

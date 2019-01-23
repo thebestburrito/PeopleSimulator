@@ -28,28 +28,53 @@ class Time {
         day++;
         dayCount++;
     }
-    private void incrementMonth() {
-        month++;
-        day = 1;
-    }
-    private void incrementYear() {
-        year++;
-        month = 1;
-        day = 1;
-    }
-    public int getDay() {
-        return day;
-    }
-    public int getMonth() {
-        return month;
-    }
-    public int getYear() {
-        return year;
-    }
-    public int getDayCount() {
-        return dayCount;
-    }
-    public String dateToString() {
-        return (month+"/"+day+"/"+year);
-    }
+  
+
+ private void incrementMonth()
+ {
+     month++;
+     day = 1;
+ }
+ private void incrementYear()
+ {
+     year++;
+     month = 1;
+     day = 1;
+ }
+ public int getDay()
+ {
+     return day;
+ }
+ public int getMonth()
+ {
+     return month;
+ }
+ public int getYear()
+ {
+     return year;
+ }
+ public int getDayCount()
+ {
+     return dayCount;
+ }
+ public String dateToString()
+ {
+     return (month+"/"+day+"/"+year);
+ }
+
+ public String getSeason(){
+     if(month == 12 || month == 1 || month == 2){
+         return "winter";
+     }
+     else if(month == 3 || month == 4 || month == 5){
+         return "spring";
+     }
+     else if(month == 6 || month == 7 || month == 8){
+         return "summer";
+     }
+     else{
+         return "fall";
+     }
+ }
 }
+
