@@ -195,7 +195,7 @@ public void effectsOfMarriage(){                      //uh oh :O
                 if(Math.random()*10 > 5 && currentPerson.getYearsMarried() != 40){                                                               // 50% chance they will be more happy as the year passes.... 50% chance they will be sadder
                     currentPerson.changeHappiness(5);
                 }else{
-                    currentPerson.changeHappiness(-5);
+                    currentPerson.changeHappiness(-6);
                 }
                 if(currentPerson.getHappiness() < 20 || currentSpouse.getHappiness() < 20 && currentPerson.getYearsMarried() != 40){    // as years go by, happiness decreases... if it gets to be too low... well you get the point
                     currentPerson.gotDivorcedFrom(currentSpouse);
