@@ -34,7 +34,9 @@ class Person {
     public int income = bellCurve(53719,30000);
     public int points = 0;
     public int mill = bellCurve(50,25);
-
+    public Person friend;
+    private ArrayList <Integer> commonTraits = new ArrayList <Integer>();
+    private int friendCount;
 
 	public Person(int age, String name,String gender,int birthdate,String place, String parent1, String parent2) {
             this.name = name;
@@ -54,6 +56,10 @@ class Person {
                 haves.add((int)(Math.random()*10));
                 wants.add((int)(Math.random()*10));
             }
+            for(int i = 0; i < 10; i++){
+                commonTraits.add((int)(Math.random()*4));
+            }
+        setHappiness();
 	}
 
 
@@ -92,11 +98,15 @@ class Person {
     }
 
     public int getHappiness(){
-        //change these to while loops later when we merge if you can
         return happiness;
     }
-
-    public int setHappiness(){
+    public int getFriendCount(){
+        return friendCount;
+    }
+    public void updateFriendCount(){
+        friendCount++;
+    }
+    public void setHappiness(){
         if(depressed == true && age > 11){
             happiness = (int) Math.floor(Math.random() * 30) + 6;
             if(happiness < 10){
@@ -112,10 +122,13 @@ class Person {
         if(income > 58000 && age > 20){
             happiness += (int) Math.floor(Math.random() * 15);
         }
+
         if(married == true){
             happiness += (int) Math.floor(Math.random() * 25) + 5;
         }
-        return happiness;
+        if(happiness > 100){
+            happiness = 100;
+        }
     }
 
     public void changeHappiness(int percentChange) {
@@ -137,6 +150,10 @@ class Person {
     public ArrayList <Integer> getWants() {
         return wants;
     }
+    public ArrayList <Integer> getCommonTraits(){
+        return commonTraits;
+    }
+
 
     public boolean isDead(){
 		return deceased;
@@ -169,11 +186,24 @@ class Person {
         married = true;
         this.spouse = spouse;
     }
+    public void becameFriendsWith(Person friend){
+        this.friend = friend;
+    }
+    //public boolean isFriendsWith(Person friend){
+      //  if()
+   // }
 
     public Person getSpouse() {
         if(spouse != null){
             return spouse;
         } else {
+            return null;
+        }
+    }
+    public Person getFriend(){
+        if(friend != null){
+            return friend;
+        }else{
             return null;
         }
     }
