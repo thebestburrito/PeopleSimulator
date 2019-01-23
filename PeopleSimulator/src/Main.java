@@ -6,8 +6,7 @@ class Main {
             //Write your print/tests in here if your feature should happen on a dialy basis
 
             if(!peopleTown.getDisaster().equals("none")){
-                int preDisasterPop = peopleTown.population;
-                //Shows Disater news report
+                //Aidan's Disaster method Shows Disaster news report
                 System.out.println(peopleTown.getDisaster() + " on " + peopleTown.time.dateToString());
             }
 
