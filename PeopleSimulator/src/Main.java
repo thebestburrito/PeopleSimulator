@@ -1,44 +1,58 @@
 class Main {
 	public static void main(String[] args) {
-        Society peopleTown = new Society(1000);
-         for(int i = 0; i < 1000; i++) {
+        Society peopleTown = new Society(100);
+         for(int i = 0; i < 10000; i++) {
             peopleTown.cycleDay();
             //Write your print/tests in here if your feature should happen on a dialy basis
-
+            p(peopleTown.time.dateToString());
             if(!peopleTown.getDisaster().equals("none")){
-                int preDisasterPop = peopleTown.population;
                 //Shows Disater news report
-                System.out.println(peopleTown.getDisaster() + " on " + peopleTown.time.dateToString());
+                //p(peopleTown.getDisaster() + " on " + peopleTown.time.dateToString());
             }
             if(false){
                 //Jared and Sophia's Societal Happiness
-                System.out.println(" Societal Happiness = " + peopleTown.societalHappiness() +"% on "+ peopleTown.time.dateToString());
+                p(" Societal Happiness = " + peopleTown.societalHappiness() +"% on "+ peopleTown.time.dateToString());
+            }
+            for(Person individual : peopleTown.people){
+                //Logan's mating and wedlock methods
+
+                if(individual.spouse != null){
+                    p(individual.getName() + " married to " + individual.getSpouse().getName() );
+                    p(individual.getSpouse().getName() + " is married to " + individual.getName());
+                }
+                if(individual.getNumOfTimesDivorced() > 0 && individual.getAge() > 20){
+                    p(individual.getName() + " got divorced " + individual.getNumOfTimesDivorced() + " time(s) because their happiness (or sometimes their spouse's) dropped to " + individual.getHappiness());
+                }
             }
         }
 
         for(Person individual : peopleTown.people){
-
             //Logan's mating and wedlock methods
             if(individual.getSpouse() != null){
                 System.out.println(individual.getName() + " married to " + individual.getSpouse().getName() );
                 System.out.println(individual.getSpouse().getName() + " is married to " + individual.getName());
             }
-            if(individual.getSpouse() == null && individual.getAge() > 10){
+            if(individual.getNumOfTimesDivorced() > 0 && individual.getAge() > 20){
               System.out.println(individual.getName() + " got divorced " + individual.getNumOfTimesDivorced() + " time(s) because their happiness (or sometimes their spouse's) dropped to " + individual.getHappiness());
             }
 
             //Justin & Drew's income calculated on the bell curve... maybe too many poor people
-            System.out.println(individual.getName() + "'s Income: " + individual.income);
+            if(individual.getAge() >= 20){
+                //System.out.println(individual.getName() + "'s Income: " + individual.income);
+            }
 
             //Fiona's assigning personality numbers based on Dungeouns and Dragons alignments
-            System.out.println(individual.getName() + " has personality number " + individual.getPersonalityNumber() + ", called "+ individual.getPersonalityString() + ". " + "isLawful = " + individual.getPersonalityBoolean("isLawful"));
-            System.out.println(individual.getName() + " has personality number " + individual.getPersonalityNumber() + ", called "+ individual.getPersonalityString() + ". " + "isLawful = " + individual.getPersonalityBoolean("isLawful"));
+            //System.out.println(individual.getName() + " has personality number " + individual.getPersonalityNumber() + ", called "+ individual.getPersonalityString() + ". " + "isLawful = " + individual.getPersonalityBoolean("isLawful"));
+            //System.out.println(individual.getName() + " has personality number " + individual.getPersonalityNumber() + ", called "+ individual.getPersonalityString() + ". " + "isLawful = " + individual.getPersonalityBoolean("isLawful"));
+
 
         }
 
-        //Miranda's Bank Accounts
-        System.out.println(peopleTown.people.get(10).getName() +" Balance = " + peopleTown.people.get(10).acct.getBalance() );        System.out.println(peopleTown.people.get(10).getName() +" Balance = " + peopleTown.people.get(10).acct.getBalance() );
-    }
+	}
+public static void p(String toPrint){
+    System.out.println(toPrint);
+}
+
 
 }
 
