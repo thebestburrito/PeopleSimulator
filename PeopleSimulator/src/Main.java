@@ -6,18 +6,22 @@ class Main {
             //Write your print/tests in here if your feature should happen on a dialy basis
         }
 
-        /* for(Person individual : peopleTown.people){
-            //This is a test of the people who got married
+        for(Person individual : peopleTown.people){
+
+            //Logan's mating and wedlock methods
             if(individual.getSpouse() != null){
                 System.out.println(individual.getName() + " married to " + individual.getSpouse().getName() );
                 System.out.println(individual.getSpouse().getName() + " is married to " + individual.getName());
             }
-            //Write your print/tests below if they involve a property of the people in peopleTown
-            //use individual as it does in the example above
-        } */
 
-        System.out.println(peopleTown.people.get(800).getName() + " has personality number " + peopleTown.people.get(800).getPersonalityNumber() + ", called "+ peopleTown.people.get(800).getPersonalityString() + ". " + "isLawful = " + peopleTown.people.get(800).getPersonalityBoolean("isLawful"));
-        System.out.println(peopleTown.people.get(80).getName() + " has personality number " + peopleTown.people.get(80).getPersonalityNumber() + ", called "+ peopleTown.people.get(80).getPersonalityString() + ". " + "isLawful = " + peopleTown.people.get(80).getPersonalityBoolean("isLawful"));
+            //Justin & Drew's income calculated on the bell curve
+            System.out.println(individual.getName() + "'s Income: " + individual.calcIncome());
+
+            //Fiona's assigning personality numbers based on Dungeouns and Dragons alignments
+            System.out.println(individual.getName() + " has personality number " + individual.getPersonalityNumber() + ", called "+ individual.getPersonalityString() + ". " + "isLawful = " + individual.getPersonalityBoolean("isLawful"));
+            System.out.println(individual.getName() + " has personality number " + individual.getPersonalityNumber() + ", called "+ individual.getPersonalityString() + ". " + "isLawful = " + individual.getPersonalityBoolean("isLawful"));
+
+        }
     }
-    // This is the Places Code- Need help? Ask Brandon, Ian, or read the documentation provided.
+
 }

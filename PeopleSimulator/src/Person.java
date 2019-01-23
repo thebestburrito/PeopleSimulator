@@ -160,15 +160,6 @@ class Person {
 		return x;
     }
 
-    public String getPlace() {
-        return this.place;
-    }
-
-    public String changePlaceTo(String newPlace) {
-        this.place = newPlace;
-        return ("Person " + this.name + "moved to " + newPlace);
-    }
-
     public int getPersonalityNumber() {
         return personalityNumber;
     }
@@ -379,4 +370,74 @@ class Person {
             return 24;
         }
     }
+
+
+    public int calcIQ() {
+        if(Math.random() < 0.4){
+            /* hardWorking */
+            IQ = IQ + 10;
+        } else if (Math.random() < 0.14){
+            /* Temp Education */
+            IQ = IQ - 15;
+        } else if(Math.random() < 0.39){
+            /* Practice an Art */
+            IQ = IQ + 5;
+        } else if(Math.random() < 0.22){
+            /* Exercise */
+            IQ = IQ + 5;
+        } else if(Math.random() < 0.35){
+            /* Has connections/mentors */
+            IQ = IQ + 20;
+        }
+        return IQ;
+    }
+
+    public int calcIncome(){
+        if(age >= 20){
+        if(IQ > 100 && IQ < 115){
+            points = IQ - 100; /* Points above average for average people */
+            if(Math.random() > 0.75){
+                 income = income + (4262 * points);
+            } else if(Math.random() < 0.75){
+                income = income + (2002 * points);
+            }
+        } else if(IQ > 115 && IQ < 130){
+            points = IQ - 100; /* Points above average for smarter than average people */
+            if(Math.random() > 0.75){
+                 income = income + (8362 * points);
+            } else if(Math.random() < 0.75){
+                income = income + (4802 * points);
+            }
+        } else if(IQ > 130){
+            points = IQ - 100; /* Points above average for gifted IQ's */
+            if(Math.random() > .60){
+                income = income + (8066 * points);
+            }
+            income = income + (5956 * points);
+        } else if(IQ < 100){
+            points = 100 - IQ; /* Points below average for dumb people */
+            income = income - (1502 * points);
+        }  else if(mill >= 60){
+            /* Millionare */
+            if(bellCurve(100,25) < 60){
+            income = income + bellCurve(1250000,500000);
+            } else if((bellCurve(100,25) > 60)){
+            income = income + bellCurve(5505000,2500000);
+            }
+        }   //age affecting income
+            }
+            else if(age > 15 && age < 20){
+                income = bellCurve(10000,2000);
+            } else if(age < 15){
+                income = 0;
+            }
+            return Math.abs(income);
+        }
+    public String getPlace(){
+         return this.place;
+     }
+     public String changePlaceTo(String newPlace){
+         this.place = newPlace;
+         return ("Person " + this.name + "moved to " + newPlace);
+     }
 }

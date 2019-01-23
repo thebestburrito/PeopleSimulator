@@ -38,8 +38,12 @@ class Society {
 
     public void cycleDay() {
         time.incrementTime();
+
+        //Logan's mating and wedlock method running every day
         findTheLove(people.get((int)(Math.random() * population)), people.get((int)(Math.random() * population)));
     }
+
+
 
 
     public void addPerson(Person p1, Person p2) {
