@@ -20,6 +20,10 @@ class Person {
     private boolean is2Neutral;     //       |
     private boolean isImpure;       //       |
     private boolean isEvil;         //       V
+    private boolean deceased;
+    //Shows a Persons Parents
+    private String parent1;
+    private String parent2;
     public String place;
     public Person spouse;
     public int thisPopulation;
@@ -31,22 +35,27 @@ class Person {
     public int points = 0;
     public int mill = bellCurve(50,25);
 
-	public Person(int age, String name, String gender, int birthdate, String place) {
-		this.name = name;
-		this.age = age;
-        this.depressed = Math.random() < 0.15;
-        this.optimistic = Math.random() < 0.15;
-        this.happiness = 60;  //start at 60 bc 50 felt too sad for a normal person
-        this.birthday = birthdate;
-        this.gender = gender;
-        this.personalityNumber = generatePersonalityNumber();
-        this.place = place;
-        this.spouse = null;
-        for(int i = 0; i < 10; i++){
-            haves.add((int)(Math.random()*10));
-            wants.add((int)(Math.random()*10));
-        }
+
+	public Person(int age, String name,String gender,int birthdate,String place, String parent1, String parent2) {
+            this.name = name;
+            this.age = age;
+            this.depressed = Math.random() < 0.15;
+            this.optimistic = Math.random() < 0.15;
+            this.happiness = 60;  //start at 60 bc 50 felt too sad for a normal person
+            this.birthday = birthdate;
+            this.gender = gender;
+            this.personalityNumber = generatePersonalityNumber();
+            deceased = false;
+            this.parent1 = parent1;
+            this.parent2 = parent2;
+            this.place = place;
+            this.spouse = null;
+            for(int i = 0; i < 10; i++){
+                haves.add((int)(Math.random()*10));
+                wants.add((int)(Math.random()*10));
+            }
 	}
+
 
 	public boolean olderThan(int otherAge) {
 		if (age > otherAge) {
@@ -129,7 +138,30 @@ class Person {
         return wants;
     }
 
-    public boolean isMarried() {
+    public boolean isDead(){
+		return deceased;
+	}
+
+    public void markAsDeceased(){
+        deceased = true;
+    }
+
+    public String getParent1(){
+        return this.parent1;
+    }
+
+    public String getParent2(){
+        return this.parent2;
+    }
+
+    public void setParent1(String newP){
+        this.parent1 = newP;
+    }
+
+    public void setParent2(String newP){
+        this.parent2 = newP;
+    }
+    public boolean isMarried(){
         return married;
     }
 
