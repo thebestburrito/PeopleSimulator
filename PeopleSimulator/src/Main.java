@@ -10,7 +10,7 @@ class Main {
                 //Shows Disater news report
                 System.out.println(peopleTown.getDisaster() + " on " + peopleTown.time.dateToString());
             }
-            if(true){
+            if(false){
                 //Jared and Sophia's Societal Happiness
                 System.out.println(" Societal Happiness = " + peopleTown.societalHappiness() +"% on "+ peopleTown.time.dateToString());
             }
