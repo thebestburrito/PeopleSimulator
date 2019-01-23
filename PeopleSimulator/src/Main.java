@@ -23,6 +23,9 @@ class Main {
                 System.out.println(individual.getName() + " married to " + individual.getSpouse().getName() );
                 System.out.println(individual.getSpouse().getName() + " is married to " + individual.getName());
             }
+            if(individual.getSpouse() == null && individual.getAge() > 10){
+              System.out.println(individual.getName() + " got divorced " + individual.getNumOfTimesDivorced() + " time(s) because their happiness (or sometimes their spouse's) dropped to " + individual.getHappiness());
+            }
 
             //Justin & Drew's income calculated on the bell curve... maybe too many poor people
             System.out.println(individual.getName() + "'s Income: " + individual.income);

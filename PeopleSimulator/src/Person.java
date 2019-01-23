@@ -28,6 +28,9 @@ class Person {
     public String place;
     public Person spouse;
     public int thisPopulation;
+    public int daysMarried = 0;
+    public double yearsMarried = 0;
+    public int numOfTimesDivorced = 0;
     private ArrayList <Integer> haves = new ArrayList <Integer>();
     private ArrayList <Integer> wants = new ArrayList <Integer>();
     private boolean married = false;
@@ -136,9 +139,8 @@ class Person {
             happiness = 100;
         }
     }
-
-    public void changeHappiness(int percentChange) {
-        percentChange += happiness;
+    public void changeHappiness(int percentChange){
+        happiness += percentChange;
     }
 
     public String getGender() {
@@ -152,7 +154,27 @@ class Person {
         return birthdate;
     }
 
-    public ArrayList <Integer> getHaves() {
+    public double getYearsMarried(){
+        return Math.floor((this.getDaysMarried()) / 365);
+    }
+
+    public int getNumOfTimesDivorced(){
+        return numOfTimesDivorced;
+    }
+
+    public void addTimeDivorced(){
+        numOfTimesDivorced++;
+    }
+
+    public int getDaysMarried(){
+        return daysMarried/2;       //returns days married (taking half of the number makes it way easier for me lol)
+    }
+
+    public void addDayMarried(){    //adds 1 to days married
+       daysMarried ++;
+    }
+
+    public ArrayList <Integer> getHaves(){
         return haves;
     }
 
@@ -188,12 +210,16 @@ class Person {
         this.parent2 = newP;
     }
     public boolean isMarried(){
-        return married;
+        if(this.spouse != null){
+            return true;
+        }else{
+            return false;
+        }
     }
 
-    public void gotMarriedTo(Person spouse) {
-        married = true;
+    public void gotMarriedTo(Person spouse){  //this is pretty cool, it sets a person as an attribute of spouse of a person
         this.spouse = spouse;
+        this.spouse.married = true;
     }
     public void becameFriendsWith(Person friend){
         this.friend = friend;
@@ -202,7 +228,16 @@ class Person {
       //  if()
    // }
 
-    public Person getSpouse() {
+    public void gotDivorcedFrom(Person spouse){  //this is pretty sad :(, it divorces people and sets their spouse to nothingness...
+        this.spouse.married = false;
+        this.spouse.addTimeDivorced();
+        this.spouse.daysMarried = 0;
+        this.spouse.changeHappiness(20);
+        this.spouse = null;
+
+    }
+
+    public Person getSpouse(){    //gets spouse if there is spoud. if not, then they are lonely (null)
         if(spouse != null){
             return spouse;
         } else {
@@ -217,7 +252,9 @@ class Person {
         }
     }
 
-    public static int bellCurve(int mean, int sd) {
+
+     public static int bellCurve(int mean, int sd) {
+		// make nombors gud
 	    int i = mean - (3*sd);
 	    int j = mean + (3*sd);
 		int x = i;
