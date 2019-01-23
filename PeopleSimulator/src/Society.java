@@ -55,6 +55,9 @@ class Society {
             }
         }
         makeDisaster();
+        for(Person peep : people){
+            peep.acct.earnDailyIncome((double)peep.income);
+        }
     }
 
     //Makes new person
@@ -331,6 +334,7 @@ class Society {
         }
         int occurances = Collections.frequency(placedata, PlaceName);
         //System.out.println("Population for "+PlaceName+":"+occurances);
+
         //empty the placedata array every time.
         placedata.clear();
         return occurances;

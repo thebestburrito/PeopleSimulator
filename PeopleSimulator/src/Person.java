@@ -6,7 +6,7 @@ class Person {
     private boolean depressed;
     private boolean optimistic;
     private int happiness;
-    private int birthday;
+    private int birthdate;
     private String gender;
     private int personalityNumber;
     private String personalityString = "";  // What the personality Number is called
@@ -24,6 +24,7 @@ class Person {
     //Shows a Persons Parents
     private String parent1;
     private String parent2;
+    public int idNumber;
     public String place;
     public Person spouse;
     public int thisPopulation;
@@ -31,12 +32,14 @@ class Person {
     private ArrayList <Integer> wants = new ArrayList <Integer>();
     private boolean married = false;
     public int IQ = bellCurve(100,15);
-    public int income = bellCurve(53719,30000);
+    public int income;
     public int points = 0;
     public int mill = bellCurve(50,25);
     public Person friend;
     private ArrayList <Integer> commonTraits = new ArrayList <Integer>();
     private int friendCount;
+    public int idCounter = 0;
+    public BankAccount acct;
 
 	public Person(int age, String name,String gender,int birthdate,String place, String parent1, String parent2) {
             this.name = name;
@@ -44,14 +47,16 @@ class Person {
             this.depressed = Math.random() < 0.15;
             this.optimistic = Math.random() < 0.15;
             this.happiness = 60;  //start at 60 bc 50 felt too sad for a normal person
-            this.birthday = birthdate;
+            this.birthdate = birthdate;
             this.gender = gender;
             this.personalityNumber = generatePersonalityNumber();
-            deceased = false;
+            this.deceased = false;
+            this.income = calcIncome();
             this.parent1 = parent1;
             this.parent2 = parent2;
             this.place = place;
             this.spouse = null;
+            acct = new BankAccount(); // creates a new bank account for each person
             for(int i = 0; i < 10; i++){
                 haves.add((int)(Math.random()*10));
                 wants.add((int)(Math.random()*10));
@@ -60,8 +65,7 @@ class Person {
                 commonTraits.add((int)(Math.random()*4));
             }
         setHappiness();
-	}
-
+    }
 
 	public boolean olderThan(int otherAge) {
 		if (age > otherAge) {
@@ -70,6 +74,8 @@ class Person {
 			return false;
 		}
 	}
+
+
 
 	public String getName() {
 		return name;
@@ -142,6 +148,9 @@ class Person {
     public void setGender(String gender) {
         this.gender = gender;
     }
+    public int getBirthday(){
+        return birthdate;
+    }
 
     public ArrayList <Integer> getHaves() {
         return haves;
@@ -209,7 +218,6 @@ class Person {
     }
 
     public static int bellCurve(int mean, int sd) {
-	    // make nombors gud
 	    int i = mean - (3*sd);
 	    int j = mean + (3*sd);
 		int x = i;
@@ -495,6 +503,7 @@ class Person {
             }
             return Math.abs(income);
         }
+
     public String getPlace(){
          return this.place;
      }
