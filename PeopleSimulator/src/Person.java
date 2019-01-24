@@ -78,8 +78,6 @@ class Person {
 		}
 	}
 
-
-
 	public String getName() {
 		return name;
 	}
@@ -116,6 +114,7 @@ class Person {
         friendCount++;
     }
     public void setHappiness(){
+
         if(depressed == true && age > 11){
             happiness = (int) Math.floor(Math.random() * 30) + 6;
             if(happiness < 10){
@@ -143,17 +142,6 @@ class Person {
         happiness += percentChange;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-    public int getBirthday(){
-        return birthdate;
-    }
-
     public double getYearsMarried(){
         return Math.floor((this.getDaysMarried()) / 365);
     }
@@ -174,13 +162,6 @@ class Person {
        daysMarried ++;
     }
 
-    public ArrayList <Integer> getHaves(){
-        return haves;
-    }
-
-    public ArrayList <Integer> getWants() {
-        return wants;
-    }
     public ArrayList <Integer> getCommonTraits(){
         return commonTraits;
     }
@@ -209,18 +190,7 @@ class Person {
     public void setParent2(String newP){
         this.parent2 = newP;
     }
-    public boolean isMarried(){
-        if(this.spouse != null){
-            return true;
-        }else{
-            return false;
-        }
-    }
 
-    public void gotMarriedTo(Person spouse){  //this is pretty cool, it sets a person as an attribute of spouse of a person
-        this.spouse = spouse;
-        this.spouse.married = true;
-    }
     public void becameFriendsWith(Person friend){
         this.friend = friend;
     }
@@ -228,43 +198,22 @@ class Person {
       //  if()
    // }
 
-    public void gotDivorcedFrom(Person spouse){  //this is pretty sad :(, it divorces people and sets their spouse to nothingness...
+    public void gotDivorcedFrom(Person spouse){
+        //this is pretty sad :(, it divorces people
+        //and sets their spouse to nothingness...
         this.spouse.married = false;
         this.spouse.addTimeDivorced();
         this.spouse.daysMarried = 0;
         this.spouse.changeHappiness(20);
         this.spouse = null;
-
     }
 
-    public Person getSpouse(){    //gets spouse if there is spoud. if not, then they are lonely (null)
-        if(spouse != null){
-            return spouse;
-        } else {
-            return null;
-        }
-    }
     public Person getFriend(){
         if(friend != null){
             return friend;
         }else{
             return null;
         }
-    }
-
-
-     public static int bellCurve(int mean, int sd) {
-		// make nombors gud
-	    int i = mean - (3*sd);
-	    int j = mean + (3*sd);
-		int x = i;
-		for(int c = i; c < j; c++) {
-			double l = Math.random();
-			if(l >= 0.5) {
-				x++;
-			}
-		}
-		return x;
     }
 
     public int getPersonalityNumber() {
@@ -539,8 +488,56 @@ class Person {
                 income = 0;
             }
             return Math.abs(income);
-        }
+    }
 
+    public void setGender(String gender){
+        this.gender = gender;
+    }
+
+    public String getGender(){
+        return gender;
+    }
+
+    public int getBirthday(){
+        return birthdate;
+    }
+
+    public ArrayList <Integer> getHaves(){
+        return haves;
+    }
+    public ArrayList <Integer> getWants(){
+        return wants;
+    }
+
+    public boolean isMarried(){
+        return married;
+    }
+
+    public void gotMarriedTo(Person spouse){
+        this.spouse = spouse;
+    }
+
+    public Person getSpouse(){
+        if(spouse != null){
+            return spouse;
+        }else{
+            return null;
+        }
+    }
+
+     public static int bellCurve(int mean, int sd) {
+		// make nombors gud
+	    int i = mean - (3*sd);
+	    int j = mean + (3*sd);
+		int x = i;
+		for(int c = i; c < j; c++) {
+			double l = Math.random();
+			if(l >= 0.5) {
+				x++;
+			}
+		}
+		return x;
+     }
     public String getPlace(){
          return this.place;
      }
@@ -549,3 +546,6 @@ class Person {
          return ("Person " + this.name + "moved to " + newPlace);
      }
 }
+
+
+

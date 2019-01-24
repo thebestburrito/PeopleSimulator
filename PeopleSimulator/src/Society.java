@@ -1,69 +1,70 @@
 import java.util.*;
 
 class Society {
- ArrayList < Person > people = new ArrayList < Person > ();
-ArrayList<Place> places = new ArrayList<Place>();
-ArrayList<Person> couples = new ArrayList<Person>();
- public Time time = new Time(1, 1, 0, 0);
- public int population;
- public String disaster;
- public int totalPopulation;
- //these names came from https://nameberry.com/unisex-names
- private String[] firstNames = {
-  "Avery",
-  "Riley",
-  "Jordan",
-  "Angel",
-  "Parker",
-  "Sawyer",
-  "Peyton",
-  "Quinn",
-  "Blake",
-  "Hayden",
-  "Taylor",
-  "Dakota",
-  "Reese",
-  "Zion",
-  "Remmington",
-  "Amari",
-  "Phoenix",
-  "Kendall",
-  "Harley",
-  "Rylan",
-  "Marley",
-  "Dallas"
- };
- private String[] lastNames = {
-  "Hill",
-  "Carson",
-  "Ware",
-  "McMahon",
-  "Murray",
-  "Smith",
-  "Jones",
-  "Robinson",
-  "Morris",
-  "Brown",
-  "Meyers",
-  "Reed",
-  "Schmidt",
-  "Estrada",
-  "Huang",
-  "Patel",
-  "Gupta",
-  "Gomez",
-  "Ramirez",
-  "Thomas",
-  "Jordan",
-  "Samson",
-  "Samuels",
-  "Evans",
-  "Butts",
-  "Wright",
-  "Black",
-  "White"
- };
- private String[] placeNames = {"burg", "ton", "burgh", "town", " City", "ville", " Center"," Lake", "wood","ford","land","house","hill","bridge"," Creek", "boro"};
+    ArrayList < Person > people = new ArrayList < Person > ();
+    List<Place> places = new ArrayList<Place>();
+    ArrayList<Person> couples = new ArrayList<Person>();
+    public Time time = new Time(1, 1, 0, 0);
+    public int population;
+    public int totalPopulation;
+    public int totalPlaces = 5;
+    public String disaster = "none";
+    //these names came from https://nameberry.com/unisex-names
+    private String[] firstNames = {
+    "Avery",
+    "Riley",
+    "Jordan",
+    "Angel",
+    "Parker",
+    "Sawyer",
+    "Peyton",
+    "Quinn",
+    "Blake",
+    "Hayden",
+    "Taylor",
+    "Dakota",
+    "Reese",
+    "Zion",
+    "Remmington",
+    "Amari",
+    "Phoenix",
+    "Kendall",
+    "Harley",
+    "Rylan",
+    "Marley",
+    "Dallas"
+    };
+    private String[] lastNames = {
+    "Hill",
+    "Carson",
+    "Ware",
+    "McMahon",
+    "Murray",
+    "Smith",
+    "Jones",
+    "Robinson",
+    "Morris",
+    "Brown",
+    "Meyers",
+    "Reed",
+    "Schmidt",
+    "Estrada",
+    "Huang",
+    "Patel",
+    "Gupta",
+    "Gomez",
+    "Ramirez",
+    "Thomas",
+    "Jordan",
+    "Samson",
+    "Samuels",
+    "Evans",
+    "Butts",
+    "Wright",
+    "Black",
+    "White"
+    };
+    private String[] placeNames = {"burg", "ton", "burgh", "town", " City", "ville", " Center"," Lake", "wood","ford","land","house","hill","bridge"," Creek", "boro"};
 
 
 
@@ -71,7 +72,6 @@ Society(int numPeople){
 		population = numPeople;
 		String fullName;
         String gender;
-        disaster = "none";
 		for(int i = 0; i < numPeople; i++){
 			fullName = firstNames[(int)(Math.random()*firstNames.length)] + " " + lastNames[(int)(Math.random()*lastNames.length)];
 			int randomIndex = (int)(Math.random()*2);
@@ -82,7 +82,7 @@ Society(int numPeople){
                 gender = "male";
             }
             for(int j = 0; j < 5; j++){
-            places.add(new Place(lastNames[(int)(Math.random()*lastNames.length)]+placeNames[(int)(Math.random()*placeNames.length)]));
+            places.add(new Place(lastNames[(int)(Math.random()*lastNames.length)]+placeNames[(int)(Math.random()*placeNames.length)],"ummm?"));
             }
             people.add(new Person((int)(Math.random()*100),fullName, gender,time.getDayCount(), places.get((int)(Math.random()*places.size())).getPlace(), "unknown", "unknown"));
 		}
@@ -105,12 +105,12 @@ Society(int numPeople){
                 addPerson(people.get(num1), people.get(num2));
             }
         }
+        effectsOfMarriage();
         makeDisaster();
         for(Person peep : people){
             peep.acct.earnDailyIncome((double)peep.income);
         }
     }
-
 
  public void addPerson(Person p1, Person p2) {
     String lastName;
@@ -134,8 +134,6 @@ Society(int numPeople){
     String fullName = firstNames[(int)(Math.random() * firstNames.length)] + " " + lastName;
     population++;
     people.add(new Person(0, fullName, gender, time.getDayCount(),p1.getPlace(),p1.getName(),p2.getName()));
-    System.out.println(p1.getName() + " and " + p2.getName() + " had...");
-    System.out.println(fullName + " born on " + time.dateToString());
   }
 
   }
@@ -159,14 +157,16 @@ Society(int numPeople){
         double loveA = 0;
         double loveB = 0;
         double compatibility = 0;
-        if(a.getPlace().equals(b.getPlace()) && !a.isMarried() && !b.isMarried() && a.getHappiness() >  30 && b.getHappiness() > 30 && a != b){ //makes sure they are in the same place, not married already, have a high enough happiness, and are not the same person
+
+        if(a.getPlace().equals(b.getPlace()) && !a.isMarried() && !b.isMarried() && a.getHappiness() >  30 && b.getHappiness() > 30 && a != b){
+            //makes sure they are in the same place, not married already, have a high enough happiness, and are not the same person
             if (a.getAge() > 18 && b.getAge() > 18) {               //makes sure they're at least 18 ;)
             for (int i = 0; i < a.getHaves().size(); i++) {
             if (a.getWants().get(i) == b.getHaves().get(i)) {      //compares their haves and wants they were born with to find love
-            loveA++;
+                loveA++;
             }
             if (b.getWants().get(i) == a.getHaves().get(i)) {
-            loveB++;
+                loveB++;
             }
             }
             if (loveB == 0 || loveA == 0) {                   //can't divide by 0!
@@ -374,12 +374,12 @@ public void effectsOfMarriage(){                      //uh oh :O
             currentPerson.addDayMarried();
             currentSpouse.addDayMarried();
             if(currentPerson.getYearsMarried() > 0 && currentPerson.getDaysMarried() % 365 == 0){                    //if they made it a year, make them less happy
-                if(Math.random()*10 > 5 && currentPerson.getYearsMarried() != 40){                                                               // 50% chance they will be more happy as the year passes.... 50% chance they will be sadder
+                if(Math.random()*10 > 5){                                                               // 50% chance they will be more happy as the year passes.... 50% chance they will be sadder
                     currentPerson.changeHappiness(5);
                 }else{
                     currentPerson.changeHappiness(-6);
                 }
-                if(currentPerson.getHappiness() < 20 || currentSpouse.getHappiness() < 20 && currentPerson.getYearsMarried() != 40){    // as years go by, happiness decreases... if it gets to be too low... well you get the point
+                if(currentPerson.getHappiness() < 20 || currentSpouse.getHappiness() < 20){    // as years go by, happiness decreases... if it gets to be too low... well you get the point
                     currentPerson.gotDivorcedFrom(currentSpouse);
                     currentSpouse.gotDivorcedFrom(currentPerson);
                 }
@@ -413,4 +413,18 @@ public void effectsOfMarriage(){                      //uh oh :O
         placedata.clear();
         return occurances;
     }
+    public String getClassification(String placeName){
+        String h = "This places doesnt exist!";
+        for(int count = 0;count < totalPlaces;count++){
+            if(places.get(count).getPlace().equals(placeName)){
+                h = places.get(count).getClassification();
+            }
+        }
+        return h;  //multi return statement
+    }
+    public void addPlaces(String newPlace,String newClass){
+        places.add(new Place(newPlace,newClass));
+        totalPlaces++;
+    }
 }
+

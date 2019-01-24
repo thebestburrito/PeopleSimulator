@@ -37,18 +37,44 @@ ______ _                        ______                                      _   
 _______________________________________________________________________________________________________
 
 Created by Brandon and Ian @ IBC
-Version 3.0.0
+Version 5.1.0
 
-# Added Society Methods =>
-    # populationOf(totalPopulation, peopleTown, "(TownNameHere)"):
-        -Use: Put the name of the town you want to detection population of in the 3 parameter spot. You will be returned the total population of the town.
-
-        -Information About: The TotalPopulation imports the current TOTAL population. The peopleTown is the object array is need for the method to function. (Leave in the totalPopulation and peopleTown to ensure the method function properly.)
 
 # Added Person Methods =>
 
     # getPlace():
-        -Use: Get the location of the person
+        -Use: Get the location of the person.
+
+        -Example:  peopleTown.populationOf(peopleTown,peopleTown.places.get(0).getPlace());
 
     # changePlaceTo(String newPlace):
-        -Use: Changes the person's current location to the item in the paremeter
+        -Use: Changes the person's current location to the item in the paremeter.
+
+        -Example:  peopleTown.people.get(1).changePlaceTo("brandontown");
+
+    # getClassification():
+        -Use: Gets the places overall social class.
+
+        -Example:   System.out.println(peopleTown.getClassification(peopleTown.places.get(0).getPlace()));
+
+    # populationOf(peopleTown Array,search town):
+        -Use: gets the population of specified place.
+
+        -Information About: The TotalPopulation imports the current TOTAL population. The peopleTown is the object array is need for the method to function. (Leave in the totalPopulation and peopleTown to ensure the method function properly.)
+
+        -Example:   peopleTown.populationOf(peopleTown,"brandontown");
+
+    # addPlaces(String newPlace,String newClass):
+        -Use: adds a place, and allows people to move to them.
+
+        -Example:   public void addPlaces(String newPlace,String newClass){
+                        places.add(new Place(newPlace,newClass));
+                        totalPlaces++;
+                    }
+
+
+# Places constructor =>
+
+    # constructor methods
+
+        -Example:   System.out.println(peopleTown.places.get(0).getClassification());
