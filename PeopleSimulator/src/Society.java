@@ -1,9 +1,9 @@
 import java.util.*;
 
 class Society {
-    ArrayList < Person > people = new ArrayList < Person > ();
-    List<Place> places = new ArrayList<Place>();
-    ArrayList<Person> couples = new ArrayList<Person>();
+    ArrayList <Person> people = new ArrayList <Person>();
+    ArrayList <Place> places = new ArrayList <Place>();
+    ArrayList <Person> couples = new ArrayList <Person>();
     public Time time = new Time(1, 1, 0, 0);
     public int population;
     public int totalPopulation;
@@ -17,7 +17,7 @@ class Society {
     private String[] lastNames = {
         "Hill", "Carson", "Ware", "McMahon", "Murray", "Smith", "Jones", "Robinson", "Morris", "Brown", "Meyers", "Reed", "Schmidt", "Estrada", "Huang", "Patel", "Gupta", "Gomez", "Ramirez", "Thomas", "Jordan", "Samson", "Samuels", "Evans", "Butts", "Wright", "Black", "White"
     };
-    
+
     private String[] placeNames = {
         "burg", "ton", "burgh", "town", " City", "ville", " Center"," Lake", "wood", "ford", "land", "house", "hill", "bridge", " Creek", "boro"
     };
@@ -156,6 +156,7 @@ class Society {
         } else if (time.getSeason().equals("summer")) {
             torIndex += 5;
         }
+
         if (torIndex >= 399) {
             int level = (int)(Math.random()*3);
             int kill = (int)(Math.random()*6);
@@ -181,6 +182,7 @@ class Society {
         } else if (time.getSeason().equals("summer")) {
             hurIndex += 5;
         }
+
         if (hurIndex >= 400) {
             int level = (int)((Math.random()*5) + 1);
             int amount = (int)(Math.random()*4) * level;
@@ -198,6 +200,7 @@ class Society {
         } else if (time.getSeason().equals("fall")) {
             floIndex += 5;
         }
+
         if (floIndex >= 399) {
             int amount = (int)(Math.random()*6);
             removePeople(amount, thePlace);
@@ -225,6 +228,7 @@ class Society {
             earIndex -= 2000;
             killLevel = 0;
         }
+
         if (earIndex >= 1999) {
             int levelAmount = (int)(Math.random()*6);
             int amount = levelAmount * killLevel;
@@ -249,6 +253,7 @@ class Society {
         } else if (time.getSeason().equals("fall")) {
             wilIndex += 5;
         }
+
         if (wilIndex >= 349) {
             int amount = (int)(Math.random()*13);
             removePeople(amount, thePlace);
@@ -277,10 +282,12 @@ class Society {
                         if (a.getCommonTraits().get(i) == b.getCommonTraits().get(i)) {
                             friendshipA++;
                         }
+
                         if (b.getCommonTraits().get(i) == a.getCommonTraits().get(i)) {
                             friendshipB++;
                         }
                     }
+
                     if (friendshipB == 0 || friendshipA == 0) {
                         friendship = 0;
                     } else if (friendshipA == 0 || friendshipB == 0) {
@@ -288,6 +295,7 @@ class Society {
                     } else {
                         friendship = (friendshipA + friendshipB) / 2;
                     }
+
                     if (friendship >= 2) {
                         a.becameFriendsWith(b);
                         b.becameFriendsWith(a);
@@ -317,6 +325,7 @@ class Society {
                     } else {
                         currentPerson.changeHappiness(-6);
                     }
+
                     if (currentPerson.getHappiness() < 20 || currentSpouse.getHappiness() < 20) {    // as years go by, happiness decreases... if it gets to be too low... well you get the point
                         currentPerson.gotDivorcedFrom(currentSpouse);
                         currentSpouse.gotDivorcedFrom(currentPerson);
@@ -344,7 +353,6 @@ class Society {
             placedata.add(society.people.get(count).getPlace());
         }
         int occurances = Collections.frequency(placedata, PlaceName);
-        //System.out.println("Population for "+PlaceName+":"+occurances);
 
         //empty the placedata array every time.
         placedata.clear();

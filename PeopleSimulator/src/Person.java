@@ -1,50 +1,62 @@
 import java.util.ArrayList;
 
 class Person {
-	public int age;
-	private String name;
-    private boolean depressed;
-    private boolean optimistic;
-    private int happiness;
-    private int birthdate;
-    private String gender;
-    private int personalityNumber;
-    private String personalityString = "";  // What the personality Number is called
-    private boolean isLawful;       //Boolean set 1) Top row
-    private boolean isSocial;       //       |
-    private boolean is1Neutral;     //       |
-    private boolean isRebel;        //       |
-    private boolean isChaotic;      //       V
-    private boolean isGood;         //Boolean set 2) Left side
-    private boolean isMoral;        //       |
-    private boolean is2Neutral;     //       |
-    private boolean isImpure;       //       |
-    private boolean isEvil;         //       V
-    private boolean deceased;
-    //Shows a Persons Parents
-    private String parent1;
-    private String parent2;
-    public int idNumber;
-    public String place;
-    public Person spouse;
-    public int thisPopulation;
-    public int daysMarried = 0;
-    public double yearsMarried = 0;
-    public int numOfTimesDivorced = 0;
+	//Array Lists
+    private ArrayList <Integer> commonTraits = new ArrayList <Integer>();
     private ArrayList <Integer> haves = new ArrayList <Integer>();
     private ArrayList <Integer> wants = new ArrayList <Integer>();
-    private boolean married = false;
-    public int IQ = bellCurve(100,15);
-    public int income;
-    public int points = 0;
-    public int mill = bellCurve(50,25);
-    public Person friend;
-    private ArrayList <Integer> commonTraits = new ArrayList <Integer>();
-    private int friendCount;
-    public int idCounter = 0;
+
+    //Bank Accounts
     public BankAccount acct;
 
-	public Person(int age, String name,String gender,int birthdate,String place, String parent1, String parent2) {
+    //Booleans
+    private boolean deceased;
+    private boolean depressed;
+    private boolean isChaotic;
+    private boolean isEvil;
+    private boolean isGood;
+    private boolean isImpure;
+    private boolean isLawful;
+    private boolean isMoral;
+    private boolean isRebel;
+    private boolean isSocial;
+    private boolean is1Neutral;
+    private boolean is2Neutral;
+    private boolean married = false;
+    private boolean optimistic;
+
+    //Doubles
+    public double yearsMarried = 0;
+
+    //Integers
+    public int age;
+    private int birthdate;
+    public int daysMarried = 0;
+    private int friendCount;
+    private int happiness;
+    public int idCounter = 0;
+    public int idNumber;
+    public int income;
+    public int IQ = bellCurve(100,15);
+    public int mill = bellCurve(50,25);
+    public int numOfTimesDivorced = 0;
+    private int personalityNumber;
+    public int points = 0;
+    public int thisPopulation;
+
+    //People
+    public Person friend;
+    public Person spouse;
+
+    //Strings
+    private String gender;
+    private String name;
+    private String parent1;  //Shows a Persons Parents
+    private String parent2;  //Shows a Persons Parents
+    private String personalityString = "";  // What the personality Number is called
+    public String place;
+
+	public Person(int age, String name, String gender, int birthdate, String place, String parent1, String parent2) {
             this.name = name;
             this.age = age;
             this.depressed = Math.random() < 0.15;
@@ -70,26 +82,20 @@ class Person {
         setHappiness();
     }
 
-	public boolean olderThan(int otherAge) {
-		if (age > otherAge) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+    //Array Lists
+    public ArrayList <Integer> getCommonTraits() {
+        return commonTraits;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public ArrayList <Integer> getHaves() {
+        return haves;
+    }
 
-	public int getAge() {
-		return age;
-	}
+    public ArrayList <Integer> getWants() {
+        return wants;
+    }
 
-	public void hadBirthday() {
-		age++;
-	}
-
+    //Boolean
     public boolean getDepressed() {
         if (age < 11) {
             depressed = false;
@@ -104,133 +110,10 @@ class Person {
         return optimistic;
     }
 
-    public int getHappiness() {
-        return happiness;
-    }
-
-    public int getFriendCount() {
-        return friendCount;
-    }
-
-    public void updateFriendCount() {
-        friendCount++;
-    }
-
-    public void setHappiness() {
-        if (depressed == true && age > 11) {
-            happiness = (int) Math.floor(Math.random() * 30) + 6;
-            if (happiness < 10) {
-                happiness += (int) Math.floor(Math.random() * 8);
-            }
-        }
-        if (optimistic == true) {
-            happiness += (int) Math.floor(Math.random() * 10) + 5;
-        }
-        if (income < 53500 && age > 20) {
-            happiness -= (int) Math.floor(Math.random() * 10);
-        }
-        if (income > 58000 && age > 20) {
-            happiness += (int) Math.floor(Math.random() * 15);
-        }
-
-        if (married == true) {
-            happiness += (int) Math.floor(Math.random() * 25) + 5;
-        }
-        if(happiness > 100) {
-            happiness = 100;
-        }
-    }
-
-    public void changeHappiness(int percentChange) {
-        happiness += percentChange;
-    }
-
-    public double getYearsMarried() {
-        return Math.floor((this.getDaysMarried()) / 365);
-    }
-
-    public int getNumOfTimesDivorced() {
-        return numOfTimesDivorced;
-    }
-
-    public void addTimeDivorced() {
-        numOfTimesDivorced++;
-    }
-
-    public int getDaysMarried() {
-        return daysMarried/2;       //returns days married (taking half of the number makes it way easier for me lol)
-    }
-
-    public void addDayMarried() {    //adds 1 to days married
-       daysMarried ++;
-    }
-
-    public ArrayList <Integer> getCommonTraits() {
-        return commonTraits;
-    }
-
-    public boolean isDead() {
-		return deceased;
-	}
-
-    public void markAsDeceased() {
-        deceased = true;
-    }
-
-    public String getParent1() {
-        return this.parent1;
-    }
-
-    public String getParent2() {
-        return this.parent2;
-    }
-
-    public void setParent1(String newP) {
-        this.parent1 = newP;
-    }
-
-    public void setParent2(String newP) {
-        this.parent2 = newP;
-    }
-
-    public void becameFriendsWith(Person friend) {
-        this.friend = friend;
-    }
-
-    //public boolean isFriendsWith(Person friend){
-        //if()
-    // }
-
-    public void gotDivorcedFrom(Person spouse) {
-        //this is pretty sad :(, it divorces people
-        //and sets their spouse to nothingness...
-        this.spouse.married = false;
-        this.spouse.addTimeDivorced();
-        this.spouse.daysMarried = 0;
-        this.spouse.changeHappiness(20);
-        this.spouse = null;
-    }
-
-    public Person getFriend() {
-        if (friend != null) {
-            return friend;
-        } else {
-            return null;
-        }
-    }
-
-    public int getPersonalityNumber() {
-        return personalityNumber;
-    }
-
-    public String getPersonalityString() {
-        return personalityString;
-    }
-
     /**
-      * @param booleanName the boolean you want to find out.
-      * @return whether or not the boolean is true or false.
-      */
+    * @param booleanName the boolean you want to find out.
+    * @return whether or not the boolean is true or false.
+    */
     public boolean getPersonalityBoolean(String booleanName) {
         if (booleanName == "isLawful") {
             return  isLawful;
@@ -257,46 +140,106 @@ class Person {
         }
     }
 
-    /**
-     * @param personalityNumber the personalityNumber to set
-     */
-    public void setPersonalityNumber(int personalityNumber) {
-        this.personalityNumber = personalityNumber;
+    public boolean isDead() {
+        return deceased;
     }
 
-    /**
-     * @param personality The string personality to set
-     */
-    public void setPersonalityString(String personalityString) {
-        this.personalityString = personalityString;
+    public boolean isMarried() {
+        return married;
     }
 
-    /**
-     * @param personalityBoolean The desired boolean to change (isGood, isMoral, is2Neutral, isImpure, isEvil, isLawful, isSocial, is1Neutral, isRebel, isChaotic)
-     * @param trueOrFalse What you want to change the boolean to
-     */
-    public void setPersonalityBoolean(String personalityBoolean, boolean trueOrFalse) {
-        if (personalityBoolean == "isLawful") {
-            isLawful = trueOrFalse;
-        } else if (personalityBoolean == "isSocial") {
-            isSocial= trueOrFalse;
-        } else if (personalityBoolean == "is1Neutral") {
-            is1Neutral= trueOrFalse;
-        } else if (personalityBoolean == "isRebel") {
-            isRebel= trueOrFalse;
-        } else if (personalityBoolean == "isChaotic") {
-            isChaotic = trueOrFalse;
-        } else if (personalityBoolean == "isGood") {
-            isGood = trueOrFalse;
-        } else if (personalityBoolean == "isMoral") {
-            isMoral = trueOrFalse;
-        } else if (personalityBoolean == "is2Neutral") {
-            is2Neutral = trueOrFalse;
-        } else if (personalityBoolean == "isImpure") {
-            isImpure = trueOrFalse;
-        } else if (personalityBoolean == "isEvil") {
-            isEvil = trueOrFalse;
+    //public boolean isFriendsWith(Person friend){
+        //if()
+    // }
+
+    public boolean olderThan(int otherAge) {
+        if (age > otherAge) {
+            return true;
+        } else {
+            return false;
         }
+    }
+
+    //double
+    public double getYearsMarried() {
+        return Math.floor((this.getDaysMarried()) / 365);
+    }
+
+    //Integer
+    public static int bellCurve(int mean, int sd) {
+        // make nombors gud
+        int i = mean - (3*sd);
+        int j = mean + (3*sd);
+        int x = i;
+        for (int c = i; c < j; c++) {
+            double l = Math.random();
+            if (l >= 0.5) {
+                x++;
+            }
+        }
+        return x;
+    }
+
+    public int calcIncome() {
+        if (age >= 20) {
+            if (IQ > 100 && IQ < 115) {
+                points = IQ - 100; /* Points above average for average people */
+                if(Math.random() > 0.75){
+                        income = income + (4262 * points);
+                } else if(Math.random() < 0.75){
+                    income = income + (2002 * points);
+                }
+            } else if(IQ > 115 && IQ < 130){
+                points = IQ - 100; /* Points above average for smarter than average people */
+                if(Math.random() > 0.75){
+                    income = income + (8362 * points);
+                } else if(Math.random() < 0.75){
+                    income = income + (4802 * points);
+                }
+            } else if(IQ > 130){
+                points = IQ - 100; /* Points above average for gifted IQ's */
+                if(Math.random() > .60){
+                    income = income + (8066 * points);
+                }
+                income = income + (5956 * points);
+            } else if(IQ < 100){
+                points = 100 - IQ; /* Points below average for dumb people */
+                income = income - (1502 * points);
+            }  else if(mill >= 60){
+                /* Millionare */
+                if(bellCurve(100,25) < 60){
+                    income = income + bellCurve(1250000,500000);
+                } else if((bellCurve(100,25) > 60)){
+                    income = income + bellCurve(5505000,2500000);
+                }
+            }   //age affecting income
+        }
+        else if(age > 15 && age < 20){
+            income = bellCurve(10000,2000);
+        } else if(age < 15){
+            income = 0;
+        }
+        return Math.abs(income);
+    }
+
+    public int calcIQ() {
+        if(Math.random() < 0.4) {
+            /* hardWorking */
+            IQ = IQ + 10;
+        } else if (Math.random() < 0.14) {
+            /* Temp Education */
+            IQ = IQ - 15;
+        } else if(Math.random() < 0.39) {
+            /* Practice an Art */
+            IQ = IQ + 5;
+        } else if(Math.random() < 0.22) {
+            /* Exercise */
+            IQ = IQ + 5;
+        } else if(Math.random() < 0.35) {
+            /* Has connections/mentors */
+            IQ = IQ + 20;
+        }
+        return IQ;
     }
 
     public int generatePersonalityNumber() {
@@ -430,95 +373,41 @@ class Person {
         }
     }
 
-
-    public int calcIQ() {
-        if(Math.random() < 0.4) {
-            /* hardWorking */
-            IQ = IQ + 10;
-        } else if (Math.random() < 0.14) {
-            /* Temp Education */
-            IQ = IQ - 15;
-        } else if(Math.random() < 0.39) {
-            /* Practice an Art */
-            IQ = IQ + 5;
-        } else if(Math.random() < 0.22) {
-            /* Exercise */
-            IQ = IQ + 5;
-        } else if(Math.random() < 0.35) {
-            /* Has connections/mentors */
-            IQ = IQ + 20;
-        }
-        return IQ;
-    }
-
-    public int calcIncome() {
-        if (age >= 20) {
-            if (IQ > 100 && IQ < 115) {
-                points = IQ - 100; /* Points above average for average people */
-                if(Math.random() > 0.75){
-                     income = income + (4262 * points);
-                } else if(Math.random() < 0.75){
-                    income = income + (2002 * points);
-                }
-            } else if(IQ > 115 && IQ < 130){
-                points = IQ - 100; /* Points above average for smarter than average people */
-                if(Math.random() > 0.75){
-                    income = income + (8362 * points);
-                } else if(Math.random() < 0.75){
-                    income = income + (4802 * points);
-                }
-            } else if(IQ > 130){
-                points = IQ - 100; /* Points above average for gifted IQ's */
-                if(Math.random() > .60){
-                    income = income + (8066 * points);
-                }
-                income = income + (5956 * points);
-            } else if(IQ < 100){
-                points = 100 - IQ; /* Points below average for dumb people */
-                income = income - (1502 * points);
-            }  else if(mill >= 60){
-                /* Millionare */
-                if(bellCurve(100,25) < 60){
-                    income = income + bellCurve(1250000,500000);
-                } else if((bellCurve(100,25) > 60)){
-                    income = income + bellCurve(5505000,2500000);
-                }
-            }   //age affecting income
-        }
-        else if(age > 15 && age < 20){
-            income = bellCurve(10000,2000);
-        } else if(age < 15){
-            income = 0;
-        }
-        return Math.abs(income);
-    }
-
-    public void setGender (String gender) {
-        this.gender = gender;
-    }
-
-    public String getGender() {
-        return gender;
+    public int getAge() {
+        return age;
     }
 
     public int getBirthday() {
         return birthdate;
     }
 
-    public ArrayList <Integer> getHaves() {
-        return haves;
+    public int getDaysMarried() {
+        return daysMarried/2;       //returns days married (taking half of the number makes it way easier for me lol)
     }
 
-    public ArrayList <Integer> getWants() {
-        return wants;
+    public int getFriendCount() {
+        return friendCount;
     }
 
-    public boolean isMarried() {
-        return married;
+    public int getHappiness() {
+        return happiness;
     }
 
-    public void gotMarriedTo(Person spouse) {
-        this.spouse = spouse;
+    public int getNumOfTimesDivorced() {
+        return numOfTimesDivorced;
+    }
+
+    public int getPersonalityNumber() {
+        return personalityNumber;
+    }
+
+    //People
+    public Person getFriend() {
+        if (friend != null) {
+            return friend;
+        } else {
+            return null;
+        }
     }
 
     public Person getSpouse() {
@@ -529,26 +418,155 @@ class Person {
         }
     }
 
-    public static int bellCurve(int mean, int sd) {
-		// make nombors gud
-	    int i = mean - (3*sd);
-	    int j = mean + (3*sd);
-	    int x = i;
-		for (int c = i; c < j; c++) {
-			double l = Math.random();
-			if (l >= 0.5) {
-				x++;
-			}
-		}
-		return x;
-    }
-
-    public String getPlace() {
-         return this.place;
-    }
-
+    //String
     public String changePlaceTo(String newPlace) {
         this.place = newPlace;
         return ("Person " + this.name + "moved to " + newPlace);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getParent1() {
+        return this.parent1;
+    }
+
+    public String getParent2() {
+        return this.parent2;
+    }
+
+    public String getPersonalityString() {
+        return personalityString;
+    }
+
+    public String getPlace() {
+            return this.place;
+    }
+
+    //Void
+    public void addDayMarried() {    //adds 1 to days married
+        daysMarried ++;
+    }
+
+    public void addTimeDivorced() {
+        numOfTimesDivorced++;
+    }
+
+    public void becameFriendsWith(Person friend) {
+        this.friend = friend;
+    }
+
+    public void changeHappiness(int percentChange) {
+        happiness += percentChange;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void gotDivorcedFrom(Person spouse) {
+        //this is pretty sad :(, it divorces people
+        //and sets their spouse to nothingness...
+        this.spouse.married = false;
+        this.spouse.addTimeDivorced();
+        this.spouse.daysMarried = 0;
+        this.spouse.changeHappiness(20);
+        this.spouse = null;
+    }
+
+    public void gotMarriedTo(Person spouse) {
+        this.spouse = spouse;
+    }
+
+    public void hadBirthday() {
+        age++;
+    }
+
+    public void markAsDeceased() {
+        deceased = true;
+    }
+
+    public void setGender (String gender) {
+        this.gender = gender;
+    }
+
+    public void setHappiness() {
+        if (depressed == true && age > 11) {
+            happiness = (int) Math.floor(Math.random() * 30) + 6;
+            if (happiness < 10) {
+                happiness += (int) Math.floor(Math.random() * 8);
+            }
+        }
+        if (optimistic == true) {
+            happiness += (int) Math.floor(Math.random() * 10) + 5;
+        }
+        if (income < 53500 && age > 20) {
+            happiness -= (int) Math.floor(Math.random() * 10);
+        }
+        if (income > 58000 && age > 20) {
+            happiness += (int) Math.floor(Math.random() * 15);
+        }
+
+        if (married == true) {
+            happiness += (int) Math.floor(Math.random() * 25) + 5;
+        }
+        if(happiness > 100) {
+            happiness = 100;
+        }
+    }
+
+    public void setParent1(String newP) {
+        this.parent1 = newP;
+    }
+
+    public void setParent2(String newP) {
+        this.parent2 = newP;
+    }
+
+    /**
+        * @param personalityBoolean The desired boolean to change (isGood, isMoral, is2Neutral, isImpure, isEvil, isLawful, isSocial, is1Neutral, isRebel, isChaotic)
+        * @param trueOrFalse What you want to change the boolean to
+        */
+    public void setPersonalityBoolean(String personalityBoolean, boolean trueOrFalse) {
+        if (personalityBoolean == "isLawful") {
+            isLawful = trueOrFalse;
+        } else if (personalityBoolean == "isSocial") {
+            isSocial= trueOrFalse;
+        } else if (personalityBoolean == "is1Neutral") {
+            is1Neutral= trueOrFalse;
+        } else if (personalityBoolean == "isRebel") {
+            isRebel= trueOrFalse;
+        } else if (personalityBoolean == "isChaotic") {
+            isChaotic = trueOrFalse;
+        } else if (personalityBoolean == "isGood") {
+            isGood = trueOrFalse;
+        } else if (personalityBoolean == "isMoral") {
+            isMoral = trueOrFalse;
+        } else if (personalityBoolean == "is2Neutral") {
+            is2Neutral = trueOrFalse;
+        } else if (personalityBoolean == "isImpure") {
+            isImpure = trueOrFalse;
+        } else if (personalityBoolean == "isEvil") {
+            isEvil = trueOrFalse;
+        }
+    }
+
+    /**
+        * @param personalityNumber the personalityNumber to set
+        */
+    public void setPersonalityNumber(int personalityNumber) {
+        this.personalityNumber = personalityNumber;
+    }
+
+    /**
+        * @param personality The string personality to set
+        */
+    public void setPersonalityString(String personalityString) {
+        this.personalityString = personalityString;
+    }
+
+    public void updateFriendCount() {
+        friendCount++;
     }
 }
